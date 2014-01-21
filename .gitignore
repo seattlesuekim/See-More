@@ -14,6 +14,9 @@
 # Ignore .iml
 SeePeeps.iml
 
+# Ignore .idea
+/.idea
+
 # Ignore gemfile.lock
 Gemfile.lock
 
