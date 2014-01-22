@@ -21,13 +21,17 @@
   </form>
 </ul>
 
-<div id="nav_bar">
-    |
-    <%= link_to "Sign In with Twitter", "https://api.twitter.com/oauth/authorize" %> |
+ <div id="nav_bar">
+    <%= link_to "Tweet da Peep", root_path %> |
+    <%= link_to "Sign In", "https://api.twitter.com/oauth/authorize" %> |
     <%= link_to "Sign Out", sign_out_path %>
-</div>
+  </div>
+  <div id="icons">
+    <%= link_to (image_tag "pastel-tw.png"), "https://api.twitter.com/oauth/authorize" %> 
+  </div>
 <h1> PEEPS </h1>
 
+ 
 
 <%= yield %>
 
