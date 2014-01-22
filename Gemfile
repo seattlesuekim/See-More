@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Authenticaion
 gem 'omniauth'
 gem 'figaro'
+gem 'httparty'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
