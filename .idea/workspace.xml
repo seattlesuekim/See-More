@@ -70,7 +70,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
+            <state line="9" column="0" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,7 +79,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="463" selection-end="463" vertical-scroll-proportion="0.4847397">
+            <state line="15" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="0.40394974">
               <folding />
             </state>
           </provider>
@@ -388,7 +388,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="10" y="22" width="1260" height="705" extended-state="1" />
+    <frame x="10" y="22" width="1260" height="705" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -502,14 +502,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="463" selection-end="463" vertical-scroll-proportion="0.4847397">
+        <state line="15" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="0.40394974">
           <folding />
         </state>
       </provider>
