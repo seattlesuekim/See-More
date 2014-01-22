@@ -8,9 +8,12 @@
 </head>
 <body>
   <div id="nav_bar">
-    <%= link_to "Home", root_path %> |
+    <%= link_to "Tweet da Peep", root_path %> |
     <%= link_to "Sign In", "https://api.twitter.com/oauth/authorize" %> |
     <%= link_to "Sign Out", sign_out_path %>
+  </div>
+  <div id="icons">
+    <%= link_to (image_tag "pastel-tw.png"), "https://api.twitter.com/oauth/authorize" %> 
   </div>
 
 <%= yield %>
