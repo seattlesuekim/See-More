@@ -1,4 +1,4 @@
-== README
+== README for PEEPS PROJECT (aka: SEE-MORE)
 
 Goals
 Learn how to work with OAuth
