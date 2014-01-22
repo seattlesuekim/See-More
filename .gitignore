@@ -14,8 +14,8 @@
 # Ignore .iml
 SeePeeps.iml
 
-# Ignore gemfile.lock
-Gemfile.lock
+# Ignore .idea
+/.idea
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
