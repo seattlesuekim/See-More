@@ -6,6 +6,7 @@ gem 'figaro'
 gem 'httparty'
 gem 'omniauth-twitter'
 
+gem 'turbolinks'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
