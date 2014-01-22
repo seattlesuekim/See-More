@@ -2,7 +2,10 @@ SeePeeps::Application.routes.draw do
 
   resources :users
 
+
   get "/auth/:provider/callback", to: "sessions#create"
+  get "/signout", to: "sessions#destroy", as: :sign_out
+
   root to: "users#show" 
   
   # The priority is based upon order of creation: first created -> highest priority.
