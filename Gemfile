@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'omniauth'
 gem 'figaro'
 
+gem 'turbolinks'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
