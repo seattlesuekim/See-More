@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'omniauth'
 gem 'figaro'
 gem 'httparty'
+gem 'omniauth-twitter'
 
 gem 'turbolinks'
 
