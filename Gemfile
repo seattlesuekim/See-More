@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Authenticaion
 gem 'omniauth'
 gem 'figaro'
+gem 'httparty'
+gem 'omniauth-twitter'
 
 gem 'turbolinks'
 
