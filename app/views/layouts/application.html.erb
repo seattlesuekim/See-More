@@ -7,11 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="nav_bar">
-    <%= link_to "Home", root_path %> |
-    <%= link_to "Sign In", "https://api.twitter.com/oauth/authorize" %> |
+  <br>
+  <ul class="nav nav-tabs">
+  <li class="active"><a href="/">Home</a></li>
+  <li><a href="#">Search</a></li>
+  <li><a href="#">Messages</a></li>
+
+  <form class="navbar-form navbar-right" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</ul>
+
+<div id="nav_bar">
+    |
+    <%= link_to "Sign In with Twitter", "https://api.twitter.com/oauth/authorize" %> |
     <%= link_to "Sign Out", sign_out_path %>
-  </div>
+</div>
+<h1> PEEPS </h1>
+
 
 <%= yield %>
 
