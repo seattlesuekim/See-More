@@ -1,11 +1,14 @@
-Current User ID: <%=session[:user_id] %><br><hr>
-Users
-<ul><%User.all.each do |user| %>
-  <li><%=user.inspect %></li>
-<% end %></ul>
-<hr>
-Providers
-<ul>
-<%Provider.all.each do |provider| %>
-  <li><%=provider.inspect %></li>
-<% end %><ul>
+
+<div class='debug'><h3>Debug</h3>
+  Current User ID: <%=session[:user_id] %><br><hr>
+  Users
+  <ul><%User.all.each do |user| %>
+    <li><%=user.inspect %></li>
+  <% end %></ul>
+  <hr>
+  Providers
+  <ul>
+  <%Provider.all.each do |provider| %>
+    <li><%=provider.inspect %></li>
+  <% end %><ul>
+</div>
