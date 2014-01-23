@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           session[:user_id] = @provider.user_id
           redirect_to root_path, notice: "You have successfully logged in!"
         else
-          #figure out how to attach user to provider
+          #figure out how to attach user to provider as extra step?
           redirect_to root_path, notice: "Failed to save the user"
         end
       else
