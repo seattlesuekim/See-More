@@ -1,12 +1,11 @@
 SeePeeps::Application.routes.draw do
 
-  root to: "users#show" 
-
+  root to: "welcome#home" 
+  get "welcome/signin", as: :sign_in
+  get "/signout", to: "sessions#destroy", as: :sign_out
+  
   get "/auth/:provider/callback", to: "sessions#create"
   post "/auth/:provider/callback", to: "sessions#create"
-  get "/signout", to: "sessions#destroy", as: :sign_out
-
-  # get '/users/:id', to: "users#show"
 
   post '/search', to: 'posts#search', as: :search
 
