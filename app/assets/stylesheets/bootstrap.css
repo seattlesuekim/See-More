@@ -44,7 +44,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 5;
 }
 
 a {
@@ -4227,6 +4227,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .nav-pills > li {
   float: left;
+  font-size: 30px;
 }
 
 .nav-pills > li > a {
@@ -4235,6 +4236,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .nav-pills > li + li {
   margin-left: 2px;
+
 }
 
 .nav-pills > li.active > a,
@@ -4242,6 +4244,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:focus {
   color: #ffffff;
   background-color: #428bca;
+  border-radius: 50%;
 }
 
 .nav-stacked > li {
