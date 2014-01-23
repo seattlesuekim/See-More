@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def search_tum
-    @searcht = @client.
+    
   end
 
   private
