@@ -6,7 +6,7 @@ class Provider < ActiveRecord::Base
   end
 
   def self.create_from_omniauth(auth_hash)
-    user = User.new(username:auth_hash['info']['name']) #save email here?
+    user = User.new(username:auth_hash['info']['name'], email: auth_hash['info']['email']) #save email here?
     provider = self.new(
       #setting user_id might not work bc this happens after the provider object is created
       # user_id: user.id,
