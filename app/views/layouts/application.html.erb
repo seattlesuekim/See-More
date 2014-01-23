@@ -8,14 +8,15 @@
 </head>
 <body>
   <br>
-  <ul class="nav nav-tabs">
-  <li class="active"><a href="/">Home</a></li>
-  <li><a href="#">Search</a></li>
-  <li><a href="#">Messages</a></li>
+  <ul class="nav nav-pills" >
+  <!-- <li><%= image_tag('PeepsYellow.png') %></li> -->
+  <li><a href="/">Home</a></li>
+  <!-- <li><a href="#">Search</a></li> -->
+  <!-- <li><a href="#">Messages</a></li> -->
 
   <%= form_tag search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
     <div class="form-group">
-      <input type="text" name="search" class="form-control" placeholder="Search">
+      <input type="text" name="search" class="form-control" placeholder="Search Twitter">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   <% end %>
@@ -39,11 +40,146 @@
     <%= link_to (image_tag "pastel-tw.png"), " " %> 
   </div> -->
 
-<h1> PEEPS </h1>
-
- 
+<h1><%= image_tag('PeepsYellow.png') %>PEEPS </h1>
 
 <%= yield %>
+
+
+
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-1" align="right" height="80px" >
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <img src="http://placehold.it/80x80" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="col-md-7">
+        <div class="text">
+          <div class="author">
+            Bob
+          </div>
+          <p>Bicycle rights Carles before they sold out, pour-over commodo narwhal butcher actually occupy polaroid Marfa. McSweeney's Pinterest mixtape, polaroid brunch meggings shabby chic actually squid.</p>
+          <div class="meta">
+            <div class="datetime">
+              Written in 2001 12.1.01
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <!-- erase after this point when ready to implement with real -->
+    <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-1" align="right" >
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <img src="http://placehold.it/80x80" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="col-md-7">
+        <div class="text">
+          <div class="author">
+            Barney
+          </div>
+          <p>Et incididunt single-origin coffee officia mustache. Brooklyn retro before they sold out raw denim dolore twee wayfarers in.</p>
+          <div class="meta">
+            <div class="datetime">
+              Written in 2001 12.1.01
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <br>
+    <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-1" align="right" >
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <img src="http://placehold.it/80x80" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="col-md-7">
+        <div class="text">
+          <div class="author">
+            Betty
+          </div>
+          <p>TWEET! This is a sample tweet.. although not lorem impsum</p>
+          <div class="meta">
+            <div class="datetime">
+              Written in 2001 12.1.01
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+    <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-1" align="right" >
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <img src="http://placehold.it/80x80" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="col-md-7">
+        <div class="text">
+          <div class="author">
+            Bob
+          </div>
+          <p>Neutra hoodie gentrify nihil, Banksy gluten-free PBR in organic kitsch put a bird on it sustainable chambray. Ennui slow-carb sunt cray, Intelligentsia et pariatur nesciunt. Butcher non laborum, odio bicycle rights flannel reprehenderit single-origin coffee swag actually Etsy.</p>
+          <div class="meta">
+            <div class="datetime">
+              Written in 2001 12.1.01
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </body>
 </html>
