@@ -10,7 +10,6 @@ SeePeeps::Application.routes.draw do
 
   post '/search', to: 'posts#search', as: :search
 
-
   resources :posts
   resources :users
  end
