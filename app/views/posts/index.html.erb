@@ -1,0 +1,6 @@
+<ul>
+<% @search.each do |r| %>
+<li><%= r.profile_image_url %>
+  <%= link_to r, "https://www.twitter.com/#{r.screen_name}" %></li>
+<% end %>
+</ul>
