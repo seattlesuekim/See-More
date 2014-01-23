@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def search
     @search = @client.user_search(params[:search], count: 50).collect 
-    render :index
+    render :search_results
   end
 
   private

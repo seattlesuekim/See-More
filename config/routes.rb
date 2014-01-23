@@ -1,5 +1,4 @@
 SeePeeps::Application.routes.draw do
-
   root to: "users#show" 
 
   get "/auth/:provider/callback", to: "sessions#create"
@@ -14,4 +13,5 @@ SeePeeps::Application.routes.draw do
   resources :posts
   resources :users
   resources :authors
+  resources :user_authors
  end
