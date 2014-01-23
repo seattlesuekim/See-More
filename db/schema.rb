@@ -8,19 +8,27 @@
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122221004) do
+ActiveRecord::Schema.define(version: 20140122231346) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "posts", force: true do |t|
     t.string   "author_id"
     t.text     "body"
     t.string   "title"
     t.date     "posted_at"
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "avatar_url"
+    t.string   "username"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,9 +36,6 @@ ActiveRecord::Schema.define(version: 20140122221004) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "uid"
-    t.string   "provider"
-    t.string   "avatar_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
