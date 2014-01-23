@@ -2,6 +2,6 @@
 <% @search.each do |r| %>
 <div class="container">
   <%= image_tag("#{r.profile_image_url}") %>
-  <%= link_to r.screen_name, "https://www.twitter.com/#{r.screen_name}" %>
+  <%= link_to r.screen_name, authors_path(author: create_author_hash(r)), method: :post %>
 </div>
 <% end %>

@@ -9,4 +9,5 @@ SeePeeps::Application.routes.draw do
 
   resources :posts
   resources :users
+  resources :authors
  end
