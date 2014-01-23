@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20140122231346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "posts", force: true do |t|
+    t.string   "author_id"
+    t.text     "body"
+    t.string   "title"
+    t.date     "posted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "providers", force: true do |t|
     t.string   "name"
     t.string   "uid"
