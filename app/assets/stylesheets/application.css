@@ -12,3 +12,12 @@
  *= require_tree .
  */
 
+body {
+  background: linear-gradient(powderblue, papayawhip, lightpink);
+  background-repeat: repeat-x;
+}
+hr {
+  border: 0;
+  color: white;
+  height: 10px;
+}
