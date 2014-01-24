@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   end
 
   def index
-
   end
 
   def search
     @search = @client.user_search(params[:search], count: 50).collect 
+    flash[:notice] = "Search results for \"#{params[:search]}\""
     render :index
   end
 
@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     @tumblr_results = get_tumblr_results
     if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
       redirect_to "/", notice: "No users match your search." 
+    else
+      flash[:notice] = "Search results for \"#{params[:search_tum]}\""
     end
   end
 
@@ -44,12 +46,11 @@ class PostsController < ApplicationController
       config.oauth_token = ENV["TUMBLR_ACCESS_TOKEN"]
       config.oauth_token_secret = ENV["TUMBLR_ACCESS_TOKEN_SECRET"]
     end
+  end
 
-def get_tumblr_results
+  def get_tumblr_results
     client = Tumblr::Client.new
     client.posts(params[:search_tum])
-end
-    
-
   end
+    
 end
