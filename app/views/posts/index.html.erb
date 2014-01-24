@@ -1,34 +1,6 @@
-<% @search.each do |r| %>
 
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <%= image_tag("#{r.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
-      </div>
-    </div>
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">
-          <%= link_to r.screen_name, "https://www.twitter.com/#{r.screen_name}" %>
-        </div>
-        <p>
-        <!-- Text from blog here -->
-        </p>
-        <div class="meta">
-          <div class="datetime">
-           <!--  Insert Date and Time -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
+<% current_user.user_authors.each do |r| %>
+  <%= r.author.username %>
 <% end %>
-
 
 

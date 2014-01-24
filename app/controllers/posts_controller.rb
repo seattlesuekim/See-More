@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_twitter_client, :set_tumblr_client
 
   def create
+    client.user_timeline(@author, :count =>10).collect
   end
 
   def index
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
   def search
     @search = @client.user_search(params[:search], count: 50).collect 
     flash[:notice] = "Search results for \"#{params[:search]}\""
-    render :index
+     render :search_results
   end
 
   def searchpage
@@ -52,5 +53,8 @@ class PostsController < ApplicationController
     client = Tumblr::Client.new
     client.posts(params[:search_tum])
   end
-    
+
+  def set_author
+    @author = Author.find_by_uid(params[:author][:uid])
+  end
 end
