@@ -30,6 +30,19 @@ hr {
   text-align: center;
 }
 
+.notice {
+  width: 500px;
+  margin: auto;
+  padding: 10px;
+  font-size: 20px;
+  color: lemonchiffon;
+  background: linear-gradient(to right, thistle, transparent );
+  border-radius: 25px;
+  margin-bottom: 10px;
+  text-align: left;
+  /*border: 1px solid black;*/
+}
+
 /*h1 {
   border: 1px solid black;
   padding: 15px;
