@@ -51,7 +51,5 @@ class PostsController < ApplicationController
     client.posts(params[:search_tum])
   end
 
-  def set_author
-    @author = Author.find_by_uid(params[:author][:uid])
-  end
+  
 end
