@@ -63,6 +63,10 @@ a:hover {
 h1 {
   margin: 0.67em 0;
   font-size: 150px;
+  /*width: 900px;*/
+  /*margin: auto;*/
+  padding: 10px;
+  border: 1px solid black;
 }
 
 abbr[title] {
