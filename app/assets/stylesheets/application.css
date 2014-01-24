@@ -22,12 +22,19 @@ hr {
   height: 10px;
 }
 
-.sign_in, .welcome {
+.sign_in, .welcome, .notice {
   width: 600px;
   margin: auto;
   /*border: 1px solid black;*/
   padding: 10px;
   text-align: center;
+}
+
+.notice {
+  color: thistle;
+  background: linear-gradient(to right, peachpuff, transparent);
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 /*h1 {
