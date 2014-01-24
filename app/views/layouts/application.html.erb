@@ -34,7 +34,7 @@
 <%= yield %>
 
 
-<div class='debug'><h3>Debug</h3>
+<div class='container'><h3>Debug</h3>
   Current User ID: <%=session[:user_id] %><br><hr>
   Users
   <ul><%User.all.each do |user| %>
