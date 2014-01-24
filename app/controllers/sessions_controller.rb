@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
       if @provider
         if @provider.user_id
           session[:user_id] = @provider.user_id
-          redirect_to root_path, notice: "You have successfully logged in!"
+          redirect_to user_path(session[:user_id]), notice: "You have been successfully signed in!"
         else
-          #figure out how to attach user to provider
+          #figure out how to attach user to provider as extra step?
           redirect_to root_path, notice: "Failed to save the user"
         end
       else
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice:"You have logged out!"
+    redirect_to root_path, notice:"You have been successfully signed out!"
   end
 
 
