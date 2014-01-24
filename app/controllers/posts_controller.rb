@@ -14,8 +14,14 @@ class PostsController < ApplicationController
     render :search_results
   end
 
+  def searchpage
+  end
+
   def search_tum
-    
+    @tumblr_results = get_tumblr_results
+    if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
+      redirect_to "/", notice: "No users match your search." 
+    end
   end
 
   private
@@ -33,12 +39,19 @@ class PostsController < ApplicationController
   end
 
   def set_tumblr_client
-    @clientt = Twitter::Client.new do |config|
+    Tumblr.configure do |config|
       config.consumer_key = ENV["TUMBLR_CLIENT_ID"]
       config.consumer_secret = ENV["TUMBLR_CLIENT_SECRET"]
-      config.access_token = ENV["TUMBLR_ACCESS_TOKEN"]
-      config.access_token_secret = ENV["TUMBLR_ACCESS_TOKEN_SECRET"]
+      config.oauth_token = ENV["TUMBLR_ACCESS_TOKEN"]
+      config.oauth_token_secret = ENV["TUMBLR_ACCESS_TOKEN_SECRET"]
     end
+
+def get_tumblr_results
+    client = Tumblr::Client.new
+    client.posts(params[:search_tum])
+end
+    
+
   end
 
   def set_author
