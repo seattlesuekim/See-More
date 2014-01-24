@@ -21,3 +21,8 @@ hr {
   color: white;
   height: 10px;
 }
+
+.sign_in, .welcome {
+  width: 800px;
+  margin: auto;
+}
