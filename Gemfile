@@ -5,6 +5,7 @@ gem 'omniauth'
 gem 'figaro'
 gem 'httparty'
 gem 'omniauth-twitter'
+gem 'omniauth-tumblr'
 
 gem 'turbolinks'
 

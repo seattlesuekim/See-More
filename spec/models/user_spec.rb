@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { User.new( email: "a@b.com", username: "Bookis", uid: "1234", provider: "twitter") }
+  let(:user) { User.create( email: "a@b.com", username: "Bookis") }
   
   describe "validations" do
     it "is valid" do
@@ -17,14 +17,6 @@ describe User do
       expect(user).to be_invalid
     end
 
-    it "requires a uid" do
-      user.uid = nil
-      expect(user).to be_invalid
-    end
-    it "requires a provider" do
-      user.provider = nil
-      expect(user).to be_invalid
-    end
   end
 
   describe ".initialize_from_omniauth" do
