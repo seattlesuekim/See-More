@@ -13,7 +13,7 @@
  */
 
 body {
-  background: linear-gradient(powderblue, papayawhip, lightpink);
+  background: linear-gradient(150deg, powderblue, papayawhip, lightpink);
   background-repeat: repeat-x;
 }
 hr {
@@ -27,3 +27,8 @@ hr {
   margin: auto;
   border: 1px solid black;
 }
+
+/*h1 {
+  border: 1px solid black;
+  padding: 15px;
+}*/
