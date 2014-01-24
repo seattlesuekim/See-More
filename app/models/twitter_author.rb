@@ -1,0 +1,2 @@
+class TwitterAuthor < Author
+end
