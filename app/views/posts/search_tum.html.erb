@@ -1,0 +1,36 @@
+
+<div class="row">
+  
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-1" align="right" height="80px" >
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <img src="http://api.tumblr.com/v2/blog/<%= @tumblr_results["blog"]["name"] %>.tumblr.com/avatar/512" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="col-md-7">
+        <div class="text">
+          <div class="author">
+            <p><%= @tumblr_results["blog"]["name"] %> </p>
+            <p><%= @tumblr_results["blog"]["title"] %> </p>
+            <p><%= link_to @tumblr_results["blog"]["url"] %> </p>
+            <p><%= @tumblr_results["blog"]["description"] %> </p>
+          </div>
+          <p>
+          <!-- Text from blog here -->
+          </p>
+          <div class="meta">
+            <div class="datetime">
+             <!--  Insert Date and Time -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  <br>
