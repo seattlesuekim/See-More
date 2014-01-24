@@ -1,0 +1,26 @@
+<div class='welcome'>
+  <h2>Follow all your favorite peeps!</h2>
+  <p>
+    Subscribe to your favorite tweets, blog posts, tumblrs, and more!
+  </p>
+</div>
+
+<div class='sign_in'>
+  <% unless current_user %>
+    <div id="nav_bar">
+      <%= link_to "Sign In", "/auth/developer" %> |
+      <%= link_to "Sign Up", "/auth/developer" %>
+    </div>
+
+    <div id="icons"><h3>Sign in with:</h3>
+      <%= link_to (image_tag "pastel-tw.png"), "/auth/twitter" %> 
+      <%= link_to (image_tag "pastel-tumblr.png"), "/auth/tumblr" %> 
+      <%= link_to (image_tag "pastel-rss.png"), "/" %> 
+      <h4>(or these eventually)</h4>
+      <%= link_to (image_tag "pastel-fb.png"), "/" %> 
+      <%= link_to (image_tag "pastel-google.png"), "/" %> 
+      <%= link_to (image_tag "pastel-pinterest.png"), "/" %> 
+      <%= link_to (image_tag "pastel-bloglovin.png"), "/" %> 
+    </div>
+  <% end %>
+</div>
