@@ -14,9 +14,6 @@ class PostsController < ApplicationController
      render :search_results
   end
 
-  def searchpage
-  end
-
   def search_tum
     @tumblr_results = get_tumblr_results
     if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
