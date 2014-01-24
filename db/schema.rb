@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123220623) do
+ActiveRecord::Schema.define(version: 20140124211600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authors", force: true do |t|
     t.string   "username"
-    t.string   "provider"
+    t.string   "type"
     t.string   "uid"
     t.string   "avatar"
     t.datetime "created_at"
