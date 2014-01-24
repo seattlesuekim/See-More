@@ -1,23 +1,23 @@
 <div class='welcome'>
-  <h2>Follow all your favorite peeps</h2>
+  <h2>Follow all your favorite peeps!</h2>
 </div>
 
 <div class='sign_in'>
-  <div id="nav_bar">
-    <% unless current_user %>
+  <% unless current_user %>
+    <div id="nav_bar">
       <%= link_to "Sign In", "/auth/developer" %> |
       <%= link_to "Sign Up", "/auth/developer" %>
-    <% end %>
-    <%= link_to "Sign Out", sign_out_path if current_user %>
-  </div>
+    </div>
 
-  <div id="icons"><h3>Or sign in with:</h3>
-    <%= link_to (image_tag "pastel-tw.png"), "/auth/twitter" %> 
-    <%= link_to (image_tag "pastel-tumblr.png"), "/auth/tumblr" %> 
-    <%= link_to (image_tag "pastel-fb.png"), "/" %> 
-    <%= link_to (image_tag "pastel-google.png"), "/" %> 
-    <%= link_to (image_tag "pastel-rss.png"), "/" %> 
-    <%= link_to (image_tag "pastel-pinterest.png"), "/" %> 
-    <%= link_to (image_tag "pastel-bloglovin.png"), "/" %> 
-  </div>
+    <div id="icons"><h3>Or sign in with:</h3>
+      <%= link_to (image_tag "pastel-tw.png"), "/auth/twitter" %> 
+      <%= link_to (image_tag "pastel-tumblr.png"), "/auth/tumblr" %> 
+      <%= link_to (image_tag "pastel-rss.png"), "/" %> 
+      <h4>(or these eventually)</h4>
+      <%= link_to (image_tag "pastel-fb.png"), "/" %> 
+      <%= link_to (image_tag "pastel-google.png"), "/" %> 
+      <%= link_to (image_tag "pastel-pinterest.png"), "/" %> 
+      <%= link_to (image_tag "pastel-bloglovin.png"), "/" %> 
+    </div>
+  <% end %>
 </div>
