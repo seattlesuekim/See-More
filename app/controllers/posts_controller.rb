@@ -20,9 +20,9 @@ class PostsController < ApplicationController
     @tumblr_results = get_tumblr_results
     if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
       redirect_to "/", notice: "No users match your search." 
+    else
+      flash[:notice] = "Search results for \"#{params[:search_tum]}\""
     end
-    flash[:notice] = "Search results for \"#{params[:search_tum]}\""
-
   end
 
   private
