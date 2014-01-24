@@ -10,7 +10,7 @@ class AuthorsController < ApplicationController
       if @author.save
         create_user_author
       else
-        redirect_to :back, notice: "Something went wrong"
+        render :search_results, notice: "Something went wrong"
       end
     end 
   end
