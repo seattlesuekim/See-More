@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_twitter_client, :set_tumblr_client
 
   def create
+    client.user_timeline(@author, :count =>10).collect
   end
 
   def index
@@ -38,5 +39,9 @@ class PostsController < ApplicationController
       config.access_token = ENV["TUMBLR_ACCESS_TOKEN"]
       config.access_token_secret = ENV["TUMBLR_ACCESS_TOKEN_SECRET"]
     end
+  end
+
+  def set_author
+    @author = Author.find_by_uid(params[:author][:uid])
   end
 end
