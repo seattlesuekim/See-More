@@ -23,7 +23,6 @@ class PostsController < ApplicationController
       redirect_to "/", notice: "No users match your search." 
     else
       flash[:notice] = "Search results for \"#{params[:search_tum]}\""
-      raise
     end
   end
 
