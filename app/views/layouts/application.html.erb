@@ -22,7 +22,7 @@
             <%= link_to "Sign Out", sign_out_path %>
           </div>
           <div class= 'btn btn-default'>
-            <%= link_to "My Feed", posts_path(session[:user_id]) %>
+            <%= link_to "My Feed", user_path(current_user) %>
           </div>
 
 

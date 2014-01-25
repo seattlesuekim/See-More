@@ -12,9 +12,9 @@ class AuthorsController < ApplicationController
     end
 
     if @author
-      redirect_to posts_path, notice: "You are succesfully subscribed to #{@author.username}!"
+      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
-      redirect_to posts_path, notice: "You are already subscribed to this user!"
+      redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
     end
   end
 
