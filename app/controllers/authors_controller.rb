@@ -1,33 +1,20 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
 
+
   def create
-    if Author.find_by_uid(params[:author][:uid])
-      @author = Author.find_by_uid(params[:author][:uid])
-      create_user_author
-    else
-      @author = Author.new(author_params)
-      if @author.save
-        create_user_author
-      else
-        render :search_results, notice: "Something went wrong"
-      end
-    end 
-  end
-
-  def create_user_author
-    @user_author = UserAuthor.find_by(author_id: @author.id, user_id: session[:user_id])
-
-    if @user_author 
-      redirect_to posts_path, notice: "You are already subscribed to #{@author.username}!" and return
-    else
-      @user_author = UserAuthor.new(author_id: @author.id, user_id: session[:user_id])
+    @author   = Author.find_by(uid: params[:author][:uid])
+    @author ||= current_user.authors.build( author_params)
+    begin
+      current_user.authors << @author
+    rescue ActiveRecord::RecordInvalid 
+      @author = nil
     end
 
-    if @user_author.save
-      redirect_to posts_path
+    if @author
+      redirect_to posts_path, notice: "You are succesfully subscribed to #{@author.username}!"
     else
-      render :search_results, notice: "Something went wrong"
+      redirect_to posts_path, notice: "You are already subscribed to this user!"
     end
   end
 
