@@ -24,7 +24,7 @@
 
 ### Technical Requirements
 
-*Bronze* _\(20 points\)_
+**Bronze** _\(20 points\)_
 
 
 - Allows Users to sign in and out using OmniAuth's Developer Strategy
@@ -33,7 +33,7 @@
 - One or more Tumblr users
 - Any other ATOM/XML/RSS feed from blogs or news service  
 
-*Silver* _\(20 points\)_
+**Silver** _\(20 points\)_
 
 All of Bronze, plus:
 
@@ -44,7 +44,7 @@ All of Bronze, plus:
 - One or more Instagram users
 - Allows Users to share favorite stories back to social media services
 
-*Gold* _\(20 points\)_
+**Gold** _\(20 points\)_
 
 All of Silver, plus:
 
@@ -56,13 +56,13 @@ All of Silver, plus:
 - Can send email or SMS messages to users to update them
 
 
-*Platinum* _\(10 points\)_
+**Platinum** _\(10 points\)_
 
 - offers API  of aggregated feeds
 - add a Google Map that shows the location of any feed items that contain geolocative information
 - Evaluation
 
-### Learning Goals _\(10 points\)_
+**Learning Goals** _\(10 points\)_
 
 - Demonstrate comprehension of Rails
 - Comfort with Pivotal Tracker (and any other project tools used)
@@ -81,6 +81,6 @@ All of Silver, plus:
 - Brakeman: no major security issues
 - Code Coverage: 90\%+
  
-*User Stories*
+### User Stories
 
 Each team will meet with the Product Owner at the outset to develop a set of user stories and precise requirements in Pivotal Tracker.
