@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_twitter_client, :set_tumblr_client
+  before_action :set_twitter_client, only:[:search]
+  before_action :set_tumblr_client, only:[:search_tum]
 
   def create
     client.user_timeline(@author, :count =>10).collect
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
   def search
     @search = @client.user_search(params[:search], count: 50).collect 
     flash[:notice] = "Search results for \"#{params[:search]}\""
-     render :search_results
+    render :search_results
   end
 
   def search_tum
