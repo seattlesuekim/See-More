@@ -1,7 +1,6 @@
-
 # README for PEEPS PROJECT (aka: SEE-MORE) # 
 
-*Goals*
+### Goals
 - Learn how to work with OAuth
 - Gain experience in consuming with 3rd party APIs
 - Build your own API
@@ -10,7 +9,7 @@
 - Learn how to work with Pivotal Tracker
 - Accumulate experience points in Rails
 
-*Guidelines* 
+### Guidelines
 
 - Groups of four (one w/three) will work with a Teacher acting as a Project Manager
 - Each group will be responsible to deliver a final product to the Product Owner (Elise)
@@ -19,10 +18,11 @@
 - Build a logical user-flow that moves across multiple controllers and models
 - Use HTML/CSS to style your website.
 
-*Expectations*
+### Expectations
 
 - Build a feed aggregator service that allows users to login via Twitter, Github, or Facebook. It will allow users to view updates from all their tracked feeds in one location, and share them back to associated social media services.
-*Technical Requirements*
+
+### Technical Requirements*
 
 _Bronze_ \(20 points\)  
 
@@ -75,7 +75,7 @@ _Learning Goals_ \(10 points\)
 - Good communication with Project Owner
 - Code Quality (10 points)
 
-*Metrics*
+### Metrics
 - Flog: no Controller method > 25, no Model method > 15
 - Rubocop: no more than 15 code style issues
 - Brakeman: no major security issues
