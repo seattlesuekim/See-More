@@ -1,0 +1,2 @@
+class TumblrAuthor < Author
+end
