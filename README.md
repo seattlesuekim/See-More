@@ -1,4 +1,4 @@
-# README for PEEPS PROJECT (aka: SEE-MORE) # 
+## README for PEEPS PROJECT (aka: SEE-MORE)
 
 ### Goals
 - Learn how to work with OAuth
@@ -22,9 +22,9 @@
 
 - Build a feed aggregator service that allows users to login via Twitter, Github, or Facebook. It will allow users to view updates from all their tracked feeds in one location, and share them back to associated social media services.
 
-### Technical Requirements*
+### Technical Requirements
 
-_Bronze_ \(20 points\)  
+*Bronze* _\(20 points\)_
 
 
 - Allows Users to sign in and out using OmniAuth's Developer Strategy
@@ -33,7 +33,7 @@ _Bronze_ \(20 points\)
 - One or more Tumblr users
 - Any other ATOM/XML/RSS feed from blogs or news service  
 
-_Silver_ \(20 points\)
+*Silver* _\(20 points\)_
 
 All of Bronze, plus:
 
@@ -44,7 +44,7 @@ All of Bronze, plus:
 - One or more Instagram users
 - Allows Users to share favorite stories back to social media services
 
-_Gold_ (20 points)
+*Gold* _\(20 points\)_
 
 All of Silver, plus:
 
@@ -56,13 +56,13 @@ All of Silver, plus:
 - Can send email or SMS messages to users to update them
 
 
-_Platinum_ \(10 points\)
+*Platinum* _\(10 points\)_
 
 - offers API  of aggregated feeds
 - add a Google Map that shows the location of any feed items that contain geolocative information
 - Evaluation
 
-_Learning Goals_ \(10 points\)
+### Learning Goals _\(10 points\)_
 
 - Demonstrate comprehension of Rails
 - Comfort with Pivotal Tracker (and any other project tools used)
