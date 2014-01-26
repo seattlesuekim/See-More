@@ -21,36 +21,11 @@
   <% current_user.authors.each do |a| %>
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "twitter.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://placehold.it/80x80" class="img-thumbnail">
-      </div>
-    </div>
-    
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">Bob</div>
-          <p>Bicycle rights Carles before they sold out, pour-over commodo narwhal butcher actually occupy polaroid Marfa. McSweeney's Pinterest mixtape, polaroid brunch meggings shabby chic actually squid.</p>
-        <div class="meta">
-          <div class="datetime">Written in 2001 12.1.01</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "tumblr.png"), " " %> 
+    <div class="col-md-1" align="right" height="80px">
       <% if a.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
       <% else a.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
       <% end %>
     </div>
     <div class="col-md-1">
@@ -77,9 +52,9 @@
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px" >
       <% if p.author.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
       <% else p.author.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
       <% end %>
     </div>
     <div class="col-md-1">
