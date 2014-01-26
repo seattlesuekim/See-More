@@ -16,7 +16,7 @@
           <div class="author">
             <p><%= @tumblr_results["blog"]["name"] %> </p>
             <p><%= @tumblr_results["blog"]["title"] %> </p>
-            <p><%= link_to @tumblr_results["blog"]["url"] %> </p>
+            <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
             <p><%= @tumblr_results["blog"]["description"] %> </p>
           </div>
           <p>
