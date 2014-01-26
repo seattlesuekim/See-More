@@ -6,7 +6,7 @@ class Provider < ActiveRecord::Base
   end
 
   def self.create_from_omniauth(auth_hash)
-    provider = self.new(
+    provider = self.create!(
       uid:      auth_hash["uid"],
       name: auth_hash["provider"],
       email:    auth_hash["info"]["email"],
@@ -14,12 +14,12 @@ class Provider < ActiveRecord::Base
       username: auth_hash["info"]["nickname"]
     )
     # all of this might need to be an extra step to link, rather than create new user
-    user = User.new(username:auth_hash['info']['name'], email: auth_hash['info']['email'])
+    # user = User.new(username:auth_hash['info']['name'], email: auth_hash['info']['email'])
     #this automatically saves the user and the provider in one move 
     #(prevents user from being saved if the provider does not get saved)
-    user.providers << provider 
-    user.save!
-    provider
+    # user.providers << provider 
+    # user.save!
+    # provider
   rescue ActiveRecord::RecordInvalid
     nil
   end

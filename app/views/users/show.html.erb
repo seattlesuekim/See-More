@@ -1,10 +1,20 @@
 
 <div class='link_accounts'>
+  <ul>
   <% @providers.each do |p| %>
-    <%= p.inspect %>
+    <li>
+      <%= image_tag "#{p.name}.png" %>
+      <%= p.inspect %>
+    </li>
   <% end %>
 
-  <h3>Link other accounts</h3>
+  <h3>Link your other accounts</h3>
+    <div class="icons">
+     <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
+      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
+      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+      <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
+    </div>
 </div>
 
 
