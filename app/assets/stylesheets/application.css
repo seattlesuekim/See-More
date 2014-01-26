@@ -23,11 +23,15 @@ hr {
 }
 
 .sign_in, .welcome {
+  color: cornflowerblue;
   width: 600px;
   margin: auto;
+  margin-bottom: 10px;
   /*border: 1px solid black;*/
   padding: 10px;
   text-align: center;
+  border-radius: 25px;
+  /*background-color: cornsilk;*/
 }
 
 .notice {
@@ -43,7 +47,6 @@ hr {
   /*border: 1px solid black;*/
 }
 
-/*h1 {
-  border: 1px solid black;
-  padding: 15px;
-}*/
+.icons:hover alt {
+  visibility: visible;
+}

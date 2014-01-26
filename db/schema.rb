@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140124211600) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cookie_id"
   end
 
 end

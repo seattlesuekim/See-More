@@ -1,13 +1,31 @@
+<div class='link_accounts'>
+  <ul>
+  <% @providers.each do |p| %>
+    <li>
+      <%= image_tag "#{p.name}.png" %>
+      <%= p.inspect %>
+    </li>
+  <% end %>
+
+  <h3>Link your other accounts</h3>
+    <div class="icons">
+     <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
+      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
+      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+      <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
+    </div>
+</div>
+
 <div class='container'>
   You are currently following:
   <% current_user.authors.each do |a| %>
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" height="80px" >
+    <div class="col-md-1" align="right" height="80px">
       <% if a.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
       <% else a.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
       <% end %>
     </div>
     <div class="col-md-1">
@@ -34,9 +52,9 @@
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px" >
       <% if p.author.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
       <% else p.author.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
       <% end %>
     </div>
     <div class="col-md-1">
@@ -55,5 +73,4 @@
   <br>
   <%end %>
 </div>
-
 

@@ -6,12 +6,13 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <style> 
-    .debug {
+    .debug, .link_accounts {
       border: 1px solid black;
       width: 800px;
       padding: 10px;
       margin: auto;
     }
+
     </style>
   </head>
   <body>
@@ -25,11 +26,9 @@
             <%= link_to "My Feed", user_path(current_user) %>
           </div>
 
-
           <%= form_tag twitter_search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
             <div class="form-group">
               <input type="text" name="twitter_search" class="form-control" placeholder="Search Twitter">
-
             </div>
             <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
