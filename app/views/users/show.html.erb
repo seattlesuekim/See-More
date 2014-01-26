@@ -29,32 +29,30 @@
 
 <div class='container'>
   Here is what your peeps are saying:
-  <% current_user.authors.each do |a| %>
-  <%a.posts.each do |p| %>
+  <% @posts.each do |p| %>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px" >
-      <% if a.type.eql? "TwitterAuthor" %>
+      <% if p.author.type.eql? "TwitterAuthor" %>
       <%= link_to (image_tag "pastel-tw.png"), " " %> 
-      <% else a.type.eql? "TumblrAuthor" %>
+      <% else p.author.type.eql? "TumblrAuthor" %>
       <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
       <% end %>
     </div>
     <div class="col-md-1">
       <div class="avatar">
-        <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
+        <%= image_tag("#{p.author.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
       </div> 
     </div>
     <div class="col-md-7">
       <div class="text">
-        <div class="author"><%= a.username %></div>
+        <div class="author"><%= p.author.username %></div>
         <p><%=p.body %><br>
         Posted: <%=p.posted_at %></p>
       </div>
     </div>
   </div>
   <br>
-  <% end %>
   <%end %>
 </div>
 
