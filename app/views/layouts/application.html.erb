@@ -25,7 +25,6 @@
             <%= link_to "My Feed", user_path(session[:user_id]) %>
           </div>
 
-
           <%= form_tag search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
             <div class="form-group">
               <input type="text" name="search" class="form-control" placeholder="Search Twitter">
