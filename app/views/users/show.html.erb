@@ -1,9 +1,18 @@
 
+<div class='link_accounts'>
+  <% @providers.each do |p| %>
+    <%= p.inspect %>
+  <% end %>
+
+  <h3>Link other accounts</h3>
+</div>
+
+
 <div class='container'>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
     </div>
     <div class="col-md-1">
       <div class="avatar">
@@ -27,7 +36,7 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
     </div>
     <div class="col-md-1">
       <div class="avatar">
@@ -75,7 +84,7 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
     </div>
     <div class="col-md-1">
       <div class="avatar">
@@ -94,6 +103,8 @@
   </div>
 
 </div>
+
+
 
 
 
