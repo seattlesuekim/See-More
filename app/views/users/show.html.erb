@@ -2,6 +2,9 @@
 <div class='container'>
   <% current_user.authors.each do |a| %>
   <%= a.username %>
+  <%a.posts.each do |p| %>
+  <%=p.body %>
+  <%end %>
 <% end %>
   <div class="row">
     <div class="col-md-2"></div>

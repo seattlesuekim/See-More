@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
+  before_action :client
 
 
   def create
@@ -12,7 +13,8 @@ class AuthorsController < ApplicationController
     end
 
     if @author
-      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
+      find_posts(@author)
+    redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
     end
@@ -20,6 +22,22 @@ class AuthorsController < ApplicationController
 
   def delete
     
+  end
+
+  def client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV["TWITTER_CLIENT_ID"]
+      config.consumer_secret = ENV["TWITTER_CLIENT_SECRET"]
+      config.access_token = ENV["TWITTER_ACCESS_TOKEN"]
+      config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
+    end
+  end
+
+  def find_posts(author)
+    @client.user_timeline(author[:username]).collect.each do |tweet|
+      @post = Post.new(author_id: author[:id], body: tweet.text, posted_at: tweet.created_at)
+      @post.save
+    end
   end
 
   private
