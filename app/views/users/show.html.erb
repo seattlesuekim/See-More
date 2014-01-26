@@ -18,6 +18,9 @@
     <div class="col-md-7">
       <div class="text">
         <div class="author"><%= a.username %></div>
+        <%a.posts.each do |p| %>
+        <p><%= p.body %></p>
+        <% end %>
         </div>
       </div>
     </div>

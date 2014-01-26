@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-   def create_author_hash(r)
+  def create_author_hash(r)
     author = {}
     author[:username] = r.screen_name
     author[:type] = "TwitterAuthor"
