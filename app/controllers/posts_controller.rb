@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def set_tumblr_client
     Tumblr.configure do |config|
       config.consumer_key = ENV["TUMBLR_CLIENT_ID"]
@@ -32,5 +32,5 @@ class PostsController < ApplicationController
   def get_tumblr_results
     client = Tumblr::Client.new
     client.posts(params[:search_tum])
-  end  
+  end
 end

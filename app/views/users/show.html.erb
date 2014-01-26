@@ -94,12 +94,34 @@
         <p>Neutra hoodie gentrify nihil, Banksy gluten-free PBR in organic kitsch put a bird on it sustainable chambray. Ennui slow-carb sunt cray, Intelligentsia et pariatur nesciunt. Butcher non laborum, odio bicycle rights flannel reprehenderit single-origin coffee swag actually Etsy.</p>
         <div class="meta">
           <div class="datetime">Written in 2001 12.1.01</div>
+
+  You are currently following:
+  <% current_user.authors.each do |a| %>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-1" align="right" height="80px" >
+      <% if a.type.eql? "TwitterAuthor" %>
+      <%= link_to (image_tag "pastel-tw.png"), " " %> 
+      <% else a.type.eql? "TumblrAuthor" %>
+      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <% end %>
+    </div>
+    <div class="col-md-1">
+      <div class="avatar">
+        <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %>  
+    </div>
+    
+    <div class="col-md-7">
+      <div class="text">
+        <div class="author"><%= a.username %></div>
+
         </div>
       </div>
     </div>
   </div>
 
+
 </div>
 
-
-
+  <br>
+  <% end %>

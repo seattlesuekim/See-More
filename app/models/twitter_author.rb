@@ -1,5 +1,6 @@
 class TwitterAuthor < Author
 
+
   def self.client
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key = ENV["TWITTER_CLIENT_ID"]
