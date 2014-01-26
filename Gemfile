@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
 # Authenticaion
-gem 'omniauth'
 gem 'figaro'
+
 gem 'httparty'
+gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
+gem "omniauth-github", "~> 1.1.1"
 
 gem 'turbolinks'
 
@@ -21,14 +23,13 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# API wrappers
 gem 'twitter'
 gem 'tumblr_client'
 
