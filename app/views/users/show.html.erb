@@ -1,22 +1,22 @@
 <div class='link_accounts'>
   <h4>Your accounts</h4>
   <ul>
-  <% @providers.each do |p| %>
-    <li>
-      <%= image_tag "#{p.name}.png" %>
-      <%= image_tag("#{p['avatar_url']}", height: '50') %>
-      <%= p['username'] %><br>
-    </li>
-  <% end %>
-</ul>
+    <% @providers.each do |p| %>
+      <li>
+        <%= image_tag "#{p.name}.png" %>
+        <%= image_tag("#{p['avatar_url']}", height: '50') %>
+        <%= p['username'] %><br>
+      </li>
+    <% end %>
+  </ul>
 
   <h4>Link your other accounts</h4>
-    <div class="icons">
-     <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
-      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
-      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
-      <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
-    </div>
+  <div class="icons">
+   <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
+    <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
+    <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+    <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
+  </div>
 </div>
 
 <div class='container'>
@@ -69,7 +69,7 @@
       <div class="text">
         <div class="author"><%= p.author.username %></div>
         <p><%=p.body %><br>
-        Posted: <%=p.posted_at %></p>
+        <span class= 'post_date'>Posted: <%= p.posted_at.strftime("%e %b %Y at %l:%m %P") %></span></p>
       </div>
     </div>
   </div>
