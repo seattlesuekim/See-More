@@ -23,12 +23,12 @@
             <%= link_to "Sign Out", sign_out_path %>
           </div>
           <div class= 'btn btn-default'>
-            <%= link_to "My Feed", user_path(session[:user_id]) %>
+            <%= link_to "My Feed", user_path(current_user) %>
           </div>
 
-          <%= form_tag search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
+          <%= form_tag twitter_search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
             <div class="form-group">
-              <input type="text" name="search" class="form-control" placeholder="Search Twitter">
+              <input type="text" name="twitter_search" class="form-control" placeholder="Search Twitter">
             </div>
             <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
