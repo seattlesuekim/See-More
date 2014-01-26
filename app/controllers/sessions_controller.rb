@@ -23,6 +23,8 @@ class SessionsController < ApplicationController
       user.providers << provider
       redirect_to user_path(session[:user_id]), notice: "Signed up!"
     end
+
+    #right now, allows you to link more than one of each type of provider -- ok bc of oauth? (would need to know password and username)
   end
 
   def destroy
