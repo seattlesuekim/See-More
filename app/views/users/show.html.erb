@@ -1,13 +1,16 @@
 <div class='link_accounts'>
+  <h4>Your accounts</h4>
   <ul>
   <% @providers.each do |p| %>
     <li>
       <%= image_tag "#{p.name}.png" %>
-      <%= p.inspect %>
+      <%= image_tag("#{p['avatar_url']}", height: '50') %>
+      <%= p['username'] %><br>
     </li>
   <% end %>
+</ul>
 
-  <h3>Link your other accounts</h3>
+  <h4>Link your other accounts</h4>
     <div class="icons">
      <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
       <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
