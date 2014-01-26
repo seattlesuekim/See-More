@@ -3,7 +3,7 @@
   <p>
     Subscribe to your favorite tweets, blog posts, tumblrs, and more!
   </p>
-<% unless current_user %>
+<%# unless current_user %>
 <hr>
   <div id="nav_bar">
     <%= link_to "Sign In", "/auth/developer" %> |
@@ -13,7 +13,7 @@
    
   <h3>Sign in with:</h3>
   <div class="icons">
-    <%= link_to (image_tag "twitter-icon.png"), "/auth/twitter", title: "Twitter"%> 
+    <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
     <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
     <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
   </div>
@@ -25,5 +25,5 @@
     <%= link_to (image_tag "pastel-bloglovin.png"), "/", title:"BlogLovin" %> 
   </div>
 
-<% end %>
+<%# end %>
 </div>
