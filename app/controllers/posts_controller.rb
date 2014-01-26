@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def rss
+    Post.get_rss
+  end
+
   private
 
   def set_tumblr_client

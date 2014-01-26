@@ -39,6 +39,12 @@
             </div>
             <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
+          <%= form_tag rss_path, :class =>"navbar-form navbar-right", method: 'post' do %>
+              <div class="form-group">
+                  <input type="text" name="get_rss" class="form-control" placeholder="Add a Feed">
+              </div>
+              <button type="submit" class="btn btn-info">Go!</button>
+          <% end %>
         </div>
       <% end %>
 
