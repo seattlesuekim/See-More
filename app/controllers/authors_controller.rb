@@ -41,6 +41,8 @@ class AuthorsController < ApplicationController
     end
   end
 
+  
+
   private
 
   def set_author

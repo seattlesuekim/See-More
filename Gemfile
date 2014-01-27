@@ -7,7 +7,7 @@ gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
-gem "omniauth-github", "~> 1.1.1"
+gem "omniauth-github"
 
 gem 'turbolinks'
 
@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 1.2'
 # API wrappers
 gem 'twitter'
 gem 'tumblr_client'
+gem 'yajl-ruby'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
