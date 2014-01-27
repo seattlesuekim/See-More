@@ -8,6 +8,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
 gem "omniauth-github"
+gem 'feedzirra'
+
 
 gem 'turbolinks'
 

@@ -15,6 +15,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def get_rss
+    @rss_post = Post.from_rss(params[:get_rss])
+    render :rss_results
+  end
+
   private
 
   def get_tumblr_results
