@@ -13,10 +13,12 @@ class AuthorsController < ApplicationController
     end
     
     if @author
-
-    TumblrAuthor.add_posts(params[:author][:uid], @author.id)
+      if @author.type.eql? "TumblrAuthor"
+        TumblrAuthor.add_posts(params[:author][:uid], @author.id)
+      elsif @author.type.eql? "TwitterAuthor"
+        TwitterAuthor.find_posts(@author)
+      end
     
-    # find_posts(@author)
     redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
@@ -36,12 +38,6 @@ class AuthorsController < ApplicationController
     end
   end
 
-  # def find_posts(author)
-  #   @client.user_timeline(author[:username]).collect.each do |tweet|
-  #     @post = Post.new(author_id: author[:id], body: tweet.text, posted_at: tweet.created_at)
-  #     @post.save
-  #   end
-  # end
 
   private
 
