@@ -18,8 +18,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def rss
-    Post.get_rss
+  def get_rss
+    @rss_post = Post.from_rss(params[:get_rss])
+    render :rss_results
   end
 
   private

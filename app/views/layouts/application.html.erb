@@ -71,7 +71,13 @@
       <ul>
       <%Provider.all.each do |provider| %>
         <li><%=provider.inspect %></li>
-      <% end %><ul>
+      <% end %></ul>
+      <hr>
+      <h4>Posts</h4>
+      <ul>
+      <%Post.all.each do |post| %>
+        <li><%=post.inspect %></li>
+      <% end %></ul>
     </div>
 <!-- end debug -->
   </body>
