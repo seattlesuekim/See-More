@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 
   attr_accessor :feed, :post
 
+  #TODO: CONNECT TO AUTHOR
   # RSS feed from other blogs
   def self.from_rss(url)
     @feed = Feedzirra::Feed.fetch_and_parse(url)
