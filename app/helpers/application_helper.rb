@@ -19,10 +19,4 @@ module ApplicationHelper
     author
   end
 
-  # def create_tum_blog_hash(tumblr_results)
-  #   posts = {}
-  #   author[:blog_title]= tumblr_results["blog"]["posts"]
-  #   author[:body] = tumblr_results["blog"]
-  # end
-
 end

@@ -11,11 +11,11 @@ class AuthorsController < ApplicationController
     rescue ActiveRecord::RecordInvalid 
       @author = nil
     end
-
+    
     if @author
 
-    TumblrAuthor.find_posts
-
+    TumblrAuthor.add_posts(params[:author][:uid], @author.id)
+    
     # find_posts(@author)
     redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
@@ -42,8 +42,6 @@ class AuthorsController < ApplicationController
   #     @post.save
   #   end
   # end
-
-  
 
   private
 
