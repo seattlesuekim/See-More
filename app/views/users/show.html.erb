@@ -22,11 +22,7 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px">
-      <% if a.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "twitter.png"), " " %> 
-      <% else a.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "tumblr.png"), " " %> 
-      <% end %>
+      <%= image_tag "#{a.type.partition(/Author/).first.downcase}.png" %>
     </div>
     <div class="col-md-1">
       <div class="avatar">
