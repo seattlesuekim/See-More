@@ -11,5 +11,13 @@ class TumblrAuthor < Author
     Tumblr::Client.new
   end
 
+  def find_posts
+    TumblrAuthor.client.posts(uid)
+    -iterate through
+    @post 
+    @post.save
+
+  end
+
 
 end
