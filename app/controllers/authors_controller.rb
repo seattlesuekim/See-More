@@ -2,7 +2,6 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
   before_action :client
 
-
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
     @author ||= current_user.authors.build( author_params)
@@ -13,20 +12,20 @@ class AuthorsController < ApplicationController
     end
     
     if @author
+      find_posts(@author)
+      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
       if @author.type.eql? "TumblrAuthor"
         TumblrAuthor.add_posts(params[:author][:uid], @author.id)
       elsif @author.type.eql? "TwitterAuthor"
         TwitterAuthor.find_posts(@author)
       end
-    
-    redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
+      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
     end
   end
 
   def delete
-    
   end
 
   def client
@@ -37,7 +36,6 @@ class AuthorsController < ApplicationController
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     end
   end
-
 
   private
 

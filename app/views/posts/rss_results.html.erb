@@ -1,1 +1,5 @@
-<% @rss_post.inspect %>
+<% if @rss_post.nil? %>
+    <div class='notice'>
+        Invalid feed URL. Please try again.
+    </div>
+<% end %>

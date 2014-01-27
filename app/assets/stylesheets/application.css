@@ -50,3 +50,11 @@ hr {
 .icons:hover alt {
   visibility: visible;
 }
+.post_date {
+  font-style: italic;
+}
+
+.author {
+  color: seagreen;
+  font-weight: 700;
+}
