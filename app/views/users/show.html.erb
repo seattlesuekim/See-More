@@ -51,27 +51,6 @@
 <div class='container'>
   <h3>Here is what your peeps are saying:</h3>
   <% @posts.each do |p| %>
-<<<<<<< HEAD
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" height="80px" >
-      <% if p.author.type.eql? "TwitterAuthor" %>
-      <%= link_to (image_tag "twitter.png"), " " %> 
-      <% else p.author.type.eql? "TumblrAuthor" %>
-      <%= link_to (image_tag "tumblr.png"), " " %> 
-      <% end %>
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <%= image_tag("#{p.author.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
-      </div> 
-    </div>
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author"><%= p.author.username %></div>
-        <p><%=p.body %><br>
-        <span class= 'post_date'>Posted: <%= p.posted_at.strftime("%e %b %Y at %l:%m %P") %></span></p>
-=======
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-1" align="right" height="80px" >
@@ -93,7 +72,6 @@
           <p><%= p.body %><br>
           Posted: <%= p.posted_at %></p>
         </div>
->>>>>>> master
       </div>
     </div>
     <br>

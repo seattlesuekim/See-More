@@ -12,18 +12,14 @@ class AuthorsController < ApplicationController
     end
     
     if @author
-<<<<<<< HEAD
       find_posts(@author)
       redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
-=======
       if @author.type.eql? "TumblrAuthor"
         TumblrAuthor.add_posts(params[:author][:uid], @author.id)
       elsif @author.type.eql? "TwitterAuthor"
         TwitterAuthor.find_posts(@author)
       end
-    
-    redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
->>>>>>> master
+      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
     end
@@ -40,7 +36,6 @@ class AuthorsController < ApplicationController
       config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
     end
   end
-
 
   private
 
