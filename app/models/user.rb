@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     User.find_by(email: auth_hash["info"]["email"], username: auth_hash['info']['name']) || create_from_omniauth(auth_hash)
   end
 
+  #put cookie info here?
   def self.create_from_omniauth(auth_hash)
     self.create!(      
       username: auth_hash["info"]["name"],
