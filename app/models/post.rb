@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   # RSS feed from other blogs
   def self.from_rss(url)
     @feed = Feedzirra::Feed.fetch_and_parse(url)
-    if @feed.is_a?(Feedzirra::Parser::RSS)
+    if @feed.is_a?(Feedzirra::Parser::RSS) || @feed.is_a?(Feedzirra::Parser::Atom)
       entry = @feed.entries.first
       @post = Post.new do |p|
         p.author_id = entry.author
