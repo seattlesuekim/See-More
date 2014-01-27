@@ -260,12 +260,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   omniauth
-<<<<<<< HEAD
   omniauth-facebook (~> 1.6.0)
   omniauth-github (~> 1.1.1)
-=======
-  omniauth-github
->>>>>>> master
   omniauth-tumblr
   omniauth-twitter
   pg
