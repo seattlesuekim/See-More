@@ -4,7 +4,7 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "pastel-tumblr.png"), " " %> 
+      <%= link_to (image_tag "tumblr.png"), " " %> 
     </div>
     <div class="col-md-1">
       <div class="avatar">
@@ -19,7 +19,7 @@
             
             <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
 
-            <p><%= @tumblr_results["blog"]["description"] %> </p>
+            <p><%= @tumblr_results["blog"]["description"].html_safe %> </p>
           </div>
           <p>
           <!-- Text from blog here -->
