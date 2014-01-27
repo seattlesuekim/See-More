@@ -71,8 +71,6 @@ hr {
   display                          : block;
   float                            : left;
   padding                          : 8px 11px;
-  font-size                        : 1.2em;
-  font-weight                      : bold;
   margin-right                     : 7px;
   border                           : 1px solid #fff;
   -webkit-border-radius            : 5px;
@@ -89,7 +87,7 @@ hr {
 }
  
 #profiletabs ul li a.sel {
-  border-color: #FFC0CB;
+ border-color:black;
 }
 
 .hidden {
