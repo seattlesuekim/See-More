@@ -19,7 +19,7 @@
             
             <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
 
-            <p><%= @tumblr_results["blog"]["description"] %> </p>
+            <p><%= @tumblr_results["blog"]["description"].html_safe %> </p>
           </div>
           <p>
           <!-- Text from blog here -->
