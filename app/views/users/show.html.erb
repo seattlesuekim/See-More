@@ -62,7 +62,7 @@
         <div class="text">
           <div class="author"><%= p.author.username %></div>
           <p><%= p.title %> </p>
-          <p><%= p.body %><br>
+          <p><%= p.body.html_safe %><br>
           Posted: <%= p.posted_at %></p>
         </div>
       </div>
