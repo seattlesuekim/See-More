@@ -64,7 +64,32 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-   
+
+    <div class='debug'><h3>Debug</h3>
+      <h4>Current User ID: <%=session[:user_id] %><br></h4>
+        <%=current_user.username if current_user%><br>
+      <hr>
+      <h4>Users</h4>
+      <ul>
+        <%User.all.each do |user| %>
+          <li><%=user.username %></li>
+        <% end %>
+      </ul>
+      <hr>
+      <h4>Providers</h4>
+      <ul>
+        <%Provider.all.each do |provider| %>
+          <li><%=provider.name %></li>
+        <% end %>
+      </ul>
+      <hr>
+      <!-- <h4>Posts</h4>
+      <ul>
+        <% Post.all.each do |post| %>
+          <li><%#=post.inspect %></li>
+        <% end %>
+      </ul> -->
+    </div>
 <!-- end debug -->
   </body>
 </html>
