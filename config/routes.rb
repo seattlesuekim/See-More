@@ -8,6 +8,7 @@ SeePeeps::Application.routes.draw do
   post '/twitter_search', to: 'posts#twitter_search', as: :twitter_search
   post '/search_tum', to: 'posts#search_tum', as: :search_tum
   post '/rss',        to: 'posts#get_rss',    as: :rss
+
   delete 'unsubscribe/:id', to: 'authors#unsubscribe', as: :unsubscribe
   post '/tweet', to: 'posts#tweet', as: :tweet
   # get '/searchpage', to: 'posts#searchpage', as: :searchpage
