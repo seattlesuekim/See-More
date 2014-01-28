@@ -10,6 +10,8 @@ SeePeeps::Application.routes.draw do
   post '/rss',        to: 'posts#get_rss',    as: :rss
 
   delete 'unsubscribe/:id', to: 'authors#unsubscribe', as: :unsubscribe
+  post '/tweet', to: 'posts#tweet', as: :tweet
+  # get '/searchpage', to: 'posts#searchpage', as: :searchpage
 
   resources :posts
   resources :users
