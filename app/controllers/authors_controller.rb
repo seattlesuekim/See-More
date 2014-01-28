@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
-  before_action :client
+
 
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
@@ -23,17 +23,12 @@ class AuthorsController < ApplicationController
     end
   end
 
-  def delete
+  def unsubscribe
+    @user_author = UserAuthor.find_by(user_id: current_user.id, author_id: params[:author])
+    @user_author.destroy
+    redirect_to :back
   end
 
-  def client
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key = ENV["TWITTER_CLIENT_ID"]
-      config.consumer_secret = ENV["TWITTER_CLIENT_SECRET"]
-      config.access_token = ENV["TWITTER_ACCESS_TOKEN"]
-      config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
-    end
-  end
 
   private
 
