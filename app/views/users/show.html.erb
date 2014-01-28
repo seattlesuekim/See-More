@@ -1,118 +1,108 @@
-
-<div class='link_accounts'>
-  <ul>
-  <% @providers.each do |p| %>
-    <li>
-      <%= image_tag "#{p.name}.png" %>
-      <%= p.inspect %>
-    </li>
-  <% end %>
-
-  <h3>Link your other accounts</h3>
-    <div class="icons">
-     <!-- iterate through all providers and put only the ones that don't already exist in @providers -->
-      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
-      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
-      <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
-    </div>
-</div>
-
-
-<div class='container'>
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "twitter.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://placehold.it/80x80" class="img-thumbnail">
-      </div>
-    </div>
-    
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">Bob</div>
-          <p>Bicycle rights Carles before they sold out, pour-over commodo narwhal butcher actually occupy polaroid Marfa. McSweeney's Pinterest mixtape, polaroid brunch meggings shabby chic actually squid.</p>
-        <div class="meta">
-          <div class="datetime">Written in 2001 12.1.01</div>
+ <div id="content">
+ <nav id="profiletabs">
+      <ul>
+        <li><a href="#feed" class="sel">My Feed</a></li>
+        <li><a href="#subs">My Subscriptions</a></li>
+        <li><a href="#account">My Account</a></li>
+      
+      </ul>
+    </nav>
+     
+    <section id="feed">
+            <div class='container'>
+              <h3>Here is what your peeps are saying:</h3>
+              <% @posts.each do |p| %>
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-1" align="right" height="80px" >
+                    <% if p.author.type.eql? "TwitterAuthor" %>
+                    <%= link_to (image_tag "twitter.png"), " " %> 
+                    <% else p.author.type.eql? "TumblrAuthor" %>
+                    <%= link_to (image_tag "tumblr.png"), " " %> 
+                    <% end %>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="avatar">
+                      <%= image_tag("#{p.author.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
+                    </div> 
+                  </div>
+                  <div class="col-md-7">
+                    <div class="text">
+                      <div class="author"><%= p.author.username %></div>
+                      <p><%= p.title %> </p>
+                      <p><%= p.body.html_safe %><br>
+                      Posted: <%= p.posted_at %></p>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              <%end %>
+            </div>
+        </section>
+     
+    <section id="subs" class="hidden">
+        <div class='container'>
+          <h3>You are currently following:</h3>
+          <% current_user.authors.each do |a| %>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" align="right" height="80px">
+              <%= image_tag "#{a.type.partition(/Author/).first.downcase}.png" %>
+            </div>
+            <div class="col-md-1">
+              <div class="avatar">
+                <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
+              </div> 
+            </div>
+            <div class="col-md-7">
+              <div class="text">
+                <div class="author"><%= a.username %></div>
+                <%= button_to "Unsubscribe", unsubscribe_path(author: a), method: :delete, type: "submit", class: "btn btn-info" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <% end %>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <br>
-
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "tumblr.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://placehold.it/80x80" class="img-thumbnail">
-      </div>
-    </div>
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">Barney</div>
-        <p>Et incididunt single-origin coffee officia mustache. Brooklyn retro before they sold out raw denim dolore twee wayfarers in.</p>
-        <div class="meta">
-          <div class="datetime">Written in 2001 12.1.01</div>
-        </div>
-      </div>
-    </div>
-  </div>
-    
-  <br>
-
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "pastel-rss.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://placehold.it/80x80" class="img-thumbnail">
-      </div>
-    </div>
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">Betty</div>
-          <p>TWEET! This is a sample tweet.. although not lorem impsum</p>
-        <div class="meta">
-          <div class="datetime">Written in 2001 12.1.01</div>
-        </div>
-      </div>
-    </div>
-  </div>
+     <section id="account" class="hidden">
   
-  <br>
+        <div class='link_accounts'>
+          <h4>Your accounts</h4>
+          <ul>
+            <% @providers.each do |p| %>
+              <li>
+                <%= image_tag "#{p.name}.png" %>
+                <%= image_tag("#{p['avatar_url']}", height: '50') %>
+                <%= p['username'] %><br>
+              </li>
+            <% end %>
+          </ul>
 
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-1" align="right" >
-      <%= link_to (image_tag "twitter.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://placehold.it/80x80" class="img-thumbnail">
-      </div>
-    </div>
-    <div class="col-md-7">
-      <div class="text">
-        <div class="author">Bob</div>
-        <p>Neutra hoodie gentrify nihil, Banksy gluten-free PBR in organic kitsch put a bird on it sustainable chambray. Ennui slow-carb sunt cray, Intelligentsia et pariatur nesciunt. Butcher non laborum, odio bicycle rights flannel reprehenderit single-origin coffee swag actually Etsy.</p>
-        <div class="meta">
-          <div class="datetime">Written in 2001 12.1.01</div>
+
+          <h4>Link another account</h4>
+          <div class="icons">
+           <!-- iterate through all providers and put only the ones that don't already exist in @providers? -->
+            <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
+            <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+          </div>
+
         </div>
-      </div>
-    </div>
+    </section>
   </div>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -5,24 +5,13 @@
   </p>
 <% unless current_user %>
 <hr>
-  <div id="nav_bar">
-    <%= link_to "Sign In", "/auth/developer" %> |
-    <%= link_to "Sign Up", "/auth/developer" %>
-  </div>
    <!-- need to create permanent cookie to display only options user has already signed in with -->
    
   <h3>Sign in with:</h3>
   <div class="icons">
     <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
     <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
-    <%= link_to (image_tag "github.png"), "/auth/github", title:"GitHub" %> 
-  </div>
-  <h4>(or these eventually)</h4>
-  <div class="icons">
-    <%= link_to (image_tag "pastel-fb.png"), "/", title:"Facebook" %> 
-    <%= link_to (image_tag "pastel-google.png"), "/", title:"Google" %> 
-    <%= link_to (image_tag "pastel-pinterest.png"), "/", title:"Pinterest" %> 
-    <%= link_to (image_tag "pastel-bloglovin.png"), "/", title:"BlogLovin" %> 
+    
   </div>
 
 <% end %>

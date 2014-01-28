@@ -1,25 +1,21 @@
+<% @search.each do |r| %>
 
 <div class="row">
   
     <div class="col-md-2">
     </div>
     <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "tumblr.png"), " " %> 
+      <%= link_to (image_tag "twitter.png"), " " %> 
     </div>
     <div class="col-md-1">
       <div class="avatar">
-        <img src="http://api.tumblr.com/v2/blog/<%= @tumblr_results["blog"]["name"] %>.tumblr.com/avatar/512" class="img-thumbnail">
+        <%= image_tag("#{r.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
       </div>
     </div>
     <div class="col-md-7">
         <div class="text">
           <div class="author">
-            <p><%= @tumblr_results["blog"]["name"] %> </p>
-            <p><%= @tumblr_results["blog"]["title"] %> </p>
-            
-            <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
-
-            <p><%= @tumblr_results["blog"]["description"].html_safe %> </p>
+            <%= link_to r.screen_name, authors_path(author: create_twitter_author_hash(r)), method: :post %>
           </div>
           <p>
           <!-- Text from blog here -->
@@ -36,3 +32,5 @@
     
   </div>
   <br>
+  <% end %>
+

@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     if current_user
       if current_user.id == @user.id
         @providers = current_user.providers 
+        @posts = []
+        current_user.authors.each do |author|
+          author.posts.each do |post|
+            post.author = author
+            @posts << post
+          end
+        end
+        @posts.sort!{|a, b| b.posted_at<=> a.posted_at}
       else
         flash[:notice] = "You are not authorized to view this page!"
         redirect_to user_path(current_user)
@@ -14,5 +22,4 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  
 end

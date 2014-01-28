@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+
     <style> 
     .debug, .link_accounts {
       border: 1px solid black;
@@ -12,8 +13,8 @@
       padding: 10px;
       margin: auto;
     }
-
     </style>
+    
   </head>
   <body>
     <h1> <%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
@@ -23,12 +24,12 @@
             <%= link_to "Sign Out", sign_out_path %>
           </div>
           <div class= 'btn btn-default'>
-            <%= link_to "My Feed", user_path(session[:user_id]) %>
+            <%= link_to "My Feed", user_path(current_user) %>
           </div>
 
-          <%= form_tag search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
+          <%= form_tag twitter_search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
             <div class="form-group">
-              <input type="text" name="search" class="form-control" placeholder="Search Twitter">
+              <input type="text" name="twitter_search" class="form-control" placeholder="Search Twitter">
             </div>
             <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
@@ -38,6 +39,12 @@
               <input type="text" name="search_tum" class="form-control" placeholder="Search Tumblr">
             </div>
             <button type="submit" class="btn btn-info">Go!</button>
+          <% end %>
+          <%= form_tag rss_path, :class =>"navbar-form navbar-right", method: 'post' do %>
+              <div class="form-group">
+                  <input type="text" name="get_rss" class="form-control" placeholder="Add a Feed">
+              </div>
+              <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
         </div>
       <% end %>
@@ -65,7 +72,13 @@
       <ul>
       <%Provider.all.each do |provider| %>
         <li><%=provider.inspect %></li>
-      <% end %><ul>
+      <% end %></ul>
+      <hr>
+      <h4>Posts</h4>
+      <ul>
+      <%Post.all.each do |post| %>
+        <li><%=post.inspect %></li>
+      <% end %></ul>
     </div>
 <!-- end debug -->
   </body>
