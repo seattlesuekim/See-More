@@ -11,7 +11,7 @@ class Provider < ActiveRecord::Base
       name: auth_hash["provider"],
       email:    auth_hash["info"]["email"],
       avatar_url: auth_hash["info"]["image"],
-      username: auth_hash["info"]["nickname"]
+      username: auth_hash["info"]["nickname"],
       secret: auth_hash[:credentials][:secret], 
       token: auth_hash[:credentials][:token]
     )
