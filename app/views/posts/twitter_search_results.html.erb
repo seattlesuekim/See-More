@@ -18,7 +18,7 @@
             <%= link_to r.screen_name, authors_path(author: create_twitter_author_hash(r)), method: :post %>
           </div>
           <p>
-          <!-- Text from blog here -->
+          <%=r.description %>
           </p>
           <div class="meta">
             <div class="datetime">
