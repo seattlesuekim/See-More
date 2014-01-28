@@ -49,7 +49,7 @@
              
           <%= form_tag(tweet_path, :class =>"navbar-form navbar-right", method: 'post') do %>
           <div class="form-group">
-            <%= text_field_tag :tweet, "", class: "form-control", placeholder: "Post to Twitter", size: "20", maxlength: "140" %>
+            <%= text_field_tag :tweet, "", class: "form-control", placeholder: "Post to Twitter", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
           </div>
             <%= submit_tag("Post", class: "btn btn-info") %>
           <% end %>
