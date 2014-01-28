@@ -15,8 +15,8 @@ class TwitterAuthor < Author
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key = ENV["TWITTER_CLIENT_ID"]
       config.consumer_secret = ENV["TWITTER_CLIENT_SECRET"]
-      config.access_token = user.token
-      config.access_token_secret = user.secret
+      config.access_token = user.providers.find_by(name: "twitter").token
+      config.access_token_secret = user.providers.find_by(name: "twitter").secret
     end
   end
 

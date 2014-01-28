@@ -46,14 +46,16 @@
               </div>
               <button type="submit" class="btn btn-info">Go!</button>
           <% end %>
-          <%= form_tag tweet_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-              <div class="form-group">
-                  <input type="text" name="tweet" class="form-control" placeholder="Tweet">
-              </div>
-              <button type="submit" class="btn btn-info">Go!</button>
+             
+          <%= form_tag(tweet_path, :class =>"navbar-form navbar-right", method: 'post') do %>
+          <div class="form-group">
+            <%= text_field_tag :tweet, "", class: "form-control", placeholder: "Post to Twitter", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
+          </div>
+            <%= submit_tag("Post", class: "btn btn-info") %>
           <% end %>
-        </div>
       <% end %>
+     
+
 
     <% if flash[:notice] %>
       <div class='notice'>
@@ -64,6 +66,7 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
+
     <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
