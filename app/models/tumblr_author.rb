@@ -16,21 +16,28 @@ class TumblrAuthor < Author
     posts = response["posts"]
     posts.each do |post|
       if post["type"].eql?("link")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["url"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: "#{post["url"]}#{post["description"]}", title: post["title"], posted_at: post["date"])
+
       elsif post["type"].eql?("video")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["permalink_url"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: post["player"].first["embed_code"],  title: post["source_title"], posted_at: post["date"])
+      
       elsif post["type"].eql?("photo")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["short_url"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: "#{post["caption"]}#{post["photos"].last}", title: post["title"], posted_at: post["date"])
+      
       elsif post["type"].eql?("answer")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["short_url"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: post["answer"], title: post["title"], posted_at: post["date"])
+      
       elsif post["type"].eql?("text")
         p = Post.find_or_create_by_body(author_id: uid, body: post["body"], title: post["title"], posted_at: post["date"])
+      
       elsif post["type"].eql?("chat")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["body"],title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, title: post["title"], body: post["body"],  posted_at: post["date"])
+      
       elsif post["type"].eql?("quote")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["text"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: "#{post["text"]}#{post["source"]}", title: post["title"], posted_at: post["date"])
+      
       else post["type"].eql?("audio")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["source_url"], title: post["title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: post["player"], title: post["title"], posted_at: post["date"])
       end
 
       p.save!
