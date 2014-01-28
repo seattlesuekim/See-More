@@ -9,6 +9,7 @@ SeePeeps::Application.routes.draw do
   post '/search_tum', to: 'posts#search_tum', as: :search_tum
   post '/rss',        to: 'posts#get_rss',    as: :rss
   delete 'unsubscribe/:id', to: 'authors#unsubscribe', as: :unsubscribe
+  post '/tweet', to: 'posts#tweet', as: :tweet
   # get '/searchpage', to: 'posts#searchpage', as: :searchpage
 
   resources :posts

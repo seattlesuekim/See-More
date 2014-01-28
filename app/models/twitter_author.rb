@@ -10,6 +10,16 @@ class TwitterAuthor < Author
     end
   end
 
+  def self.user_client(user)
+   
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV["TWITTER_CLIENT_ID"]
+      config.consumer_secret = ENV["TWITTER_CLIENT_SECRET"]
+      config.access_token = user.token
+      config.access_token_secret = user.secret
+    end
+  end
+
   def self.find_posts(author)
 
     @client.user_timeline(author[:username]).collect.each do |tweet|

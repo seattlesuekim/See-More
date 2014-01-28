@@ -20,6 +20,12 @@ class PostsController < ApplicationController
     render :rss_results
   end
 
+  def tweet
+    user_client = TwitterAuthor.user_client(current_user)
+    user_client.update(params[:tweet])
+    redirect_to :back
+  end
+
   private
 
   def get_tumblr_results
