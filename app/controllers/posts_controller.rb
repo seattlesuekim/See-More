@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def tweet
     user_client = TwitterAuthor.user_client(current_user)
     user_client.update(params[:tweet])
-    redirect_to :back
+    redirect_to :back, notice: "Your tweet has been successfully posted!"
   end
 
   private
