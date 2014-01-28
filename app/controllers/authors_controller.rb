@@ -12,7 +12,6 @@ class AuthorsController < ApplicationController
     end
     
     if @author
-     
       if @author.type.eql? "TumblrAuthor"
         TumblrAuthor.add_posts(params[:author][:uid], @author.id)
       elsif @author.type.eql? "TwitterAuthor"
