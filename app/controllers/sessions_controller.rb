@@ -2,12 +2,12 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+
     auth_hash = request.env['omniauth.auth']
     ## OLD VERSION
     # @provider = Provider.find_or_create_from_omniauth(auth_hash)
     # session[:user_id] = @provider.user_id
     # redirect_to user_path(session[:user_id]), notice: "You have been successfully signed in!"
-
     @provider = Provider.find_by(uid: auth_hash[:uid])
     if @provider
       session[:user_id] = @provider.user_id
