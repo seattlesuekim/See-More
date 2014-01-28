@@ -24,6 +24,6 @@ SeePeeps.iml
 /tmp
 
 # Ignore application configuration
-/config/application.yml
+config/application.yml
 
 .DS_Store
