@@ -12,6 +12,8 @@ class Provider < ActiveRecord::Base
       email:    auth_hash["info"]["email"],
       avatar_url: auth_hash["info"]["image"],
       username: auth_hash["info"]["nickname"]
+      secret: auth_hash[:credentials][:secret], 
+      token: auth_hash[:credentials][:token]
     )
     # all of this might need to be an extra step to link, rather than create new user
     # user = User.new(username:auth_hash['info']['name'], email: auth_hash['info']['email'])
