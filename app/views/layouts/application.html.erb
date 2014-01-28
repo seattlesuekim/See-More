@@ -64,21 +64,25 @@
         <%=current_user.inspect if current_user%><br>
       <hr>
       <h4>Users</h4>
-      <ul><%User.all.each do |user| %>
-        <li><%=user.inspect %></li>
-      <% end %></ul>
+      <ul>
+        <%User.all.each do |user| %>
+          <li><%=user.inspect %></li>
+        <% end %>
+      </ul>
       <hr>
       <h4>Providers</h4>
       <ul>
-      <%Provider.all.each do |provider| %>
-        <li><%=provider.inspect %></li>
-      <% end %></ul>
+        <%Provider.all.each do |provider| %>
+          <li><%=provider.inspect %></li>
+        <% end %>
+      </ul>
       <hr>
-      <h4>Posts</h4>
+      <!-- <h4>Posts</h4>
       <ul>
-      <%Post.all.each do |post| %>
-        <li><%=post.inspect %></li>
-      <% end %></ul>
+        <% Post.all.each do |post| %>
+          <li><%#=post.inspect %></li>
+        <% end %>
+      </ul> -->
     </div>
 <!-- end debug -->
   </body>
