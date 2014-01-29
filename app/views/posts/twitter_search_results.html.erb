@@ -1,27 +1,25 @@
 <% @search.each do |r| %>
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-1" align="right" height="80px" >
-    <%= image_tag "twitter.png" %> 
-  </div>
-  <div class="col-md-1">
-    <!-- <div class="avatar"> -->
-      <%= image_tag("#{r.profile_image_url}", class: "img-thumbnail", size: "60") %> 
-    <!-- </div> -->
-  </div>
-  <div class="col-md-7">
-    <div class="text">
-      <div class="author">
-        <%= r.screen_name %>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-1" align="right" height="80px" >
+      <%= image_tag "twitter.png" %> 
+    </div>
+    <div class="col-md-1">
+      <!-- <div class="avatar"> -->
+        <%= image_tag("#{r.profile_image_url}", class: "img-thumbnail", size: "60") %> 
+      <!-- </div> -->
+    </div>
+    <div class="col-md-7">
+      <div class="text">
+        <div class="author">
+          <%= r.screen_name %>
+        </div>
+        <p><%=r.description %></p>
         <%= button_to "Subscribe", authors_path(author: create_twitter_author_hash(r)), class: 'btn btn-success'  %>
       </div>
-      <p>
-        <%=r.description %>
-      </p>
     </div>
   </div>
-</div>
 <br>
 <% end %>
 
