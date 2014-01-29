@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :home_feed
 
   def show
     @user = User.find(params[:id])
@@ -21,5 +22,10 @@ class UsersController < ApplicationController
       flash[:notice] = "You must be signed in to view this page!"
       redirect_to root_path
     end
+  end
+
+  def home_feed
+    user_client = TwitterAuthor.user_client(current_user)
+    @home_feed = user_client.home_timeline.take(25)
   end
 end
