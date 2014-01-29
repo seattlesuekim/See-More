@@ -25,12 +25,12 @@ class UsersController < ApplicationController
   end
 
   def home_feed
-    types = current_user.providers.map {|p| p.name}
-    if types.include? "twitter"
+    # types = current_user.providers.map {|p| p.name}
+    # if types.include? "twitter"
       user_client = TwitterAuthor.user_client(current_user)
       @home_feed = user_client.home_timeline.take(25)
-    else
-      nil
-    end
+    # else
+    #   nil
+    # end
   end
 end
