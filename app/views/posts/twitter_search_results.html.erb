@@ -1,36 +1,27 @@
 <% @search.each do |r| %>
 
 <div class="row">
-  
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "twitter.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <%= image_tag("#{r.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
-      </div>
-    </div>
-    <div class="col-md-7">
-        <div class="text">
-          <div class="author">
-            <%= link_to r.screen_name, authors_path(author: create_twitter_author_hash(r)), method: :post %>
-          </div>
-          <p>
-          <%=r.description %>
-          </p>
-          <div class="meta">
-            <div class="datetime">
-             <!--  Insert Date and Time -->
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    
+  <div class="col-md-2"></div>
+  <div class="col-md-1" align="right" height="80px" >
+    <%= link_to (image_tag "twitter.png"), " " %> 
   </div>
-  <br>
-  <% end %>
+  <div class="col-md-1">
+    <div class="avatar">
+      <%= image_tag("#{r.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="text">
+      <div class="author">
+        <%= r.screen_name %>
+        <%= button_to "Subscribe", authors_path(author: create_twitter_author_hash(r)), class: 'btn btn-success'  %>
+      </div>
+      <p>
+        <%=r.description %>
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<% end %>
 
