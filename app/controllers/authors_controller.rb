@@ -11,9 +11,9 @@ class AuthorsController < ApplicationController
       @author = nil
     end
 
-    if @author
+    if @author #this saves the author's posts to the database--do we want that? how to update?
       if @author.is_a?(TumblrAuthor)
-        TumblrAuthor.add_posts(params[:author][:uid], @author.id)
+        TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
       elsif @author.is_a?(RssAuthor)

@@ -1,21 +1,20 @@
 module ApplicationHelper
 
-
-  def create_twitter_author_hash(r)
+  def create_twitter_author_hash(result)
     author = {}
-    author[:username] = r.screen_name
+    author[:username] = result.screen_name
     author[:type] = "TwitterAuthor"
-    author[:uid] = r.id
-    author[:avatar] = r.profile_image_url
+    author[:uid] = result.id
+    author[:avatar] = result.profile_image_url
     author
   end
 
-  def create_tum_author_hash(tumblr_results)
+  def create_tum_author_hash(result)
     author = {}
-    author[:username] = tumblr_results["blog"]["name"]
+    author[:username] = result["blog"]["name"]
     author[:type] = "TumblrAuthor"
-    author[:uid] = tumblr_results["blog"]["name"]
-    author[:avatar] = "http://api.tumblr.com/v2/blog/#{tumblr_results["blog"]["name"]}.tumblr.com/avatar/512"
+    author[:uid] = result["blog"]["name"]
+    author[:avatar] = "http://api.tumblr.com/v2/blog/#{result["blog"]["name"]}.tumblr.com/avatar/512"
     author
   end
 

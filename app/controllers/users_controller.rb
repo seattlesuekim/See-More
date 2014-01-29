@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :home_feed
+  # before_action :home_feed
 
   def show
     @user = User.find(params[:id])
@@ -24,13 +24,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def home_feed
-    # types = current_user.providers.map {|p| p.name}
-    # if types.include? "twitter"
-      user_client = TwitterAuthor.user_client(current_user)
-      @home_feed = user_client.home_timeline.take(25)
-    # else
-    #   nil
-    # end
-  end
+  # def home_feed
+  #   # types = current_user.providers.map {|p| p.name}
+  #   # if types.include? "twitter"
+  #     user_client = TwitterAuthor.user_client(current_user)
+  #     @home_feed = user_client.home_timeline.take(25)
+  #   # else
+  #   #   nil
+  #   # end
+  # end
 end

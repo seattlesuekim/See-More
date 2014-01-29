@@ -1,4 +1,9 @@
-<%= render 'twitter_home_feed' if has_twitter_provider %>
+<%#= render 'twitter_home_feed' if has_twitter_provider %>
+
+
+
+<%# f = "<iframe width=\"248\" height=\"139\" src=\"http://www.youtube.com/embed/6haBMbtXSLg?wmode=transparent&autohide=1&egm=0&hd=1&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&showsearch=0\" frameborder=\"0\" allowfullscreen></iframe>" %>
+<%#= f.html_safe %>
 
 <div id="content">
   <nav id="profiletabs">
@@ -27,7 +32,8 @@
             <div class="text">
               <div class="author"><%= p.author.username %></div>
               <p><%= p.title %> </p>
-              <p><%= display_content_with_links(p.body).html_safe %><br>
+              <p><%#= display_content_with_links(p.body).html_safe %>
+                <%= p.body.html_safe %><br>
               <span class='timestamp'>
                 Posted at <%= p.posted_at.strftime("%l:%M %p on %A, %b %e, %Y") %>
               </span></p>
