@@ -17,51 +17,64 @@
     
   </head>
   <body>
-    <h1> <%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
-      <% if current_user %>
-        <div class='navbar'>
-          <div class=  'btn btn-default'>
-            <%= link_to "Sign Out", sign_out_path %>
-          </div>
-          <div class= 'btn btn-default'>
-            <%= link_to "My Feed", user_path(current_user) %>
-          </div>
-
-          <%= form_tag twitter_search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-            <div class="form-group">
-              <input type="text" name="twitter_search" class="form-control" placeholder="Search Twitter">
-            </div>
-            <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
-
-          <%= form_tag search_tum_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-            <div class="form-group">
-              <input type="text" name="search_tum" class="form-control" placeholder="Search Tumblr">
-            </div>
-            <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
-          <%= form_tag rss_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-              <div class="form-group">
-                  <input type="text" name="get_rss" class="form-control" placeholder="Add a Feed">
-              </div>
-              <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
-             
-          <%= form_tag(tweet_path, :class =>"navbar-form navbar-right", method: 'post') do %>
-          <div class="form-group">
-            <%= text_field_tag :tweet, "", class: "form-control", placeholder: "Post to Twitter", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
-          </div>
-            <%= submit_tag("Post", class: "btn btn-info") %>
-          <% end %>
-      <% end %>
-     
-
+    <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
 
     <% if flash[:notice] %>
       <div class='notice'>
         <%= flash[:notice] %>
       </div>
     <% end %>
+
+      <% if current_user %>
+        <div class='navbar'>
+          <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
+          <%= link_to "My Feed", user_path(current_user), class: 'btn btn-default' %>
+        </div>
+
+        <div class="search_bars">
+          <ul>
+            <li>
+              <%= form_tag twitter_search_path, :class =>"navbar-form", method: 'post' do %>
+                <div class="form-group">
+                  <%= text_field_tag "twitter_search", nil, placeholder: "Search Twitter", class: "form-control" %>
+                </div>
+                <button type="submit" class="btn btn-info">Go!</button>
+              <% end %>
+            </li>
+
+            <li>
+              <%= form_tag search_tum_path, :class =>"navbar-form", method: 'post' do %>
+                <div class="form-group">
+                  <%= text_field_tag "search_tum", nil, placeholder: "Search Tumblr", class: "form-control" %>
+                </div>
+                <button type="submit" class="btn btn-info">Go!</button>
+              <% end %>
+            </li>
+
+            <li>
+              <%= form_tag rss_path, :class =>"navbar-form", method: 'post' do %>
+                <div class="form-group">
+                  <%= text_field_tag "get_rss", nil, placeholder: "Add a feed", class: "form-control" %>
+                  <!-- <input type="text" name="get_rss" class="form-control" placeholder="Add a Feed"> -->
+                  </div>
+                <button type="submit" class="btn btn-info">Go!</button>
+              <% end %>
+            </li>
+          
+            <% if has_twitter_provider %>
+              <li>
+                <%= form_tag(tweet_path, :class =>"navbar-form", method: 'post') do %>
+                <div class="form-group">
+                  <%= text_field_tag :tweet, "", class: "form-control", placeholder: "Post to Twitter", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
+                </div>
+                  <%= submit_tag("Tweet!", class: "btn btn-info") %>
+                <% end %>
+              </li>
+            <% end %>
+
+          </ul>
+        </div>
+      <% end %>
 
     <%= yield %>
 

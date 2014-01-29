@@ -50,18 +50,20 @@ hr {
 .icons:hover alt {
   visibility: visible;
 }
-.post_date {
-  font-style: italic;
-}
 
 .author {
   color: seagreen;
   font-weight: 700;
+  font-size: 20px;
+}
+
+.tumblr_title {
+  color: teal;
 }
 
 /*User Account nav links */
 #profiletabs {
-  display      : block;
+  display: block;
   margin: auto;
 }
  
@@ -92,5 +94,19 @@ hr {
 
 .hidden {
   display: none;
+}
+
+.timestamp {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.search_bars {
+  width: 350px;
+  border: 1px solid black;
+}
+
+.search_bars ul {
+  list-style-type: none;
 }
  

@@ -7,7 +7,6 @@ class TumblrAuthor < Author
       config.oauth_token = ENV["TUMBLR_ACCESS_TOKEN"]
       config.oauth_token_secret = ENV["TUMBLR_ACCESS_TOKEN_SECRET"]
     end
-
     Tumblr::Client.new
   end
 
@@ -19,8 +18,9 @@ class TumblrAuthor < Author
         p = Post.find_or_create_by_body(author_id: uid, body: "#{post["url"]}#{post["description"]}", title: post["title"], posted_at: post["date"])
 
       elsif post["type"].eql?("video")
-        p = Post.find_or_create_by_body(author_id: uid, body: post["player"].first["embed_code"],  title: post["source_title"], posted_at: post["date"])
-      
+        # p = Post.find_or_create_by_body(author_id: uid, body: post["player"].first["embed_code"],  title: post["source_title"], posted_at: post["date"])
+        p = Post.find_or_create_by_body(author_id: uid, body: post["short_url"],  title: post["source_title"], posted_at: post["date"])
+    
       elsif post["type"].eql?("photo")
         p = Post.find_or_create_by_body(author_id: uid, body: "#{post["caption"]}#{post["photos"].last}", title: post["title"], posted_at: post["date"])
       

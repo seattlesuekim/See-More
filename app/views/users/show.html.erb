@@ -1,4 +1,4 @@
-<%= render 'twitter_home_feed' %>
+<%= render 'twitter_home_feed' if has_twitter_provider %>
 
 <div id="content">
   <nav id="profiletabs">
@@ -10,7 +10,7 @@
   </nav>
      
   <section id="feed">
-    <div class='container'>
+    <div class='container'><br>
       <h3>Here is what your peeps are saying:</h3>
       <% @posts.each do |p| %>
         <div class="row">
@@ -28,7 +28,9 @@
               <div class="author"><%= p.author.username %></div>
               <p><%= p.title %> </p>
               <p><%= display_content_with_links(p.body).html_safe %><br>
-              Posted: <%= p.posted_at %></p>
+              <span class='timestamp'>
+                Posted at <%= p.posted_at.strftime("%l:%M %p on %A, %b %e, %Y") %>
+              </span></p>
               <p><%= p.title %> </p>
             </div>
           </div>

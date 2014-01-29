@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def get_rss
-    RssAuthor.from_rss(params[:get_rss])
+    @rss = RssAuthor.from_rss(params[:get_rss])
     redirect_to '/'
   end
 
