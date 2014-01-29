@@ -10,12 +10,14 @@ class AuthorsController < ApplicationController
     rescue ActiveRecord::RecordInvalid 
       @author = nil
     end
-    
+
     if @author
-      if @author.type.eql? "TumblrAuthor"
+      if @author.is_a?(TumblrAuthor)
         TumblrAuthor.add_posts(params[:author][:uid], @author.id)
-      elsif @author.type.eql? "TwitterAuthor"
+      elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
+      elsif @author.is_a?(RssAuthor)
+        RssAuthor.get_posts(@author)
       end
       redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
     else
