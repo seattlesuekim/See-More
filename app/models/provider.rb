@@ -1,4 +1,11 @@
 class Provider < ActiveRecord::Base 
+  validates :name, presence: true
+  validates :uid, presence: true
+  validates :username, presence: true
+  validates :avatar_url, presence: true
+  validates :email, presence: true
+
+
   belongs_to :user
 
   def self.find_or_create_from_omniauth(auth_hash)
