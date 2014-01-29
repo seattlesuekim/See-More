@@ -28,5 +28,4 @@ module ApplicationHelper
     types.include? "twitter"
   end
 
-
 end

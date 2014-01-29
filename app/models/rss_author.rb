@@ -4,6 +4,8 @@ class RssAuthor < Author
   def self.from_rss(url)
     @feed = Feedzirra::Feed.fetch_and_parse(url)
     if not @feed.is_a?(Fixnum) && @feed != nil
+      # in the parameters, also add user_id: current_user.id
+      #needs to actually create Author
       author = RssAuthor.create(username: url)
       @feed.entries.each do |entry|
         post = Post.new do |p|

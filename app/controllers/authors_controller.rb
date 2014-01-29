@@ -1,7 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
 
-
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
     @author ||= current_user.authors.build( author_params)

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
             @posts << post
           end
         end
-        @posts.sort!{|a, b| b.posted_at<=> a.posted_at}
+        @posts.sort!{|a, b| b.posted_at <=> a.posted_at}
       else
         flash[:notice] = "You are not authorized to view this page!"
         redirect_to user_path(current_user)
@@ -25,12 +25,12 @@ class UsersController < ApplicationController
   end
 
   def home_feed
-    types = current_user.providers.map {|p| p.name}
-    if types.include? "twitter"
+    # types = current_user.providers.map {|p| p.name}
+    # if types.include? "twitter"
       user_client = TwitterAuthor.user_client(current_user)
       @home_feed = user_client.home_timeline.take(25)
-    else
-      nil
-    end
+    # else
+    #   nil
+    # end
   end
 end

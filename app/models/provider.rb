@@ -1,5 +1,6 @@
 class Provider < ActiveRecord::Base 
   belongs_to :user
+  # validate all attribute fields
 
   def self.find_or_create_from_omniauth(auth_hash)
     Provider.find_by(uid: auth_hash["uid"], name: auth_hash['provider']) || create_from_omniauth(auth_hash)
