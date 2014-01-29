@@ -5,15 +5,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user
       if current_user.id == @user.id
-        @providers = current_user.providers 
-        @posts = []
-        current_user.authors.each do |author|
-          author.posts.each do |post|
-            post.author = author
-            @posts << post
-          end
+        @providers = current_user.providers
+        if @home_feed
+          @posts = @home_feed
+        else
+          @posts = []
         end
-        @posts.sort!{|a, b| b.posted_at<=> a.posted_at}
+          current_user.authors.each do |author|
+            author.posts.each do |post|
+              p = {}
+              p[:author_name] = post.author.username
+              p[:body] = post.body
+              p[:posted_at] = post.posted_at
+              p[:author_url] = post.author.avatar
+              p[:author_type] = post.author.type
+              @posts << p
+            end
+        end
+        @posts.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}
       else
         flash[:notice] = "You are not authorized to view this page!"
         redirect_to user_path(current_user)
@@ -28,9 +37,19 @@ class UsersController < ApplicationController
     types = current_user.providers.map {|p| p.name}
     if types.include? "twitter"
       user_client = TwitterAuthor.user_client(current_user)
-      @home_feed = user_client.home_timeline.take(25)
+      @home_feed = []
+      user_client.home_timeline.take(25).each do |t|
+        p = {}
+        p[:author_name] = t.user.screen_name
+        p[:body] = t.text
+        p[:posted_at] = t.created_at
+        p[:author_url] = t.user.profile_image_url
+        p[:author_type] = "twitter"
+        @home_feed << p
+      end
     else
       nil
     end
   end
 end
+

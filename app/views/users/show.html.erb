@@ -1,5 +1,3 @@
-<%= render 'twitter_home_feed' if has_twitter_provider %>
-
 <div id="content">
   <nav id="profiletabs">
     <ul>
@@ -8,7 +6,7 @@
       <li><a href="#account">My Account</a></li>
     </ul>
   </nav>
-     
+
   <section id="feed">
     <div class='container'><br>
       <h3>Here is what your peeps are saying:</h3>
@@ -16,22 +14,20 @@
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-1" align="right" height="80px" >
-            <%= image_tag "#{p.author.type.partition(/Author/).first.downcase}.png" %> 
+            <%= image_tag "#{p[:author_type].partition(/Author/).first.downcase}.png" %>
           </div>
           <div class="col-md-1">
             <div class="avatar">
-              <%= image_tag("#{p.author.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
-            </div> 
+              <%= image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80") %>
+            </div>
           </div>
           <div class="col-md-7">
             <div class="text">
-              <div class="author"><%= p.author.username %></div>
-              <p><%= p.title %> </p>
-              <p><%= display_content_with_links(p.body).html_safe %><br>
+              <div class="author"><%= p[:author_name] %></div>
+              <p><%= display_content_with_links(p[:body]).html_safe %><br>
               <span class='timestamp'>
-                Posted at <%= p.posted_at.strftime("%l:%M %p on %A, %b %e, %Y") %>
+                Posted at <%= p[:posted_at].strftime("%l:%M %p on %A, %b %e, %Y") %>
               </span></p>
-              <p><%= p.title %> </p>
             </div>
           </div>
         </div>
@@ -39,7 +35,7 @@
       <%end %>
     </div>
   </section>
-     
+
   <section id="subs" class="hidden">
     <div class='container'>
       <h3>You are currently following:</h3>
@@ -51,8 +47,8 @@
         </div>
         <div class="col-md-1">
           <div class="avatar">
-            <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
-          </div> 
+            <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %>
+          </div>
         </div>
         <div class="col-md-7">
           <div class="text">
@@ -82,8 +78,8 @@
       <h4>Link another account</h4>
       <div class="icons">
        <!-- iterate through all providers and put only the ones that don't already exist in @providers? -->
-        <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
-        <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+        <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%>
+        <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %>
       </div>
     </div>
   </section>
