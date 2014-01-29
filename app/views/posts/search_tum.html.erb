@@ -10,8 +10,9 @@
   </div>
   <div class="col-md-6">
     <div class="text">
-      <h3 class= 'author'><%= @tumblr_results["blog"]["name"] %> </h3>
-      <h4 class='tumblr_title'><%= @tumblr_results["blog"]["title"] %></h4>
+      <!-- these should probably be h3 and h4, but alignment gets off-same in twitter -->
+      <span class= 'author'><%= @tumblr_results["blog"]["name"] %></span><br>
+      <span class='tumblr_title'><%= @tumblr_results["blog"]["title"] %></span>
       <p class= 'tumblr_description'><%= @tumblr_results["blog"]["description"].html_safe %></p>
       <%= button_to "Subscribe!", authors_path(author: create_tum_author_hash(@tumblr_results)), class: 'btn btn-success' %>
     </div>
