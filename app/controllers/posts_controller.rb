@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def get_rss
     @rss = RssAuthor.from_rss(params[:get_rss])
     redirect_to '/'
+    # redirect to user show?
   end
 
   def tweet

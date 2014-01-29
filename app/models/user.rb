@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :providers
   has_many :authors, through: :user_authors, uniq: true
   has_many :user_authors
-  # has_many :posts, through: :user_authors
+  # has_many :posts, through: :authors
 
   def self.create_from_omniauth(auth_hash)
     self.create!(      
