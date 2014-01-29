@@ -56,6 +56,10 @@ hr {
   font-weight: 700;
 }
 
+.tumblr_title {
+  color: teal;
+}
+
 /*User Account nav links */
 #profiletabs {
   display: block;

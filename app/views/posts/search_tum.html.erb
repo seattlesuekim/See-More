@@ -4,18 +4,16 @@
     <%= link_to (image_tag "tumblr.png"), " " %> 
   </div>
   <div class="col-md-1">
-    <div class="avatar">
-      <img src="http://api.tumblr.com/v2/blog/<%= @tumblr_results["blog"]["name"] %>.tumblr.com/avatar/512" class="img-thumbnail">
-    </div>
+    <!-- <div class="avatar"> -->
+      <%= image_tag "http://api.tumblr.com/v2/blog/#{@tumblr_results["blog"]["name"]}.tumblr.com/avatar/512", class: 'img-thumbnail avatar', size: '60' %>
+    <!-- </div> -->
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <div class="text">
-      <div class="author">
-        <p><%= @tumblr_results["blog"]["name"] %> </p>
-        <p><%= @tumblr_results["blog"]["title"] %> </p>
-        <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
-        <p><%= @tumblr_results["blog"]["description"].html_safe %> </p>
-      </div>    
+      <h3 class= 'author'><%= @tumblr_results["blog"]["name"] %> </h3>
+      <h4 class='tumblr_title'><%= @tumblr_results["blog"]["title"] %></h4>
+      <p class= 'tumblr_description'><%= @tumblr_results["blog"]["description"].html_safe %></p>
+      <%= button_to "Subscribe!", authors_path(author: create_tum_author_hash(@tumblr_results)), class: 'btn btn-success' %>
     </div>
   </div>
 </div>
