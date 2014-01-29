@@ -16,8 +16,8 @@ class PostsController < ApplicationController
   end
 
   def get_rss
-    @rss_post = Post.from_rss(params[:get_rss])
-    render :rss_results
+    RssAuthor.from_rss(params[:get_rss])
+    redirect_to '/'
   end
 
   def tweet
