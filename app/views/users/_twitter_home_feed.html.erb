@@ -1,24 +1,26 @@
 <div class='container'>
-      <h3>Here is your Twitter home feed:</h3>
-     <% @home_feed.each do |tweet| %>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-1" align="right" height="80px" >
-            <%= image_tag "twitter.png" %> 
+  <h3>Here is your Twitter home feed:</h3>
+    <% @home_feed.each do |tweet| %>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-1" align="right" height="80px" >
+          <%= image_tag "twitter.png" %> 
+        </div>
+        <div class="col-md-1">
+          <div class="avatar">
+           <%= image_tag("#{tweet.user.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
+          </div> 
           </div>
-          <div class="col-md-1">
-            <div class="avatar">
-             <%= image_tag("#{tweet.user.profile_image_url}", :class=> "img-thumbnail", :size=> "80x80") %> 
-            </div> 
-          </div>
-          <div class="col-md-7">
-            <div class="text">
-              <div class="author"><%= tweet.user.screen_name %></div>
-              <p><%= display_content_with_links(tweet.text).html_safe %><br>
-              Posted: <%= tweet.created_at %></p>
-            </div>
+        <div class="col-md-7">
+          <div class="text">
+            <div class="author"><%= tweet.user.screen_name %></div>
+            <p><%= display_content_with_links(tweet.text).html_safe %><br>
+            <span class="timestamp">
+              Posted at <%= tweet.created_at.strftime("%l:%M %p on %A, %b %e, %Y") %>
+            </span></p>
           </div>
         </div>
-        <br>
-      <%end %>
-    </div>
+      </div>
+      <br>
+    <%end %>
+</div>

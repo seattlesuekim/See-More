@@ -50,9 +50,6 @@ hr {
 .icons:hover alt {
   visibility: visible;
 }
-.post_date {
-  font-style: italic;
-}
 
 .author {
   color: seagreen;
@@ -61,7 +58,7 @@ hr {
 
 /*User Account nav links */
 #profiletabs {
-  display      : block;
+  display: block;
   margin: auto;
 }
  
@@ -92,5 +89,11 @@ hr {
 
 .hidden {
   display: none;
+}
+
+.timestamp {
+  font-style: italic;
+  font-size: 12px;
+
 }
  
