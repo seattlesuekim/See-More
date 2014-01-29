@@ -5,6 +5,7 @@ class AuthorsController < ApplicationController
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
     @author ||= current_user.authors.build( author_params)
+  
     begin
       current_user.authors << @author
     rescue ActiveRecord::RecordInvalid 
@@ -19,9 +20,9 @@ class AuthorsController < ApplicationController
       elsif @author.is_a?(RssAuthor)
         RssAuthor.get_posts(@author)
       end
-      redirect_to user_path(current_user), notice: "You are succesfully subscribed to #{@author.username}!"
+      redirect_to user_path(current_user), notice: "You are successfully subscribed to #{@author.username}!"
     else
-      redirect_to user_path(current_user), notice: "You are already subscribed to this user!"
+      redirect_to user_path(current_user), notice: "You are already subscribed to #{params[:author][:username]}!"
     end
   end
 
