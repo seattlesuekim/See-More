@@ -27,4 +27,5 @@ class TwitterAuthor < Author
       @post.save
     end
   end
+
 end
