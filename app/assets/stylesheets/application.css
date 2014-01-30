@@ -15,6 +15,10 @@
 html, body, script {
   min-height: 800px;
 }
+
+p{
+  color: grey;
+}
 body {
   background: linear-gradient(150deg, powderblue, papayawhip, lightpink);
 
@@ -73,7 +77,7 @@ h3 {
 }
 
 .author {
-  color: seagreen;
+  color: mediumseagreen;
   font-weight: 700;
   font-size: 20px;
 }
