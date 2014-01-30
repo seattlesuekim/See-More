@@ -13,8 +13,14 @@ class User < ActiveRecord::Base
     nil
   end
 
-  # def posts
-  #   refactor code from user controller?
-  # end
+  def posts
+    @posts = []
+    self.authors.each do |author|
+      author.posts.each do |post|
+        @posts << post
+      end
+    end
+    @posts
+  end
   
 end

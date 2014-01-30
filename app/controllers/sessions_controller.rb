@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def create
 
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @provider.user_id
       redirect_to user_path(session[:user_id]), notice: "You have been successfully signed in!"
     elsif current_user
-      #find or create
+      #find or create - right now bug with linking accounts if provider already exists
       provider = Provider.create_from_omniauth(auth_hash)
       current_user.providers << provider
       redirect_to user_path(session[:user_id]), notice: "Account added!"
