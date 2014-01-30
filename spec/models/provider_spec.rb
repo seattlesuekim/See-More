@@ -10,20 +10,20 @@ describe Provider do
     end
   end
 
-  # describe '.initialize_from_omniauth_twitter' do
-  #   let(:provider) { Provider.create_from_omniauth(OmniAuth.config.mock_auth[:twitter]) }
-  #   p provider
-  #   it "creates a valid provider" do
-  #     expect(provider).to be_valid
-  #   end
-  # end
+  describe '.initialize_from_omniauth_twitter' do
+    let(:provider) { Provider.create_from_omniauth(OmniAuth.config.mock_auth[:twitter]) }
+    
+    it "creates a valid provider" do
+      expect(provider).to be_valid
+    end
+  end
 
-  # describe '.initialize_from_omniauth_tumblr' do
-  #   let(:provider) { Provider.create_from_omniauth(OmniAuth.config.mock_auth[:tumblr]) }
+  describe '.initialize_from_omniauth_tumblr' do
+    let(:provider) { Provider.create_from_omniauth(OmniAuth.config.mock_auth[:tumblr]) }
 
-  #   it "creates a valid user" do
-  #     expect(provider).to be_valid
-  #   end
-  # end
+    it "creates a valid user" do
+      expect(provider).to be_valid
+    end
+  end
 
 end

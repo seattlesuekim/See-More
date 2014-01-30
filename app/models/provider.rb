@@ -1,10 +1,11 @@
 class Provider < ActiveRecord::Base 
-  # validates :name, presence: true
-  # validates :uid, presence: true
-  # validates :username, presence: true
-  # validates :avatar_url, presence: true
-  # validates :email, presence: true
-
+  validates :name, presence: true
+  validates :uid, presence: true
+  validates :username, presence: true
+  validates :avatar_url, presence: true
+  validates :email, presence: true
+  validates :secret, presence: true
+  validates :token, presence: true
 
   belongs_to :user
   # validate all attribute fields

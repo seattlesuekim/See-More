@@ -31,8 +31,21 @@ RSpec.configure do |config|
     # set per-provider (or default) authentication 
     # hashes to return during testing.
 
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '123545', info: {email: "a@b.com", nickname: "Bookis"}})
-    OmniAuth.config.mock_auth[:tumblr] = OmniAuth::AuthHash.new({:provider => 'tumblr', :uid => '98765', info: {email: "a@b.com", nickname: "Bookis"}})
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+      provider: 'twitter', 
+      uid: '123545', 
+      info: {
+        email: "a@b.com", 
+        nickname: "Bookis",
+        image: "http://example/image",
+      }, 
+      credentials: {
+        secret: 'THIS_IS_SECRET', 
+        token: "THIS_IS_TOKEN",
+      }
+    })
+
+    OmniAuth.config.mock_auth[:tumblr] = OmniAuth::AuthHash.new({:provider => 'tumblr', :uid => '98765', info: {email: "a@b.com", nickname: "Bookis"}, credentials: {secret: 'THIS_IS_SECRET', token: "THIS_IS_TOKEN"}})
 
   end
   # ## Mock Framework

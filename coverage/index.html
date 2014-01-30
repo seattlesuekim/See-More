@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-01-30T14:51:48-08:00">2014-01-30T14:51:48-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-01-30T15:09:04-08:00">2014-01-30T15:09:04-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">74.7%</span></span>
+    (<span class="covered_percent"><span class="red">78.89%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.74
+         0.8
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>23</b> files in total.
-    <b>83</b> relevant lines. 
-    <span class="green"><b>62</b> lines covered</span> and
-    <span class="red"><b>21</b> lines missed </span>
+    <b>90</b> relevant lines. 
+    <span class="green"><b>71</b> lines covered</span> and
+    <span class="red"><b>19</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -122,12 +122,12 @@
       
       <tr>
         <td class="strong"><a href="#ac3dbd4b83ec594d8f93c2aac9bab59a658af56f" class="src_link" title="app/models/provider.rb">app/models/provider.rb</a></td>
-        <td class="red strong">57.14 %</td>
-        <td>37</td>
-        <td>7</td>
-        <td>4</td>
-        <td>3</td>
-        <td>0.6</td>
+        <td class="green strong">92.86 %</td>
+        <td>38</td>
+        <td>14</td>
+        <td>13</td>
+        <td>1</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -707,11 +707,11 @@
         <div class="source_table" id="ac3dbd4b83ec594d8f93c2aac9bab59a658af56f">
   <div class="header">
     <h3>app/models/provider.rb</h3>
-    <h4><span class="red">57.14 %</span> covered</h4>
+    <h4><span class="green">92.86 %</span> covered</h4>
     <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>14</b> relevant lines. 
+      <span class="green"><b>13</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -724,217 +724,223 @@
           <code class="ruby">class Provider &lt; ActiveRecord::Base </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="2">
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # validates :name, presence: true</code>
+          <code class="ruby">  validates :name, presence: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # validates :uid, presence: true</code>
+          <code class="ruby">  validates :uid, presence: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # validates :username, presence: true</code>
+          <code class="ruby">  validates :username, presence: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # validates :avatar_url, presence: true</code>
+          <code class="ruby">  validates :avatar_url, presence: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # validates :email, presence: true</code>
+          <code class="ruby">  validates :email, presence: true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :secret, presence: true</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validates :token, presence: true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
+        <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
           <code class="ruby">  belongs_to :user</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">  # validate all attribute fields</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
+        <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.find_or_create_from_omniauth(auth_hash)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="13">
+        <li class="missed" data-hits="0" data-linenumber="14">
           
           
           <code class="ruby">    Provider.find_by(uid: auth_hash[&quot;uid&quot;], name: auth_hash[&#39;provider&#39;]) || create_from_omniauth(auth_hash)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.create_from_omniauth(auth_hash)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="17">
-          
+        <li class="covered" data-hits="2" data-linenumber="18">
+          <span class="hits">2</span>
           
           <code class="ruby">    Provider.create!(</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">      uid:      auth_hash[&quot;uid&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby">      name: auth_hash[&quot;provider&quot;],</code>
+          <code class="ruby">      uid:      auth_hash[&quot;uid&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
           
           
-          <code class="ruby">      email:    auth_hash[&quot;info&quot;][&quot;email&quot;],</code>
+          <code class="ruby">      name: auth_hash[&quot;provider&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
-          <code class="ruby">      avatar_url: auth_hash[&quot;info&quot;][&quot;image&quot;],</code>
+          <code class="ruby">      email:    auth_hash[&quot;info&quot;][&quot;email&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby">      username: auth_hash[&quot;info&quot;][&quot;nickname&quot;],</code>
+          <code class="ruby">      avatar_url: auth_hash[&quot;info&quot;][&quot;image&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby">      secret: auth_hash[:credentials][:secret], </code>
+          <code class="ruby">      username: auth_hash[&quot;info&quot;][&quot;nickname&quot;],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">      token: auth_hash[:credentials][:token]</code>
+          <code class="ruby">      secret: auth_hash[:credentials][:secret], </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby">    )</code>
+          <code class="ruby">      token: auth_hash[:credentials][:token]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">    # all of this might need to be an extra step to link, rather than create new user</code>
+          <code class="ruby">    )</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">    # user = User.new(username:auth_hash[&#39;info&#39;][&#39;name&#39;], email: auth_hash[&#39;info&#39;][&#39;email&#39;])</code>
+          <code class="ruby">    # all of this might need to be an extra step to link, rather than create new user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
           
           
-          <code class="ruby">    #this automatically saves the user and the provider in one move </code>
+          <code class="ruby">    # user = User.new(username:auth_hash[&#39;info&#39;][&#39;name&#39;], email: auth_hash[&#39;info&#39;][&#39;email&#39;])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby">    #(prevents user from being saved if the provider does not get saved)</code>
+          <code class="ruby">    #this automatically saves the user and the provider in one move </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    # user.providers &lt;&lt; provider </code>
+          <code class="ruby">    #(prevents user from being saved if the provider does not get saved)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">    # user.save!</code>
+          <code class="ruby">    # user.providers &lt;&lt; provider </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">    # provider</code>
+          <code class="ruby">    # user.save!</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
+          <code class="ruby">    # provider</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
           <code class="ruby">  rescue ActiveRecord::RecordInvalid</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="34">
-          
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
           
           <code class="ruby">    nil</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">end</code>
