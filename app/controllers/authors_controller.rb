@@ -4,14 +4,14 @@ class AuthorsController < ApplicationController
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
     @author ||= current_user.authors.build( author_params)
-  
+
     begin
       current_user.authors << @author
     rescue ActiveRecord::RecordInvalid 
       @author = nil
     end
 
-    if @author #this saves the author's posts to the database--do we want that? how to update?
+    if @author
       if @author.is_a?(TumblrAuthor)
         TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
