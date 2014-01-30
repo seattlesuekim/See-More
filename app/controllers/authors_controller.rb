@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
 
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
-    @author ||= current_user.authors.build( author_params)
+    @author ||= current_user.authors.build(author_params) #difference between build and create?
 
     begin
       current_user.authors << @author
@@ -30,7 +30,6 @@ class AuthorsController < ApplicationController
     @user_author.destroy
     redirect_to :back
   end
-
 
   private
 
