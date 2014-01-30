@@ -1,11 +1,10 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:delete]
 
-
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
-    @author ||= current_user.authors.build( author_params)
-  
+    @author ||= current_user.authors.build(author_params) #difference between build and create?
+
     begin
       current_user.authors << @author
     rescue ActiveRecord::RecordInvalid 
@@ -14,9 +13,10 @@ class AuthorsController < ApplicationController
 
     if @author
       if @author.is_a?(TumblrAuthor)
-        TumblrAuthor.add_posts(params[:author][:uid], @author.id)
+        TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
+      # possibly unncessary, if done in rss_author.rb
       elsif @author.is_a?(RssAuthor)
         RssAuthor.get_posts(@author)
       end
@@ -28,10 +28,11 @@ class AuthorsController < ApplicationController
 
   def unsubscribe
     @user_author = UserAuthor.find_by(user_id: current_user.id, author_id: params[:author])
+    author = Author.find(params[:author].to_i)
     @user_author.destroy
+    flash[:notice] = "You have successfully unsubscribed from #{author.username}!"
     redirect_to :back
   end
-
 
   private
 
