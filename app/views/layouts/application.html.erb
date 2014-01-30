@@ -22,11 +22,7 @@
     <% end %>
     <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
 
-    <% if flash[:notice] %>
-      <div class='notice'>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    
 
     <% if current_user %>
     <nav class="navbar navbar-default" role="navigation">
@@ -105,7 +101,12 @@
       </div><!-- /.navbar-collapse -->
     </nav>
       <% end %>
-       
+    
+    <% if flash[:notice] %>
+      <div class='notice'>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
     <%= yield %>
 

@@ -28,7 +28,9 @@ class AuthorsController < ApplicationController
 
   def unsubscribe
     @user_author = UserAuthor.find_by(user_id: current_user.id, author_id: params[:author])
+    author = Author.find(params[:author].to_i)
     @user_author.destroy
+    flash[:notice] = "You have successfully unsubscribed from #{author.username}!"
     redirect_to :back
   end
 
