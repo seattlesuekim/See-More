@@ -1,9 +1,9 @@
 class Provider < ActiveRecord::Base 
-  validates :name, presence: true
-  validates :uid, presence: true
-  validates :username, presence: true
-  validates :avatar_url, presence: true
-  validates :email, presence: true
+  # validates :name, presence: true
+  # validates :uid, presence: true
+  # validates :username, presence: true
+  # validates :avatar_url, presence: true
+  # validates :email, presence: true
 
 
   belongs_to :user
@@ -14,7 +14,7 @@ class Provider < ActiveRecord::Base
   end
 
   def self.create_from_omniauth(auth_hash)
-    provider = self.create!(
+    Provider.create!(
       uid:      auth_hash["uid"],
       name: auth_hash["provider"],
       email:    auth_hash["info"]["email"],
