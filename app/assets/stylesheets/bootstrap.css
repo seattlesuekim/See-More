@@ -10,6 +10,8 @@
   height:50px;
 }
 
+
+
 article,
 aside,
 details,
@@ -2634,7 +2636,9 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-sm {
-  padding: 5px 10px;
+  padding: 2px;
+  padding-left: 35px; 
+  padding-right: 35px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
@@ -3538,7 +3542,7 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
+  min-width: 300px;
   padding: 5px 0;
   margin: 2px 0 0;
   font-size: 14px;
@@ -4335,7 +4339,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 20px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4624,6 +4628,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
+    padding: 5px;
   }
   .navbar-form .form-control {
     display: inline-block;
