@@ -17,8 +17,13 @@ class PostsController < ApplicationController
 
   def get_rss
     @rss = RssAuthor.from_rss(params[:get_rss])
-    redirect_to '/'
-    # redirect to user show?
+    if @rss
+      flash[:notice] = "Feed successfully added!"
+      redirect_to user_path(current_user)
+    else
+      flash[:notice] = "There was a problem saving your feed!"
+      redirect_to user_path(current_user)
+    end
   end
 
   def tweet

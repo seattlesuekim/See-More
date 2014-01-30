@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-
     auth_hash = request.env['omniauth.auth']
     ## OLD VERSION
     # @provider = Provider.find_or_create_from_omniauth(auth_hash)
@@ -31,6 +30,5 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, notice:"You have been successfully signed out!"
   end
-
 
 end
