@@ -11,16 +11,14 @@ class UsersController < ApplicationController
         else
           @posts = []
         end
-          current_user.authors.each do |author|
-            author.posts.each do |post|
-              p = {}
-              p[:author_name] = post.author.username
-              p[:body] = post.body
-              p[:posted_at] = post.posted_at
-              p[:author_url] = post.author.avatar
-              p[:author_type] = post.author.type
-              @posts << p
-            end
+        current_user.posts.each do |post|
+          p = {}
+          p[:author_name] = post.author.username
+          p[:body] = post.body
+          p[:posted_at] = post.posted_at
+          p[:author_url] = post.author.avatar
+          p[:author_type] = post.author.type
+          @posts << p
         end
         @posts = @posts.uniq {|p| p[:body]}
         @posts.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}

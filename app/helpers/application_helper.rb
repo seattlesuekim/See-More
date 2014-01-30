@@ -18,8 +18,13 @@ module ApplicationHelper
     author
   end
 
-  def display_content_with_links(text)
-     text.gsub(/(http:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}  
+  def render_post(post)
+    if post[:author_type] == "TwitterAuthor"
+      @rendered = post[:body].gsub(/(http:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}  
+    elsif post[:author_type] == "TumblrAuthor"
+      @rendered = post[:body]
+    end
+      @rendered.html_safe
   end
 
   def has_twitter_provider

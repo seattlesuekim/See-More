@@ -24,12 +24,9 @@
           </div>
           <div class="col-md-7">
             <div class="text">
-              <!-- <div class="author"><%#= p.author.username %></div> -->
-              <!-- <p><%#= p.body.html_safe %><br> -->
-
               <div class="author"><%= p[:author_name] %></div>
-              <p><%#= display_content_with_links(p[:body]).html_safe %>
-                <%= p[:body].html_safe %><br>
+              <p><%= render_post(p) %>
+                <%#= p[:body].html_safe %><br>
 
               <span class='timestamp'>
                 Posted at <%= p[:posted_at].strftime("%l:%M %p on %A, %b %e, %Y") %>
