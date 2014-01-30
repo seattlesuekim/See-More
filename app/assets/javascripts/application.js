@@ -12,9 +12,27 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 // require turbolinks
 //= require_tree .
 
+$(function() {
+  // Setup drop down menu
+  $('.dropdown-toggle').dropdown();
+ 
+  // Fix input element click problem
+  $('.dropdown input, .dropdown label').click(function(e) {
+    e.stopPropagation();
+  });
+});
+
+if ($(window).width() >= 780) {
+    jQuery('ul.nav li.dropdown').hover(function () {
+        jQuery(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn();
+    }, function () {
+        jQuery(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut();
+    });
+}
 
 $(function(){
   $('#profiletabs ul li a').on('click', function(e){
@@ -31,3 +49,15 @@ $(function(){
     $(newcontent).removeClass('hidden');
   });
 });
+
+function CheckMaxlength(oInObj)
+{
+      var iMaxLen = parseInt(oInObj.getAttribute('maxlength'));
+      var iCurLen = oInObj.value.length;
+
+      if ( oInObj.getAttribute && iCurLen > iMaxLen )
+      {
+          oInObj.value = oInObj.value.substring(0, iMaxLen);
+      }
+}
+

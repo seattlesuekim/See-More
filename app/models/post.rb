@@ -1,28 +1,27 @@
 class Post < ActiveRecord::Base
+  validates :body, presence: :true
   belongs_to :author
+  attr_accessor :feed
 
-  attr_accessor :feed, :post
-
-  # RSS feed from other blogs
-  def self.from_rss(url)
-    @feed = Feedzirra::Feed.fetch_and_parse(url)
-    if not @feed.is_a?(Fixnum) && @feed != nil
-    #if @feed.is_a?(Feedzirra::Parser::RSS) || @feed.is_a?(Feedzirra::Parser::Atom)
-      entry = @feed.entries.first
-      @post = Post.new do |p|
-        p.author_id = entry.author
-        p.body = entry.content
-        p.title = entry.title
-        #p.posted_at = entry.published
-        # p.created_at = Automatically gets set to the current date and time when the record is first created.
-      end
-      @post.save
-      @post
+  def self.create_tumblr_post(post)
+    author = Author.find_by(uid: post['blog_name'])
+    case post['type']
+      when 'video'
+        author.posts << self.create(body: post["player"].first["embed_code"], posted_at: post["date"])
+      when 'text'
+        author.posts << self.create(body: post["body"], posted_at: post["date"])
+      when 'quote'
+        author.posts << self.create(body: "#{post["text"]} #{post["source"]}", posted_at: post["date"])
+      when 'chat'
+        chat = post['body'].gsub(/\r\n/, '<br>')
+        author.posts << self.create(body: chat, posted_at: post["date"])
+      when 'answer'
+        author.posts << self.create(body: post["body"], posted_at: post["date"])
+      when 'photo'
+        photoset = post['photos'].map {|photo| "<img src= '#{photo['original_size']['url']}', width= '450'>"}.join("")
+        author.posts << self.create(body: photoset, posted_at: post["date"])
+      when 'audio'
+        author.posts << self.create(body: post["player"], posted_at: post["date"])
     end
   end
-
-  def self.update_rss
-    Feedzirra::Feed.update(@feed)
-  end
-
 end

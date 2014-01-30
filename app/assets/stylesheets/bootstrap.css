@@ -5,6 +5,12 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+.custom {
+  width:500px;
+  height:50px;
+}
+
+
 
 article,
 aside,
@@ -404,7 +410,7 @@ h6,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  /*color: inherit;*/
 }
 
 h1 small,
@@ -2630,7 +2636,9 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-sm {
-  padding: 5px 10px;
+  padding: 2px;
+  padding-left: 35px; 
+  padding-right: 35px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
@@ -3534,7 +3542,7 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
+  min-width: 300px;
   padding: 5px 0;
   margin: 2px 0 0;
   font-size: 14px;
@@ -4331,7 +4339,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 20px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4590,7 +4598,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding-bottom: 15px;
   }
   .navbar-nav.navbar-right:last-child {
-    margin-right: -15px;
+    margin-right: 15px;
   }
 }
 
@@ -4620,6 +4628,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
+    padding: 5px;
   }
   .navbar-form .form-control {
     display: inline-block;

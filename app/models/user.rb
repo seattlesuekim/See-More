@@ -7,11 +7,19 @@ class User < ActiveRecord::Base
   def self.create_from_omniauth(auth_hash)
     self.create!(      
       username: auth_hash["info"]["name"],
-      secret: auth_hash[:credentials][:secret], 
-      token: auth_hash[:credentials][:token]
     )
   rescue ActiveRecord::RecordInvalid
     nil
+  end
+
+  def posts
+    @posts = []
+    self.authors.each do |author|
+      author.posts.each do |post|
+        @posts << post
+      end
+    end
+    @posts
   end
   
 end

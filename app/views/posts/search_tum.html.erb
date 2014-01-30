@@ -1,38 +1,20 @@
-
 <div class="row">
-  
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-1" align="right" height="80px" >
-      <%= link_to (image_tag "tumblr.png"), " " %> 
-    </div>
-    <div class="col-md-1">
-      <div class="avatar">
-        <img src="http://api.tumblr.com/v2/blog/<%= @tumblr_results["blog"]["name"] %>.tumblr.com/avatar/512" class="img-thumbnail">
-      </div>
-    </div>
-    <div class="col-md-7">
-        <div class="text">
-          <div class="author">
-            <p><%= @tumblr_results["blog"]["name"] %> </p>
-            <p><%= @tumblr_results["blog"]["title"] %> </p>
-            
-            <p><%= link_to @tumblr_results["blog"]["url"], authors_path(author: create_tum_author_hash(@tumblr_results)), method: :post  %> </p>
-
-            <p><%= @tumblr_results["blog"]["description"].html_safe %> </p>
-          </div>
-          <p>
-          <!-- Text from blog here -->
-          </p>
-          <div class="meta">
-            <div class="datetime">
-             <!--  Insert Date and Time -->
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    
+  <div class="col-md-2"></div>
+  <div class="col-md-1" align="right" height="80px" >
+    <%= link_to (image_tag "tumblr.png"), " " %> 
   </div>
-  <br>
+  <div class="col-md-1">
+    <!-- <div class="avatar"> -->
+      <%= image_tag "http://api.tumblr.com/v2/blog/#{@tumblr_results["blog"]["name"]}.tumblr.com/avatar/512", class: 'img-thumbnail avatar', size: '60' %>
+    <!-- </div> -->
+  </div>
+  <div class="col-md-6">
+    <div class="text">
+      <!-- these should probably be h3 and h4, but alignment gets off-same in twitter -->
+      <span class= 'author'><%= @tumblr_results["blog"]["name"] %></span><br>
+      <span class='tumblr_title'><%= @tumblr_results["blog"]["title"] %></span>
+      <p class= 'tumblr_description'><%= @tumblr_results["blog"]["description"].html_safe %></p>
+      <%= button_to "Subscribe!", authors_path(author: create_tum_author_hash(@tumblr_results)), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

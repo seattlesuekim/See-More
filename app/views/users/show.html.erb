@@ -6,57 +6,68 @@
       <li><a href="#account">My Account</a></li>
     </ul>
   </nav>
-     
+
   <section id="feed">
+    <div class='container'><br>
+      <% if @posts.empty? %>
+        <h3>Your feed is empty. Add some peeps!</h3>
+      <% else %>
+        <h3>What your peeps are saying:</h3>
+        <% @posts.each do |p| %>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" align="right" height="80px" >
+              <%= image_tag "#{p[:author_type].partition(/Author/).first.downcase}.png" %>
+            </div>
+            <div class="col-md-1">
+              <div class="avatar">
+                <%= image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80") %>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="text">
+                <div class="author"><%= p[:author_name] %></div>
+                <p><%= render_post(p) %><br>
+                <span class='timestamp'>
+                  Posted at <%= p[:posted_at].strftime("%l:%M %p on %A, %b %e, %Y") %>
+                </span></p>
+              </div>
+            </div>
+          </div>
+          <br>
+        <% end %>
+        <div class="text-center"><%= will_paginate @posts %></div>
+      <% end %>
+
+    </div>
+  </section>
+
+  <section id="subs" class="hidden">
     <div class='container'>
-      <h3>Here is what your peeps are saying:</h3>
-      <% @posts.each do |p| %>
+      <% if current_user.authors.empty? %>
+        <h3>Where are your peeps? Start following!</h3>
+      <% else %>
+        <h3>You are currently following:</h3>
+        <% current_user.authors.each do |a| %>
         <div class="row">
           <div class="col-md-2"></div>
-          <div class="col-md-1" align="right" height="80px" >
-            <%= image_tag "#{p.author.type.partition(/Author/).first.downcase}.png" %> 
+          <div class="col-md-1" align="right" height="80px">
+            <%= image_tag "#{a.type.partition(/Author/).first.downcase}.png" %>
           </div>
           <div class="col-md-1">
             <div class="avatar">
-              <%= image_tag("#{p.author.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
-            </div> 
+              <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %>
+            </div>
           </div>
           <div class="col-md-7">
             <div class="text">
-              <div class="author"><%= p.author.username %></div>
-              <p><%= p.title %> </p>
-              <p><%= p.body.html_safe %><br>
-              Posted: <%= p.posted_at %></p>
+              <div class="author"><%= a.username %></div>
+              <%= button_to "Unsubscribe", unsubscribe_path(author: a), method: :delete, type: "submit", class: "btn btn-info" %>
             </div>
           </div>
         </div>
         <br>
-      <%end %>
-    </div>
-  </section>
-     
-  <section id="subs" class="hidden">
-    <div class='container'>
-      <h3>You are currently following:</h3>
-      <% current_user.authors.each do |a| %>
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-1" align="right" height="80px">
-          <%= image_tag "#{a.type.partition(/Author/).first.downcase}.png" %>
-        </div>
-        <div class="col-md-1">
-          <div class="avatar">
-            <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %> 
-          </div> 
-        </div>
-        <div class="col-md-7">
-          <div class="text">
-            <div class="author"><%= a.username %></div>
-            <%= button_to "Unsubscribe", unsubscribe_path(author: a), method: :delete, type: "submit", class: "btn btn-info" %>
-          </div>
-        </div>
-      </div>
-      <br>
+        <% end %>
       <% end %>
     </div>
   </section>
@@ -76,9 +87,8 @@
 
       <h4>Link another account</h4>
       <div class="icons">
-       <!-- iterate through all providers and put only the ones that don't already exist in @providers? -->
-        <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
-        <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+        <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%>
+        <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %>
       </div>
     </div>
   </section>

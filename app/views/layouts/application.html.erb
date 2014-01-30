@@ -17,44 +17,93 @@
     
   </head>
   <body>
-    <h1> <%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
-      <% if current_user %>
-        <div class='navbar'>
-          <div class=  'btn btn-default'>
-            <%= link_to "Sign Out", sign_out_path %>
-          </div>
-          <div class= 'btn btn-default'>
-            <%= link_to "My Feed", user_path(current_user) %>
-          </div>
 
-          <%= form_tag twitter_search_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-            <div class="form-group">
-              <input type="text" name="twitter_search" class="form-control" placeholder="Search Twitter">
-            </div>
-            <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
+    <% if current_user %> 
+      <h4>Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %></h4>
+      <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
+    <% end %>
 
-          <%= form_tag search_tum_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-            <div class="form-group">
-              <input type="text" name="search_tum" class="form-control" placeholder="Search Tumblr">
-            </div>
-            <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
-          <%= form_tag rss_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-              <div class="form-group">
-                  <input type="text" name="get_rss" class="form-control" placeholder="Add a Feed">
-              </div>
-              <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
-          <%= form_tag tweet_path, :class =>"navbar-form navbar-right", method: 'post' do %>
-              <div class="form-group">
-                  <input type="text" name="tweet" class="form-control" placeholder="Tweet">
-              </div>
-              <button type="submit" class="btn btn-info">Go!</button>
-          <% end %>
+    <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
+    
+    <% if current_user %>
+      <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >Search for your Peeps:</a>
         </div>
-      <% end %>
-
+          <ul class="nav navbar-nav">
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "tumblr.png", size: "20x20" %> Tumblr </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag search_tum_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "search_tum", nil, placeholder: "Search Tumblr", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "twitter.png", size: "20x20" %> Twitter </span>
+              </a>
+              <ul role="menu"  class="dropdown-menu">
+                <%= form_tag twitter_search_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "twitter_search", nil, placeholder: "Search Twitter", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+              </ul>
+            </li>
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "rss.png", size: "20x20" %> RSS Feed </span>
+              </a>
+              <ul role="menu" class="dropdown-menu">
+                <%= form_tag rss_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "get_rss", nil, placeholder: "Add a feed", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+          <% if has_twitter_provider %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag "tweet.jpg", size: "20x20" %>Post to Twitter <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= form_tag(tweet_path, :class =>"navbar-form", method: 'post', type: 'text') do %>
+                      <div class="form-group">
+                        <%= text_field_tag :tweet, "", class: "input-large custom", placeholder: "Post to Twitter", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
+                      </div>
+                      <%= submit_tag("Tweet!", class: "btn-block btn-info") %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+    <% end %>
+    
     <% if flash[:notice] %>
       <div class='notice'>
         <%= flash[:notice] %>
@@ -64,7 +113,8 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-    <div class='debug'><h3>Debug</h3>
+
+    <!-- <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
       <hr>
@@ -78,17 +128,20 @@
       <h4>Providers</h4>
       <ul>
         <%Provider.all.each do |provider| %>
-          <li><%=provider.name %></li>
+          <li><%=provider.name %><br>
+            <%=provider.user.inspect %>
+          </li>
         <% end %>
       </ul>
       <hr>
-      <!-- <h4>Posts</h4>
+      <h4>Posts</h4>
       <ul>
         <% Post.all.each do |post| %>
-          <li><%#=post.inspect %></li>
+          <li><%=post.inspect %></li>
         <% end %>
-      </ul> -->
-    </div>
+      </ul>
+    </div> -->
 <!-- end debug -->
+
   </body>
 </html>

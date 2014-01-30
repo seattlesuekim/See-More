@@ -9,21 +9,27 @@ class PostsController < ApplicationController
   def search_tum
     @tumblr_results = get_tumblr_results
     if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
-      redirect_to "/", notice: "No users match your search." 
+      redirect_to user_path(current_user), notice: "No users match your search." 
     else
       flash[:notice] = "Search results for \"#{params[:search_tum]}\""
     end
   end
 
   def get_rss
-    @rss_post = Post.from_rss(params[:get_rss])
-    render :rss_results
+    @rss = RssAuthor.from_rss(params[:get_rss])
+    if @rss
+      flash[:notice] = "Feed successfully added!"
+      redirect_to user_path(current_user)
+    else
+      flash[:notice] = "There was a problem saving your feed!"
+      redirect_to user_path(current_user)
+    end
   end
 
   def tweet
     user_client = TwitterAuthor.user_client(current_user)
     user_client.update(params[:tweet])
-    redirect_to :back
+    redirect_to :back, notice: "Your tweet has been successfully posted!"
   end
 
   private
