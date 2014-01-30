@@ -18,7 +18,7 @@
   </head>
   <body>
     <% if current_user %>
-    <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
+      <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
     <% end %>
 
     <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
