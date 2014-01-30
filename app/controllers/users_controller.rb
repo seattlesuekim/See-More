@@ -34,22 +34,27 @@ class UsersController < ApplicationController
   end
 
   def home_feed
+    if current_user
     types = current_user.providers.map {|p| p.name}
-    if types.include? "twitter"
-      user_client = TwitterAuthor.user_client(current_user)
-      @home_feed = []
-      user_client.home_timeline.take(25).each do |t|
-        p = {}
-        p[:author_name] = t.user.screen_name
-        p[:body] = t.text
-        p[:posted_at] = t.created_at
-        p[:author_url] = t.user.profile_image_url
-        p[:author_type] = "TwitterAuthor"
-        @home_feed << p
+      if types.include? "twitter"
+        user_client = TwitterAuthor.user_client(current_user)
+        @home_feed = []
+        user_client.home_timeline.take(25).each do |t|
+          p = {}
+          p[:author_name] = t.user.screen_name
+          p[:body] = t.text
+          p[:posted_at] = t.created_at
+          p[:author_url] = t.user.profile_image_url
+          p[:author_type] = "TwitterAuthor"
+          @home_feed << p
+        end
+      else
+        nil
       end
-    else
-      nil
+    else 
+      flash[:notice] = "You must be signed in to view this page!"
     end
+
   end
 end
 
