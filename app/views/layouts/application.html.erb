@@ -17,8 +17,10 @@
     
   </head>
   <body>
+    <ul class="nav navbar-nav navbar-right">
     <% if current_user %>
     <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
+  </ul>
     <% end %>
     <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
 
