@@ -35,8 +35,11 @@ hr {
 }
 
 h4 {
-  /*font-family: ;*/
   color: grey ;
+}
+
+h3 {
+  text-align: center;
 }
 
 .sign_in, .welcome {
