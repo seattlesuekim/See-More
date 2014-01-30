@@ -15,6 +15,7 @@
 
 body {
   background: linear-gradient(150deg, powderblue, papayawhip, lightpink);
+
   background-repeat: repeat-x;
 }
 hr {
@@ -120,4 +121,4 @@ h3 {
   margin: auto;
   color: cornflowerblue;
 }
- 
+
