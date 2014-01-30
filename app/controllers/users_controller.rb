@@ -22,7 +22,8 @@ class UsersController < ApplicationController
               @posts << p
             end
         end
-        @posts.uniq.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}
+        @posts = @posts.uniq {|p| p[:body]}
+        @posts.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}
         @posts = @posts.paginate(:page => params[:page], :per_page => 25)
       else
         flash[:notice] = "You are not authorized to view this page!"
