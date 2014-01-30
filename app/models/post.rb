@@ -12,7 +12,8 @@ class Post < ActiveRecord::Base
       when 'quote'
         author.posts << self.create(body: "#{post["text"]} #{post["source"]}", posted_at: post["date"])
       when 'chat'
-        author.posts << self.create(body: post["body"], posted_at: post["date"])
+        chat = post['body'].gsub(/\r\n/, '<br>')
+        author.posts << self.create(body: chat, posted_at: post["date"])
       when 'answer'
         author.posts << self.create(body: post["body"], posted_at: post["date"])
       when 'photo'
