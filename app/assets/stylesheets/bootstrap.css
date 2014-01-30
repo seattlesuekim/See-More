@@ -494,7 +494,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 h5,
@@ -2637,7 +2637,7 @@ fieldset[disabled] .btn-link:focus {
 
 .btn-sm {
   padding: 2px;
-  padding-left: 35px; 
+  padding-left: 35px;
   padding-right: 35px;
   font-size: 12px;
   line-height: 1.5;

@@ -6,11 +6,11 @@
   <% unless current_user %>
   <hr>
   <!-- need to create permanent cookie to display only options user has already signed in with -->
-   
-  <h3>Sign in with:</h3>
+
+  <h4>Sign in with:</h4>
     <div class="icons">
-      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%> 
-      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %> 
+      <%= link_to (image_tag "twitter.png"), "/auth/twitter", title: "Twitter"%>
+      <%= link_to (image_tag "tumblr.png"), "/auth/tumblr", title: "Tumblr" %>
     </div>
   <% end %>
 </div>
