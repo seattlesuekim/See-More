@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :home_feed
+  before_action :home_feed
 
   def show
     @user = User.find(params[:id])
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
         p[:body] = t.text
         p[:posted_at] = t.created_at
         p[:author_url] = t.user.profile_image_url
-        p[:author_type] = "twitter"
+        p[:author_type] = "TwitterAuthor"
         @home_feed << p
       end
     else
