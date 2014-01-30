@@ -14,7 +14,7 @@ class TumblrAuthor < Author
   def self.add_posts(keyword)
     response = TumblrAuthor.client.posts(keyword)
     posts = response["posts"]
-    raise
+    # raise
     @posts = posts.map do |post|
       Post.create_tumblr_post(post)
     end
