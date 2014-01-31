@@ -34,12 +34,12 @@ class PostsController < ApplicationController
 
   def favorite
     @user_client.favorite(params[:tweet][:pid])
-    redirect_to :back, notice: "favorited"
+    redirect_to :back, notice: "The tweet has been favorited!"
   end
 
   def retweet
     @user_client.retweet(params[:tweet][:pid])
-    redirect_to :back, notice: "retweeted"
+    redirect_to :back, notice: "The tweet has been retweeted!"
   end
 
   private
