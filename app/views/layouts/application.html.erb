@@ -5,17 +5,17 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    
+
   </head>
   <body>
+      <% if current_user %>
 
-    <% if current_user %> 
-      <h4>Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %></h4>
-      <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
-    <% end %>
+        Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %> |
+        <%= link_to "Sign Out", sign_out_path %>
 
-    <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
-    
+      <% end %>
+
+      <h1><%= link_to (image_tag "PeepsYellow.png"), "" %>PEEPS</h1>
     <% if current_user %>
       <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -94,7 +94,7 @@
         </div><!-- /.navbar-collapse -->
       </nav>
     <% end %>
-    
+
     <% if flash[:notice] %>
       <div class='notice'>
         <%= flash[:notice] %>
