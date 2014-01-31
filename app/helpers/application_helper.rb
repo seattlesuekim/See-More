@@ -35,11 +35,11 @@ module ApplicationHelper
   def img_linkify(p)
    case p[:author_type]
    when "TwitterAuthor"
-    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80"), "https://twitter.com/#{p[:author_name]}", target: "_blank"
+    link_to image_tag("#{p[:author_url]}", class: "img-thumbnail", size: "80"), "https://twitter.com/#{p[:author_name]}", target: "_blank"
    when "TumblrAuthor"
-    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80"), "http://#{p[:author_name]}.tumblr.com", target: "_blank"
+    link_to image_tag("#{p[:author_url]}", class: "img-thumbnail", size: "80"), "http://#{p[:author_name]}.tumblr.com", target: "_blank"
    else
-    image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80")
+    image_tag("#{p[:author_url]}", class:  "img-thumbnail", size: "80")
    end
   end
 
@@ -51,6 +51,28 @@ module ApplicationHelper
     link_to p[:author_name], "http://#{p[:author_name]}.tumblr.com", target: "_blank"
    else
     p[:author_name]
+   end
+  end
+
+  def auth_img_linkify(a)
+   case a.type
+   when "TwitterAuthor"
+    link_to image_tag("#{a.avatar}", class: "img-thumbnail", size: "80"), "https://twitter.com/#{a.username}", target: "_blank"
+   when "TumblrAuthor"
+    link_to image_tag("#{a.avatar}", class: "img-thumbnail", size: "80"), "http://#{a.username}.tumblr.com", target: "_blank"
+   else
+    image_tag("#{a.avatar}", class: "img-thumbnail", size: "80")
+   end
+  end
+
+  def auth_txt_linkify(a)
+     case a.type
+   when "TwitterAuthor"
+    link_to a.username, "https://twitter.com/#{a.username}", target: "_blank"
+   when "TumblrAuthor"
+    link_to a.username, "http://#{a.username}.tumblr.com", target: "_blank"
+   else
+    a.username
    end
   end
 
