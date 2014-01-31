@@ -21,12 +21,12 @@
             </div>
             <div class="col-md-1">
               <div class="avatar">
-                <%= image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80") %>
+                <%= img_linkify(p) %>
               </div>
             </div>
             <div class="col-md-7">
               <div class="text">
-                <div class="author"><%= p[:author_name] %></div>
+                <div class="author"><%= txt_linkify(p) %></div>
                 <p><%= render_post(p) %><br>
                   <% if p[:author_type] == "TwitterAuthor" && has_twitter_provider %>
                     <p>
