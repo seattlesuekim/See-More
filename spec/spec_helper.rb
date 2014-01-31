@@ -51,7 +51,7 @@ RSpec.configure do |config|
       info: {
         email: "a@b.com", 
         nickname: "Bookis",
-        image: "http://example/image",
+        avatar: "http://example/image",
       }, 
       credentials: {
         secret: 'THIS_IS_SECRET', 

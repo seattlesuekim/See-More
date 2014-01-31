@@ -10,15 +10,15 @@ class Provider < ActiveRecord::Base
   # validate all attribute fields
 
   def self.find_or_create_from_omniauth(auth_hash)
-    Provider.find_by(uid: auth_hash["uid"], name: auth_hash['provider']) || create_from_omniauth(auth_hash)
+    Provider.find_by(uid: auth_hash[:uid], name: auth_hash[:provider]) || create_from_omniauth(auth_hash)
   end
 
   def self.create_from_omniauth(auth_hash)
     Provider.create!(
-      uid:        auth_hash["uid"],
-      name:       auth_hash["provider"],
-      avatar_url: auth_hash["info"]["image"],
-      username:   auth_hash["info"]["nickname"],
+      uid:        auth_hash[:uid],
+      name:       auth_hash[:provider],
+      avatar_url: auth_hash[:info][:image] || auth_hash[:info][:avatar],
+      username:   auth_hash[:info][:nickname],
       secret:     auth_hash[:credentials][:secret], 
       token:      auth_hash[:credentials][:token]
     )

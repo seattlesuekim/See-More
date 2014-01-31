@@ -22,7 +22,7 @@ describe Provider do
         provider = Provider.create_from_omniauth({
           uid:        "",
           provider:       "",
-          info:      "",
+          info:      {},
           credentials: {},
         })
         expect(provider).to be_nil
@@ -42,7 +42,7 @@ describe Provider do
          provider = Provider.create_from_omniauth({
           uid:        "",
           provider:       "",
-          info:      "",
+          info:      {},
           credentials: {},
         })
         expect(provider).to be_nil
