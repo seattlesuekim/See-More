@@ -28,7 +28,13 @@
               <div class="text">
                 <div class="author"><%= p[:author_name] %></div>
                 <p><%= render_post(p) %><br>
-                <span class='timestamp'>
+                  <% if p[:author_type] == "TwitterAuthor" && has_twitter_provider %>
+                    <p>
+                      <%= link_to "Favorite", favorite_path(tweet: p), method: :post %> |
+                      <%= link_to "Retweet", retweet_path(tweet: p), method: :post %>
+                    </p>
+                  <% end %>
+                 <span class='timestamp'>
                   Posted at <%= p[:posted_at].strftime("%l:%M %p on %A, %b %e, %Y") %>
                 </span></p>
               </div>
@@ -80,7 +86,7 @@
           <%= image_tag "#{p.name}.png" %>
           <%= image_tag("#{p['avatar_url']}", height: '50') %>
           <%= p['username'] %><br>
-          
+
         <% end %>
       </ul>
 
