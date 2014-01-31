@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Provider do
-  let(:provider) { Provider.create( name: "twitter", uid: "1234", username: "Bookis", email: 'bookis@bookis.com', avatar_url: "some_string") }
+  let(:provider) { Provider.create( name: "twitter", uid: "1234", username: "Bookis", avatar_url: "some_string") }
 
   describe 'validations' do
     it 'creates a valid provider' do
@@ -22,7 +22,7 @@ describe Provider do
         provider = Provider.create_from_omniauth({
           uid:        "",
           provider:       "",
-          "info" =>      "",
+          info:      "",
           credentials: {},
         })
         expect(provider).to be_nil
@@ -42,7 +42,7 @@ describe Provider do
          provider = Provider.create_from_omniauth({
           uid:        "",
           provider:       "",
-          "info" =>      "",
+          info:      "",
           credentials: {},
         })
         expect(provider).to be_nil

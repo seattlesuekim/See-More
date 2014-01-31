@@ -37,7 +37,6 @@ describe User do
       expect(user).to be_valid
     end
 
-
     context "when it's invalid" do
       it "returns nil" do
         user = User.create_from_omniauth({"uid" => "123", "info" => {}})

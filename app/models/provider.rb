@@ -3,7 +3,6 @@ class Provider < ActiveRecord::Base
   validates :uid, presence: true
   validates :username, presence: true
   validates :avatar_url, presence: true
-  validates :email, presence: true
   validates :secret, presence: true
   validates :token, presence: true
 
@@ -18,7 +17,6 @@ class Provider < ActiveRecord::Base
     Provider.create!(
       uid:        auth_hash["uid"],
       name:       auth_hash["provider"],
-      email:      auth_hash["info"]["email"],
       avatar_url: auth_hash["info"]["image"],
       username:   auth_hash["info"]["nickname"],
       secret:     auth_hash[:credentials][:secret], 
