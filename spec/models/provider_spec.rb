@@ -16,6 +16,18 @@ describe Provider do
     it "creates a valid provider" do
       expect(provider).to be_valid
     end
+
+    context "when it's invalid" do
+      it "returns nil" do
+        provider = Provider.create_from_omniauth({
+          uid:        "",
+          provider:       "",
+          "info" =>      "",
+          credentials: {},
+        })
+        expect(provider).to be_nil
+      end
+    end
   end
 
   describe '.initialize_from_omniauth_tumblr' do
@@ -23,6 +35,18 @@ describe Provider do
 
     it "creates a valid user" do
       expect(provider).to be_valid
+    end
+
+    context "when it's invalid" do
+      it "returns nil" do
+         provider = Provider.create_from_omniauth({
+          uid:        "",
+          provider:       "",
+          "info" =>      "",
+          credentials: {},
+        })
+        expect(provider).to be_nil
+      end
     end
   end
 
