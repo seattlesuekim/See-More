@@ -35,11 +35,11 @@ module ApplicationHelper
   def img_linkify(p)
    case p[:author_type]
    when "TwitterAuthor"
-    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80"), "https://twitter.com/#{p[:author_name]}", target: "_blank"
+    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80"), "https://twitter.com/#{p[:author_name]}", target: "_blank"
    when "TumblrAuthor"
-    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80"), "http://#{p[:author_name]}.tumblr.com", target: "_blank"
+    link_to image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80"), "http://#{p[:author_name]}.tumblr.com", target: "_blank"
    else
-    image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80")
+    image_tag("#{p[:author_url]}", :class=> "img-thumbnail", size: "80")
    end
   end
 
