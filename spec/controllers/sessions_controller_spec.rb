@@ -4,26 +4,26 @@ describe SessionsController do
 
 describe SessionsController do
   describe "GET 'create'" do
-    context "when using github authorization" do
+    context "when using twitter authorization" do
       context "is successful" do
         before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter] }
 
         it "redirects to home page" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(response).to redirect_to root_path
         end
 
         it "creates a user" do
-          expect { get :create, provider: :github }.to change(User, :count).by(1)
+          expect { get :create, provider: :twitter }.to change(User, :count).by(1)
         end
 
         it "assigns the @user var" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(assigns(:user)).to be_an_instance_of User
         end
 
         it "assigns the session[:user_id]" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(session[:user_id]).to eq assigns(:user).id
         end
 
@@ -34,11 +34,11 @@ describe SessionsController do
         let!(:user) { User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter]) }
 
         it "doesn't create another user" do
-          expect { get :create, provider: :github }.to_not change(User, :count).by(1)
+          expect { get :create, provider: :twitter }.to_not change(User, :count).by(1)
         end
 
         it "assigns the session[:user_id]" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(session[:user_id]).to eq user.id
         end
       end
@@ -47,7 +47,7 @@ describe SessionsController do
         before { request.env["omniauth.auth"] = :invalid_credential }
 
         it "redirect to home with flash error" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(response).to redirect_to root_path
           expect(flash[:notice]).to include "Failed to authenticate"
         end
@@ -59,7 +59,7 @@ describe SessionsController do
         }
 
         it "redirect to home with flash error" do
-          get :create, provider: :github
+          get :create, provider: :twitter
           expect(response).to redirect_to root_path
           expect(flash[:notice]).to include "Failed to save the user"
         end

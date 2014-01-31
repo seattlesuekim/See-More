@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
     @provider = Provider.find_by(uid: auth_hash[:uid])
 
     
-
     if @provider #for existing user who is not signed in--maybe elsif
       session[:user_id] = @provider.user_id
       redirect_to user_path(session[:user_id]), notice: "You have been successfully signed in!"
