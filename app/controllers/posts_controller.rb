@@ -29,17 +29,17 @@ class PostsController < ApplicationController
 
   def tweet
     @user_client.update(params[:tweet])
-    redirect_to :back, notice: "Your tweet has been successfully favorited!"
+    redirect_to :back, notice: "Your tweet has been successfully posted!"
   end
 
   def favorite
     @user_client.favorite(params[:tweet][:pid])
-    redirect_to :back, notice: "The tweet has been favorited!"
+    redirect_to :back, notice: "You have successfully favorited this tweet!"
   end
 
   def retweet
     @user_client.retweet(params[:tweet][:pid])
-    redirect_to :back, notice: "The tweet has been retweeted!"
+    redirect_to :back, notice: "You have successfully retweeted this tweet!"
   end
 
   private

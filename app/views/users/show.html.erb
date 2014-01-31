@@ -28,7 +28,7 @@
               <div class="text">
                 <div class="author"><%= p[:author_name] %></div>
                 <p><%= render_post(p) %><br>
-                  <% if p[:author_type] == "TwitterAuthor" %>
+                  <% if p[:author_type] == "TwitterAuthor" && has_twitter_provider %>
                     <p>
                       <%= link_to "Favorite", favorite_path(tweet: p), method: :post %> |
                       <%= link_to "Retweet", retweet_path(tweet: p), method: :post %>
