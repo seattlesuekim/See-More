@@ -11,7 +11,6 @@ class Post < ActiveRecord::Base
     )
   end
 
-
   def self.create_tumblr_post(post)
     author = Author.find_by(uid: post['blog_name'])
     case post['type']
