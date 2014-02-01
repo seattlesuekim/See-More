@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def render_post(post)
     if post[:author_type] == "TwitterAuthor"
-      @rendered = post[:body].gsub(/(http:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}
+      @rendered = post[:body].gsub(/(http[s]?:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}
     elsif post[:author_type] == "TumblrAuthor"
       @rendered = post[:body]
     end
@@ -66,7 +66,7 @@ module ApplicationHelper
   end
 
   def auth_txt_linkify(a)
-     case a.type
+   case a.type
    when "TwitterAuthor"
     link_to a.username, "https://twitter.com/#{a.username}", target: "_blank"
    when "TumblrAuthor"
