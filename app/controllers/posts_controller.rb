@@ -27,6 +27,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def instagram_search
+    @results = InstagramAuthor.client.user_search(params[:instagram])
+    render :instagram_results
+  end
+
   def tweet
     @user_client.update(params[:tweet])
     redirect_to :back, notice: "Your tweet has been successfully posted!"

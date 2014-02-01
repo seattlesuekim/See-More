@@ -19,6 +19,7 @@ class UsersController < ApplicationController
           p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small')
           p[:author_type] = post.author.type
           p[:pid] = post.pid
+          p[:caption] = post.title
           @posts << p
         end
         @posts = @posts.uniq {|p| p[:body]}

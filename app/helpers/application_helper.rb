@@ -18,11 +18,22 @@ module ApplicationHelper
     author
   end
 
+  def create_instagram_author(result)
+    author = {}
+    author[:username]  = result.username
+    author[:type]      = "InstagramAuthor"
+    author[:uid]       = result.id
+    author[:avatar]    = result.profile_picture
+    author
+  end
+
   def render_post(post)
     if post[:author_type] == "TwitterAuthor"
       @rendered = post[:body].gsub(/(http[s]?:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}
     elsif post[:author_type] == "TumblrAuthor"
       @rendered = post[:body]
+    elsif post[:author_type] =="InstagramAuthor"
+      @rendered = post[:body] + "<br>" + post[:caption]
     end
     @rendered.html_safe
   end
