@@ -21,12 +21,12 @@
             </div>
             <div class="col-md-1">
               <div class="avatar">
-                <%= image_tag("#{p[:author_url]}", :class=> "img-thumbnail", :size=> "80x80") %>
+                <%= img_linkify(p) %>
               </div>
             </div>
             <div class="col-md-7">
               <div class="text">
-                <div class="author"><%= p[:author_name] %></div>
+                <div class="author"><%= txt_linkify(p) %></div>
                 <p><%= render_post(p) %><br>
                   <% if p[:author_type] == "TwitterAuthor" && has_twitter_provider %>
                     <p>
@@ -62,12 +62,12 @@
           </div>
           <div class="col-md-1">
             <div class="avatar">
-              <%= image_tag("#{a.avatar}", :class=> "img-thumbnail", :size=> "80x80") %>
+              <%= auth_img_linkify(a) %>
             </div>
           </div>
           <div class="col-md-7">
             <div class="text">
-              <div class="author"><%= a.username %></div>
+              <div class="author"><%= auth_txt_linkify(a)%></div>
               <%= button_to "Unsubscribe", unsubscribe_path(author: a), method: :delete, type: "submit", class: "btn btn-info" %>
             </div>
           </div>
