@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
         user = User.create_from_omniauth(auth_hash)
         session[:user_id] = user.id
         provider = Provider.create_from_omniauth(auth_hash)
+        # needs to rescue provider being nil (not saving)...move if block up
         if provider
           user.providers << provider
           redirect_to user_path(session[:user_id]), notice: "Signed up!"
