@@ -11,6 +11,16 @@ class TumblrAuthor < Author
     Tumblr::Client.new
   end
 
+  def self.user_client(user)
+    Tumblr.configure do |config|
+      config.consumer_key = ENV["TUMBLR_OAUTH_KEY"]
+      config.consumer_secret = ENV["TUMBLR_SECRET_KEY"]
+      config.oauth_token = user.providers.find_by(name: "tumblr").token
+      config.oauth_token_secret = user.providers.find_by(name: "tumblr").secret
+    end
+    Tumblr::Client.new
+  end
+
   def self.add_posts(keyword)
     response = TumblrAuthor.client.posts(keyword)
     posts = response["posts"]

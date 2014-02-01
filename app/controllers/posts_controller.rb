@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_twitter_client, only:[:tweet, :favorite, :retweet]
+  before_action :set_tumblr_client, only:[:post_to_tumblr]
+
 
   def twitter_search
     @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
@@ -42,6 +44,11 @@ class PostsController < ApplicationController
     redirect_to :back, notice: "You have successfully retweeted this tweet!"
   end
 
+  def post_to_tumblr
+    raise
+    @tumblr_client.text({data: params[:tumblr]})
+  end
+
   private
 
   def get_tumblr_results
@@ -50,6 +57,10 @@ class PostsController < ApplicationController
 
   def set_twitter_client
     @user_client = TwitterAuthor.user_client(current_user)
+  end
+
+  def set_tumblr_client
+    @tumblr_client = TumblrAuthor.user_client(current_user)
   end
 
 end

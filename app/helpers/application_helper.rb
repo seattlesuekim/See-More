@@ -32,4 +32,9 @@ module ApplicationHelper
     types.include? "twitter"
   end
 
+  def has_tumblr_provider
+    types = current_user.providers.map {|p| p.name}
+    types.include? "tumblr"
+  end
+
 end
