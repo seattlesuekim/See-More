@@ -1,0 +1,24 @@
+<% @results.each do |r| %>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-1" align="right" height="80px" >
+      <%= image_tag "instagram.png" %>
+    </div>
+    <div class="col-md-1">
+      <!-- <div class="avatar"> -->
+        <%= link_to image_tag("#{r.profile_picture}", :class=> "img-thumbnail", size: "80"), "htttp://instagram.com/#{r.username}", target: "_blank" %>
+      <!-- </div> -->
+    </div>
+    <div class="col-md-7">
+      <div class="text">
+        <div class="author">
+          <%= link_to r.username, "http://instagram.com/#{r.username}", target: "_blank" %>
+        </div>
+<%# raise %>
+        <%= button_to "Subscribe", authors_path(author: create_instagram_author(r)), class: 'btn btn-info'  %>
+      </div>
+    </div>
+  </div>
+<br>
+<% end %>

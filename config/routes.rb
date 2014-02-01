@@ -15,6 +15,8 @@ SeePeeps::Application.routes.draw do
   post '/favorite', to: 'posts#favorite', as: :favorite
   post '/retweet', to: 'posts#retweet', as: :retweet
 
+  get '/instagram', to: 'posts#instagram_search', as: :instagram
+
   resources :posts
   resources :users
   resources :authors

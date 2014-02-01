@@ -3,6 +3,15 @@ class Post < ActiveRecord::Base
   belongs_to :author
   attr_accessor :feed
 
+  def self.create_instagram_post(post)
+    author = Author.find_by(uid: post.user.id)
+    author.posts.create(
+      body: "<img src= '#{post.images.standard_resolution.url}', width='450'>",
+      posted_at: Time.at(post.created_time.to_i)
+    )
+  end
+
+
   def self.create_tumblr_post(post)
     author = Author.find_by(uid: post['blog_name'])
     case post['type']
@@ -45,4 +54,5 @@ class Post < ActiveRecord::Base
         )
     end
   end
+
 end

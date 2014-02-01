@@ -9,10 +9,8 @@
   </head>
   <body>
       <% if current_user %>
-
         Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %> |
         <%= link_to "Sign Out", sign_out_path %>
-
       <% end %>
 
       <h1><%= link_to (image_tag "PeepsYellow.png"), "" %>PEEPS</h1>

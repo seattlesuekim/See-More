@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
 
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
-    @author ||= current_user.authors.build(author_params) #difference between build and create?
+    @author ||= current_user.authors.build(author_params) 
 
     begin
       current_user.authors << @author
@@ -16,9 +16,8 @@ class AuthorsController < ApplicationController
         TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
-      # possibly unncessary, if done in rss_author.rb
-      elsif @author.is_a?(RssAuthor)
-        RssAuthor.get_posts(@author)
+      elsif @author.is_a?(InstagramAuthor)
+        InstagramAuthor.get_posts(@author.uid)
       end
       redirect_to user_path(current_user), notice: "You are successfully subscribed to #{@author.username}!"
     else

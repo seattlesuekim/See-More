@@ -3,7 +3,7 @@ class Provider < ActiveRecord::Base
   validates :uid, presence: true
   validates :username, presence: true
   validates :avatar_url, presence: true
-  # validates :secret, presence: true
+  # validates :secret, presence: true # not included in instagram
   validates :token, presence: true
 
   belongs_to :user
