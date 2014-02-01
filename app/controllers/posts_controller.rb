@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def instagram_search
-    @results = InstagramAuthor.client.user_search("elisewor")
+    @results = InstagramAuthor.client.user_search(params[:instagram])
     render :instagram_results
   end
 
