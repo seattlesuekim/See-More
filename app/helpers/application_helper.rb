@@ -43,6 +43,11 @@ module ApplicationHelper
     types.include? "twitter"
   end
 
+  def has_tumblr_provider
+    types = current_user.providers.map {|p| p.name}
+    types.include? "tumblr"
+  end
+
   def img_linkify(p)
    case p[:author_type]
    when "TwitterAuthor"

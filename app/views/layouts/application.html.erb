@@ -27,7 +27,7 @@
           <a class="navbar-brand" >Search for your Peeps:</a>
         </div>
           <ul class="nav navbar-nav">
-              <li class= "dropdown">
+            <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
                 <span><%= image_tag "instagram.png", size: "20x20" %> Instagram </span>
@@ -41,6 +41,7 @@
                 <% end %>
                 </ul>
             </li>
+            <!-- Search Github -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -55,6 +56,7 @@
                 <% end %>
                 </ul>
             </li>
+            <!-- Search Tumblr -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -69,6 +71,7 @@
                 <% end %>
                 </ul>
             </li>
+            <!-- Search Twitter -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -83,6 +86,7 @@
                 <% end %>
               </ul>
             </li>
+            <!-- Add RSS -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -98,6 +102,7 @@
               </ul>
             </li>
           </ul>
+          <!-- posting to twitter -->
           <% if has_twitter_provider %>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -117,6 +122,27 @@
               </li>
             </ul>
           <% end %>
+
+          <!-- posting to tumblr -->
+          <% if has_tumblr_provider %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag "tumblr.jpg", size: "20x20" %>Post to Tumblr <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= form_tag(tumblr_path, :class =>"navbar-form", method: 'post', type: 'text') do %>
+                      <div class="form-group">
+                        <%= text_field_tag :tumblr, "", class: "input-large custom", placeholder: "Post to Tumblr", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
+                      </div>
+                      <%= submit_tag("Post!", class: "btn-block btn-info") %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
         </div><!-- /.navbar-collapse -->
       </nav>
     <% end %>
@@ -130,8 +156,7 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-
-   <!--  <div class='debug'><h3>Debug</h3>
+    <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
       <hr>
@@ -157,7 +182,7 @@
           <li><%=post.inspect %></li>
         <% end %>
       </ul>
-    </div> -->
+    </div>
 <!-- end debug -->
 
   </body>
