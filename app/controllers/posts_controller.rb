@@ -46,17 +46,15 @@ class PostsController < ApplicationController
     feed = nil if feed.is_a?(Fixnum)
 
     if feed
-      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor")
+      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor", avatar: "")
       feed.entries.each do |entry|
-        post = Post.new do |p|
-          p.author_id = (Author.find_by username: @author.username).id
-          p.body = entry.content
-          p.title = entry.title
-          p.posted_at = entry.published
+        @author.posts.create(
+          author_id: (Author.find_by username: @author.username).id,
+          body: entry.content,
+          title: entry.title,
+          posted_at: entry.published)
           # p.created_at automatically gets set to the current date and time when the record is first created.
         end
-        post.save
-      end
       flash[:notice] = "Feed successfully added!"
       redirect_to user_path(current_user)
     else
