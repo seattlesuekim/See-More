@@ -6,25 +6,14 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 
-    <style> 
-    .debug, .link_accounts {
-      border: 1px solid black;
-      width: 800px;
-      padding: 10px;
-      margin: auto;
-    }
-    </style>
-    
   </head>
   <body>
+      <% if current_user %>
+        Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %> |
+        <%= link_to "Sign Out", sign_out_path %>
+      <% end %>
 
-    <% if current_user %> 
-      <h4>Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %></h4>
-      <%= link_to "Sign Out", sign_out_path, class: 'btn btn-default' %>
-    <% end %>
-
-    <h1 class='header'><%= link_to (image_tag "PeepsYellow.png"), root_path %>PEEPS</h1>
-    
+      <h1><%= link_to (image_tag "PeepsYellow.png"), "" %>PEEPS</h1>
     <% if current_user %>
       <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,6 +30,36 @@
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
+                <span><%= image_tag "instagram.png", size: "20x20" %> Instagram </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag instagram_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "instagram", nil, placeholder: "Search Instagram", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
+            <!-- Search Github -->
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "github.png", size: "20x20" %> GitHub </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag github_search_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "github_search", nil, placeholder: "Search GitHub", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
+            <!-- Search Tumblr -->
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
                 <span><%= image_tag "tumblr.png", size: "20x20" %> Tumblr </span>
               </a>
                 <ul role="menu" class="dropdown-menu">
@@ -52,6 +71,7 @@
                 <% end %>
                 </ul>
             </li>
+            <!-- Search Twitter -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -66,6 +86,7 @@
                 <% end %>
               </ul>
             </li>
+            <!-- Add RSS -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
@@ -81,6 +102,7 @@
               </ul>
             </li>
           </ul>
+          <!-- posting to twitter -->
           <% if has_twitter_provider %>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -100,10 +122,31 @@
               </li>
             </ul>
           <% end %>
+
+          <!-- posting to tumblr -->
+          <% if has_tumblr_provider %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag "tumblr.jpg", size: "20x20" %>Post to Tumblr <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= form_tag(tumblr_path, :class =>"navbar-form", method: 'post', type: 'text') do %>
+                      <div class="form-group">
+                        <%= text_field_tag :tumblr, "", class: "input-large custom", placeholder: "Post to Tumblr", size: "20", maxlength: "140", onkeyup: "CheckMaxlength(this);"%>
+                      </div>
+                      <%= submit_tag("Post!", class: "btn-block btn-info") %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
         </div><!-- /.navbar-collapse -->
       </nav>
     <% end %>
-    
+
     <% if flash[:notice] %>
       <div class='notice'>
         <%= flash[:notice] %>
@@ -113,15 +156,14 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-
-    <!-- <div class='debug'><h3>Debug</h3>
+    <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
       <hr>
       <h4>Users</h4>
       <ul>
         <%User.all.each do |user| %>
-          <li><%=user.username %></li>
+          <li><%=user.inspect %></li>
         <% end %>
       </ul>
       <hr>
@@ -129,7 +171,7 @@
       <ul>
         <%Provider.all.each do |provider| %>
           <li><%=provider.name %><br>
-            <%=provider.user.inspect %>
+            <%=provider.inspect %>
           </li>
         <% end %>
       </ul>
@@ -140,7 +182,7 @@
           <li><%=post.inspect %></li>
         <% end %>
       </ul>
-    </div> -->
+    </div>
 <!-- end debug -->
 
   </body>

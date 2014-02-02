@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
 
   def create
     @author   = Author.find_by(uid: params[:author][:uid])
-    @author ||= current_user.authors.build(author_params) #difference between build and create?
+    @author ||= current_user.authors.build(author_params) 
 
     begin
       current_user.authors << @author
@@ -11,16 +11,23 @@ class AuthorsController < ApplicationController
       @author = nil
     end
 
+
     if @author
+      # Adding posts here--maybe switch to before action on Users Controller to update
       if @author.is_a?(TumblrAuthor)
         TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
+      elsif @author.is_a?(InstagramAuthor)
+        InstagramAuthor.get_posts(@author.uid)
       end
+       #end post creation
       redirect_to user_path(current_user), notice: "You are successfully subscribed to #{@author.username}!"
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to #{params[:author][:username]}!"
     end
+
+
   end
 
   def unsubscribe

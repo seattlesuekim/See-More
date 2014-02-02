@@ -410,7 +410,7 @@ h6,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  /*color: inherit;*/
+  color: #707070;
 }
 
 h1 small,
@@ -494,7 +494,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 h5,
@@ -599,6 +599,7 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: 10px;
+  color: grey;
 }
 
 ul ul,
@@ -2637,7 +2638,7 @@ fieldset[disabled] .btn-link:focus {
 
 .btn-sm {
   padding: 2px;
-  padding-left: 35px; 
+  padding-left: 35px;
   padding-right: 35px;
   font-size: 12px;
   line-height: 1.5;
