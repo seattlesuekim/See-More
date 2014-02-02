@@ -11,6 +11,9 @@ gem "omniauth-github", "~> 1.1.1"
 gem "omniauth-facebook", "~> 1.6.0"
 gem 'feedzirra'
 gem 'will_paginate', '~> 3.0'
+gem 'octokit', "~> 2.0"
+gem 'json'
+gem 'rest-more'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'

@@ -7,6 +7,24 @@ class PostsController < ApplicationController
     render :twitter_search_results
   end
 
+  def github_search
+    @search = []
+    @res = GithubAuthor.client.search_users(params[:github_search])
+    @res.items.each do |item|
+      user = item.rels[:self].get.data
+      user = {
+        avatar: RC::Github.new.get("users/#{user.login}")["avatar_url"],
+        id: user.id,
+        username: user.login,
+      }
+
+      @search << user
+    end
+    @search
+    flash[:notice] = "Search results for \"#{params[:github_search]}\""
+    render :github_search_results
+  end
+
   def search_tum
     @tumblr_results = get_tumblr_results
     if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
