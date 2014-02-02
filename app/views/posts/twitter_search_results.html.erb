@@ -3,20 +3,20 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-1" align="right" height="80px" >
-      <%= image_tag "twitter.png" %> 
+      <%= image_tag "twitter.png" %>
     </div>
     <div class="col-md-1">
       <!-- <div class="avatar"> -->
-        <%= image_tag("#{r.profile_image_url}", class: "img-thumbnail", size: "60") %> 
+        <%= link_to image_tag("#{r.profile_image_url.to_s.gsub('normal', 'reasonably_small')}", :class=> "img-thumbnail", size: "80"), "https://twitter.com/#{r.screen_name}", target: "_blank" %>
       <!-- </div> -->
     </div>
     <div class="col-md-7">
       <div class="text">
         <div class="author">
-          <%= r.screen_name %>
+          <%= link_to r.screen_name, "https://twitter.com/#{r.screen_name}", target: "_blank" %>
         </div>
         <p><%=r.description %></p>
-        <%= button_to "Subscribe", authors_path(author: create_twitter_author_hash(r)), class: 'btn btn-success'  %>
+        <%= button_to "Subscribe", authors_path(author: create_twitter_author_hash(r)), class: 'btn btn-info'  %>
       </div>
     </div>
   </div>

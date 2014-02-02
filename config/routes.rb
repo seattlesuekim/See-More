@@ -7,6 +7,7 @@ SeePeeps::Application.routes.draw do
   get "/signout", to: "sessions#destroy", as: :sign_out
 
   post '/twitter_search', to: 'posts#twitter_search', as: :twitter_search
+  post '/github_search', to: 'posts#github_search', as: :github_search
   post '/search_tum', to: 'posts#search_tum', as: :search_tum
   post '/rss',        to: 'posts#get_rss',    as: :rss
 
@@ -16,6 +17,8 @@ SeePeeps::Application.routes.draw do
   post '/retweet', to: 'posts#retweet', as: :retweet
   
   post '/tumblr', to: 'posts#post_to_tumblr', as: :tumblr
+
+  post '/instagram', to: 'posts#instagram_search', as: :instagram
 
   resources :posts
   resources :users

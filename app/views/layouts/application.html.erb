@@ -9,10 +9,8 @@
   </head>
   <body>
       <% if current_user %>
-
         Hi, <%=link_to "#{current_user.username}!", user_path(current_user) %> |
         <%= link_to "Sign Out", sign_out_path %>
-
       <% end %>
 
       <h1><%= link_to (image_tag "PeepsYellow.png"), "" %>PEEPS</h1>
@@ -29,6 +27,35 @@
           <a class="navbar-brand" >Search for your Peeps:</a>
         </div>
           <ul class="nav navbar-nav">
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "instagram.png", size: "20x20" %> Instagram </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag instagram_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "instagram", nil, placeholder: "Search Instagram", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
+            <!-- Search Github -->
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
+                <span><%= image_tag "github.png", size: "20x20" %> GitHub </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag github_search_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "github_search", nil, placeholder: "Search GitHub", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
             <!-- Search Tumblr -->
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -129,8 +156,7 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-
-    <div class='debug'><h3>Debug</h3>
+   <!--  <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
       <hr>
@@ -157,7 +183,7 @@
         <% end %>
       </ul>
     </div>
-<!-- end debug -->
+end debug -->
 
   </body>
 </html>
