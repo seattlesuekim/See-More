@@ -71,8 +71,9 @@ class PostsController < ApplicationController
   end
 
   def post_to_tumblr
-    raise
-    @tumblr_client.text({data: params[:tumblr]})
+    blogname = current_user.providers.where(name:"tumblr").first.username
+    @tumblr_client.text("#{blogname}.tumblr.com", {body: params[:tumblr]})
+    redirect_to user_path(current_user)
   end
 
   private

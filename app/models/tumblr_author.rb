@@ -12,8 +12,8 @@ class TumblrAuthor < Author
 
   def self.user_client(user)
     Tumblr.configure do |config|
-      config.consumer_key = ENV["TUMBLR_OAUTH_KEY"]
-      config.consumer_secret = ENV["TUMBLR_SECRET_KEY"]
+      config.consumer_key = ENV["TUMBLR_CLIENT_ID"]
+      config.consumer_secret = ENV["TUMBLR_CLIENT_SECRET"]
       config.oauth_token = user.providers.find_by(name: "tumblr").token
       config.oauth_token_secret = user.providers.find_by(name: "tumblr").secret
     end
