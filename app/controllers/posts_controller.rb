@@ -15,9 +15,23 @@ class PostsController < ApplicationController
     end
   end
 
-  def get_rss
-    @rss = RssAuthor.from_rss(params[:get_rss])
-    if @rss
+  def fetch_rss
+    url = params[:get_rss]
+    feed = Feedzirra::Feed.fetch_and_parse(url)
+    feed = nil if feed.is_a?(Fixnum)
+
+    if feed
+      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor")
+      feed.entries.each do |entry|
+        post = Post.new do |p|
+          p.author_id = (Author.find_by username: @author.username).id
+          p.body = entry.content
+          p.title = entry.title
+          p.posted_at = entry.published
+          # p.created_at automatically gets set to the current date and time when the record is first created.
+        end
+        post.save
+      end
       flash[:notice] = "Feed successfully added!"
       redirect_to user_path(current_user)
     else

@@ -16,9 +16,6 @@ class AuthorsController < ApplicationController
         TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
-      # possibly unncessary, if done in rss_author.rb
-      elsif @author.is_a?(RssAuthor)
-        RssAuthor.get_posts(@author)
       end
       redirect_to user_path(current_user), notice: "You are successfully subscribed to #{@author.username}!"
     else

@@ -23,6 +23,8 @@ module ApplicationHelper
       @rendered = post[:body].gsub(/(http:\/\/[a-zA-Z0-9\/\.\+\-_:?&=]+)/) {|a| "<a href=\"#{a}\" target='_blank'>#{a}</a>"}  
     elsif post[:author_type] == "TumblrAuthor"
       @rendered = post[:body]
+    elsif post[:author_type] == "RssAuthor"
+      @rendered = post[:body]
     end
       @rendered.html_safe
   end

@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   belongs_to :author
   attr_accessor :feed
 
+
+
+
   def self.create_tumblr_post(post)
     author = Author.find_by(uid: post['blog_name'])
     case post['type']
