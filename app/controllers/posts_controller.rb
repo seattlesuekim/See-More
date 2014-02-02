@@ -44,6 +44,7 @@ class PostsController < ApplicationController
     feed = nil if feed.is_a?(Fixnum)
 
     if feed
+      # get an icon from Feedzirra somehow?
       @author = current_user.authors.create(username: url.match(/http:\/\/www.\w+\.\w+/).to_s, uid: url, type: "RssAuthor", avatar: "")
       feed.entries.each do |entry|
         @author.posts.create(

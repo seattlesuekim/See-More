@@ -1,27 +1,28 @@
 class UsersController < ApplicationController
   before_action :home_feed
+  before_action :update_feeds
 
   def show
     @user = User.find(params[:id])
     if current_user
       if current_user.id == @user.id
-        @providers = current_user.providers #this is just for debug
-        if @home_feed
-          @posts = @home_feed
+        @providers = current_user.providers #this is just for debug, can delete later
+        if @instagram_posts
+          @posts = @instagram_posts
         else
           @posts = []
         end
-        current_user.posts.each do |post|
-          p = {}
-          p[:author_name] = post.author.username
-          p[:body] = post.body
-          p[:posted_at] = post.posted_at
-          p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small')
-          p[:author_type] = post.author.type
-          p[:pid] = post.pid
-          p[:caption] = post.title
-          @posts << p
-        end
+        # current_user.posts.each do |post|
+        #   p = {}
+        #   p[:author_name] = post.author.username
+        #   p[:body] = post.body
+        #   p[:posted_at] = post.posted_at
+        #   p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small')
+        #   p[:author_type] = post.author.type
+        #   p[:pid] = post.pid
+        #   p[:caption] = post.title
+        #   @posts << p
+        # end
         @posts = @posts.uniq {|p| p[:body]}
         @posts.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}
         @posts = @posts.paginate(:page => params[:page], :per_page => 25)
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
   def home_feed
     if current_user
       types = current_user.providers.map {|p| p.name}
+      
       if types.include? "twitter"
         user_client = TwitterAuthor.user_client(current_user)
         @home_feed = []
@@ -54,9 +56,38 @@ class UsersController < ApplicationController
       else
         nil
       end
+
     else 
       flash[:notice] = "You must be signed in to view this page!"
     end
   end
+
+  def update_feeds 
+    authors = current_user.authors
+    authors.each do |author|
+      if author.type == "InstagramAuthor"
+        @instagram_posts = []
+        Instagram.client.user_recent_media(author.uid).each do |photo|
+          post = {}
+          if photo.caption 
+            caption = photo.caption.text
+          else
+            caption = ""
+          end
+          post[:author_name] = author.username
+          post[:body] = "<img src= '#{photo.images.standard_resolution.url}', width='450'>"
+          post[:posted_at] = Time.at(photo.created_time.to_i)
+          post[:author_url] = author.avatar
+          post[:author_type] = author.type
+          post[:caption] = "<span class='instagram_caption'>#{caption}</span>"
+          @instagram_posts << post
+        end
+      # elsif author.type == "TumblrAuthor"
+      # elsif author.type == "RssAuthor"
+      #set tumblr/instagram clients, update each one
+      end
+    end
+  end
+
 end
 

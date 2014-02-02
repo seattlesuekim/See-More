@@ -20,8 +20,11 @@ class TumblrAuthor < Author
     Tumblr::Client.new
   end
 
+# change this to fetch post and put it in a before action
+# keyword must match the username, which is saved
   def self.add_posts(keyword)
     response = TumblrAuthor.client.posts(keyword)
+    raise
     posts = response["posts"]
     @posts = posts.map do |post|
       Post.create_tumblr_post(post)

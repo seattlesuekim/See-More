@@ -60,7 +60,7 @@ module ApplicationHelper
    when "RssAuthor"
     image_tag("rss.png") #want this to be the npr logo, eg.
    else
-    raise
+    
     image_tag("#{p[:author_url]}", class:  "img-thumbnail", size: "80")
    end
   end

@@ -18,8 +18,8 @@ class AuthorsController < ApplicationController
         TumblrAuthor.add_posts(@author.uid)
       elsif @author.is_a?(TwitterAuthor)
         TwitterAuthor.find_posts(@author)
-      elsif @author.is_a?(InstagramAuthor)
-        InstagramAuthor.get_posts(@author.uid)
+      # elsif @author.is_a?(InstagramAuthor)
+      #   InstagramAuthor.get_posts(@author.uid)
       end
        #end post creation
       redirect_to user_path(current_user), notice: "You are successfully subscribed to #{@author.username}!"
