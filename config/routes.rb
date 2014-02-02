@@ -13,7 +13,6 @@ SeePeeps::Application.routes.draw do
   delete 'unsubscribe/:id', to: 'authors#unsubscribe', as: :unsubscribe
 
   # Post actions to 3rd party services
-  
   post '/tweet', to: 'posts#tweet', as: :tweet
   post '/favorite', to: 'posts#favorite', as: :favorite
   post '/retweet', to: 'posts#retweet', as: :retweet
