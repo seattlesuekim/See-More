@@ -9,10 +9,7 @@ class PostsController < ApplicationController
 
   def github_search
     @search = []
- #     httparty_response = HTTParty.get("https://api.github.com/users/#{params[:github_search]}", :headers => {"User-Agent" => "rss-peep"})
- # +      @search = {username: httparty_response["name"],
- # +                 link: httparty_response["html_url"],
- # +                 avatar: httparty_response["avatar_url"]}
+
     @res = GithubAuthor.client.search_users(params[:github_search])
     @res.items.each do |item|
 
@@ -24,7 +21,6 @@ class PostsController < ApplicationController
         username: user.login,
         link: httparty_response["html_url"]
       }
-
       @search << user
     end
     @search
