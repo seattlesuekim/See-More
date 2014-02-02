@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     feed = nil if feed.is_a?(Fixnum)
 
     if feed
-      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor")
+      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor", avatar: "")
       feed.entries.each do |entry|
         post = Post.new do |p|
           p.author_id = (Author.find_by username: @author.username).id
