@@ -44,6 +44,20 @@
             <li class= "dropdown">
               <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <b class="caret"></b>
+                <span><%= image_tag "github.png", size: "20x20" %> GitHub </span>
+              </a>
+                <ul role="menu" class="dropdown-menu">
+                 <%= form_tag github_search_path, :class =>"navbar-form", method: 'post' do %>
+                  <div class="form-group">
+                    <%= text_field_tag "github_search", nil, placeholder: "Search GitHub", class: "input-large" %>
+                  </div>
+                  <button type="submit" class="btn-sm btn-info">Go!</button>
+                <% end %>
+                </ul>
+            </li>
+            <li class= "dropdown">
+              <a onclick="#" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b class="caret"></b>
                 <span><%= image_tag "tumblr.png", size: "20x20" %> Tumblr </span>
               </a>
                 <ul role="menu" class="dropdown-menu">
