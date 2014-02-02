@@ -8,18 +8,21 @@ class PostsController < ApplicationController
   end
 
   def github_search
-    @search = []
-    @res = GithubAuthor.client.search_users(params[:github_search])
-    @res.items.each do |item|
-      user = item.rels[:self].get.data
-      user = {
-        avatar: RC::Github.new.get("users/#{user.login}")["avatar_url"],
-        id: user.id,
-        username: user.login,
-      }
+     httparty_response = HTTParty.get("https://api.github.com/users/#{params[:github_search]}", :headers => {"User-Agent" => "rss-peep"})
+ +      @search = {username: httparty_response["name"],
+ +                 user_url: httparty_response["html_url"],
+ +                 avatar: httparty_response["avatar_url"]}
+    # @res = GithubAuthor.client.search_users(params[:github_search])
+    # @res.items.each do |item|
+    #   user = item.rels[:self].get.data
+    #   user = {
+    #     avatar: RC::Github.new.get("users/#{user.login}")["avatar_url"],
+    #     id: user.id,
+    #     username: user.login,
+    #   }
 
-      @search << user
-    end
+    #   @search << user
+    # end
     @search
     flash[:notice] = "Search results for \"#{params[:github_search]}\""
     render :github_search_results
