@@ -8,7 +8,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
 gem "omniauth-github", "~> 1.1.1"
-gem "omniauth-facebook", "~> 1.6.0"
+gem "omniauth-instagram", "~> 1.0.1"
+gem "instagram", "~> 0.10.0"
 gem 'feedzirra'
 gem 'will_paginate', '~> 3.0'
 gem 'octokit', "~> 2.0"
