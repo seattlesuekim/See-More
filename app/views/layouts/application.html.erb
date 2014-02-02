@@ -33,7 +33,7 @@
                 <span><%= image_tag "instagram.png", size: "20x20" %> Instagram </span>
               </a>
                 <ul role="menu" class="dropdown-menu">
-                 <%= form_tag instagram_path, :class =>"navbar-form", method: 'post' do %>
+                 <%= form_tag search_path("instagram"), :class =>"navbar-form", method: 'post' do %>
                   <div class="form-group">
                     <%= text_field_tag "instagram", nil, placeholder: "Search Instagram", class: "input-large" %>
                   </div>
@@ -63,7 +63,7 @@
                 <span><%= image_tag "tumblr.png", size: "20x20" %> Tumblr </span>
               </a>
                 <ul role="menu" class="dropdown-menu">
-                 <%= form_tag search_tum_path, :class =>"navbar-form", method: 'post' do %>
+                 <%= form_tag search_path("tumblr"), :class =>"navbar-form", method: 'post' do %>
                   <div class="form-group">
                     <%= text_field_tag "search_tum", nil, placeholder: "Search Tumblr", class: "input-large" %>
                   </div>
@@ -78,7 +78,7 @@
                 <span><%= image_tag "twitter.png", size: "20x20" %> Twitter </span>
               </a>
               <ul role="menu"  class="dropdown-menu">
-                <%= form_tag twitter_search_path, :class =>"navbar-form", method: 'post' do %>
+                <%= form_tag search_path("twitter"), :class =>"navbar-form", method: 'post' do %>
                   <div class="form-group">
                     <%= text_field_tag "twitter_search", nil, placeholder: "Search Twitter", class: "input-large" %>
                   </div>

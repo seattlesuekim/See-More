@@ -2,16 +2,8 @@ class PostsController < ApplicationController
   before_action :set_twitter_client, only:[:tweet, :favorite, :retweet]
   before_action :set_tumblr_client, only:[:post_to_tumblr]
 
-# could refactor to just one search method and render one search page
-  def twitter_search
-    @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
-    flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
-    render :twitter_search_results
-  end
-
   def github_search
     @search = []
-
     @res = GithubAuthor.client.search_users(params[:github_search])
     @res.items.each do |item|
 
@@ -29,16 +21,25 @@ class PostsController < ApplicationController
     flash[:notice] = "Search results for \"#{params[:github_search]}\""
     render :github_search_results
   end
-
-  def search_tum
-    @tumblr_results = get_tumblr_results
-    if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
-      redirect_to user_path(current_user), notice: "No users match your search."
-    else
-      flash[:notice] = "Search results for \"#{params[:search_tum]}\""
+  
+  def search
+    if params[:service] == "instagram"
+      @results = InstagramAuthor.client.user_search(params[:instagram])
+      render :instagram_results #all the renders should be refactored to one search page
+    elsif params[:service] == "tumblr"
+      @tumblr_results = get_tumblr_results
+      if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
+        redirect_to user_path(current_user), notice: "No users match your search."
+      else
+        flash[:notice] = "Search results for \"#{params[:search_tum]}\""
+        render :search_tum # see above
+      end
+    elsif params[:service] == "twitter"
+      @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
+      flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
+      render :twitter_search #see above
     end
   end
-  # end refactor
 
   def get_rss
     @rss = RssAuthor.from_rss(params[:get_rss])
@@ -49,11 +50,6 @@ class PostsController < ApplicationController
       flash[:notice] = "There was a problem saving your feed!"
       redirect_to user_path(current_user)
     end
-  end
-
-  def instagram_search
-    @results = InstagramAuthor.client.user_search(params[:instagram])
-    render :instagram_results
   end
 
   def tweet
