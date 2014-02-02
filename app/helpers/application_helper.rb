@@ -34,8 +34,8 @@ module ApplicationHelper
       @rendered = post[:body]
     elsif post[:author_type] =="InstagramAuthor"
       @rendered = post[:body] + "<br>" + post[:caption]
-    elsif post[:author_type] =="RssAuthor"
-      @rendered = post[:body] 
+    elsif post[:author_type] == "RssAuthor"
+      @rendered = post[:body]
     end
     @rendered.html_safe
   end

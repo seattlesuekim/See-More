@@ -16,7 +16,7 @@ class UsersController < ApplicationController
           p[:author_name] = post.author.username
           p[:body] = post.body
           p[:posted_at] = post.posted_at
-          p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small')
+          p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small') if post.author.avatar
           p[:author_type] = post.author.type
           p[:pid] = post.pid
           p[:caption] = post.title

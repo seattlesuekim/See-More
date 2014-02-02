@@ -16,6 +16,7 @@ SeePeeps::Application.routes.draw do
   post '/retweet',                 to: 'posts#retweet',          as: :retweet
   post '/tumblr',                  to: 'posts#post_to_tumblr',   as: :tumblr
 
+
   resources :posts
   resources :users
   resources :authors
