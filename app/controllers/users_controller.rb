@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user
       if current_user.id == @user.id
-        @providers = current_user.providers
+        @providers = current_user.providers #this is just for debug
         if @home_feed
           @posts = @home_feed
         else

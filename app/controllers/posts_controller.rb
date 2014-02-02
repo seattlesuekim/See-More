@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_twitter_client, only:[:tweet, :favorite, :retweet]
   before_action :set_tumblr_client, only:[:post_to_tumblr]
 
-
+# could refactor to just one search method and render one search page
   def twitter_search
     @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
     flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Search results for \"#{params[:search_tum]}\""
     end
   end
+  # end refactor
 
   def get_rss
     @rss = RssAuthor.from_rss(params[:get_rss])
