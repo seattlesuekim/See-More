@@ -70,41 +70,67 @@ class UsersController < ApplicationController
       @updates = []
       authors.each do |author|
         if author.type == "InstagramAuthor"
-          @instagram_posts = []
           Instagram.client.user_recent_media(author.uid).each do |photo|
-            post = {}
+            post = {author_name:author.username, author_url: author.avatar, author_type: author.type}
             if photo.caption 
               caption = photo.caption.text
             else
               caption = ""
             end
-            post[:author_name] = author.username
             post[:body] = "<img src= '#{photo.images.standard_resolution.url}', width='450'>"
             post[:posted_at] = Time.at(photo.created_time.to_i)
-            post[:author_url] = author.avatar
-            post[:author_type] = author.type
             post[:caption] = "<span class='instagram_caption'>#{caption}</span>"
             @updates << post
           end
         elsif author.type == "TwitterAuthor" #(eventually will be elsif)
-          @tweets = []
           TwitterAuthor.client.user_timeline(author.username).collect.each do |tweet|
-            post = {}
-            post[:author_name] = author.username
+            post = {author_name:author.username, author_url: author.avatar, author_type: author.type}
             post[:body] = tweet.text 
             post[:posted_at] = tweet.created_at
-            post[:author_url] = author.avatar
-            post[:author_type] = author.type
             post[:pid] = tweet.id
             @updates << post
+          end
+        elsif author.type == "TumblrAuthor"
+          posts = TumblrAuthor.client.posts(author.username)["posts"]
+          posts.each do |t|
+            @updates << tumblr_hash(t,author)        
           end
         else 
           @updates = []
         end
       end
     end
-      # elsif author.type == "TumblrAuthor"
-      # elsif author.type == "RssAuthor"
+  end
+
+  private
+
+  def tumblr_hash(t, author)
+    post = {  author_name:author.username, 
+              author_url: author.avatar, 
+              author_type: author.type,
+              posted_at: t['date'].to_time
+            }
+    if t['type']    == 'text'
+      post[:body]   = t["body"]
+    elsif t['type'] == 'video'
+      post[:body]   = t["player"].first["embed_code"]
+    elsif t['type'] == 'audio'
+      post[:body] = t["player"]
+    elsif t['type'] == 'chat'
+      chat = t['body'].gsub(/\r\n/, '<br>')
+      post[:body] = chat
+    elsif t['type'] == 'quote'
+      post[:body] = '<h4>' + t["text"] + '</h4>' + '<br>' + '<em>' + '--' + t["source"] + '<em>'
+    elsif t['type'] == 'photo'
+      photoset = t['photos'].map {|photo| "<img src= '#{photo['original_size']['url']}', width= '450'>"}.join("")
+      post[:body] = photoset
+    elsif t['type'] == 'link'
+      post[:body] = '<a href="' + t['url'] + '">' + t['title'] + '</a>'
+    elsif t['type'] == 'answer'
+      post[:body] = t['body']
+    end
+    post
+
   end
 
 end
