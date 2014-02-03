@@ -8,8 +8,9 @@ SeePeeps::Application.routes.draw do
 
   # Search routes
   post'/search/:service',          to: 'posts#search',           as: :search
+
   post '/rss',                     to: 'posts#fetch_rss',        as: :rss
-  
+
   delete 'unsubscribe/:id',        to: 'authors#unsubscribe',    as: :unsubscribe
   post '/tweet',                   to: 'posts#tweet',            as: :tweet
   post '/favorite',                to: 'posts#favorite',         as: :favorite

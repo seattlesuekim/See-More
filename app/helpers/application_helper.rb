@@ -35,7 +35,7 @@ module ApplicationHelper
     elsif post[:author_type] =="InstagramAuthor"
       @rendered = post[:body] + "<br>" + post[:caption]
     elsif post[:author_type] =="RssAuthor"
-      @rendered = post[:body] 
+      @rendered = post[:body]
     end
     @rendered.html_safe
   end
@@ -56,9 +56,9 @@ module ApplicationHelper
     link_to image_tag("#{p[:author_url]}", class: "img-thumbnail", size: "80"), "https://twitter.com/#{p[:author_name]}", target: "_blank"
    when "TumblrAuthor"
     link_to image_tag("#{p[:author_url]}", class: "img-thumbnail", size: "80"), "http://#{p[:author_name]}.tumblr.com", target: "_blank"
-   
+
    when "RssAuthor"
-    image_tag("rss.png") #want this to be the npr logo, eg.
+    image_tag("PeepsYellow.png", class:  "img-thumbnail", size: "80") #want this to be the npr logo, eg.
    else
     image_tag("#{p[:author_url]}", class:  "img-thumbnail", size: "80")
    end
@@ -81,6 +81,8 @@ module ApplicationHelper
     link_to image_tag("#{a.avatar}", class: "img-thumbnail", size: "80"), "https://twitter.com/#{a.username}", target: "_blank"
    when "TumblrAuthor"
     link_to image_tag("#{a.avatar}", class: "img-thumbnail", size: "80"), "http://#{a.username}.tumblr.com", target: "_blank"
+    when "RssAuthor"
+    image_tag("PeepsYellow.png", class:  "img-thumbnail", size: "80") #want this to be the npr logo, eg.
    else
     image_tag("#{a.avatar}", class: "img-thumbnail", size: "80")
    end

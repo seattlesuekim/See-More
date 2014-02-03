@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       else 
         @home_feed = []
       end
-    else 
+    else
       flash[:notice] = "You must be signed in to view this page!"
     end
   end
