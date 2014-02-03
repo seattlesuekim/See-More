@@ -55,21 +55,21 @@
         <h3>Where are your peeps? Start following!</h3>
       <% else %>
         <h3>You are currently following:</h3>
-        <% current_user.authors.each do |a| %>
+        <% current_user.authors.each do |author| %>
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-1" align="right" height="80px">
-            <%= image_tag "#{a.type.partition(/Author/).first.downcase}.png" %>
+            <%= image_tag "#{author.type.partition(/Author/).first.downcase}.png" %>
           </div>
           <div class="col-md-1">
             <div class="avatar">
-              <%= auth_img_linkify(a) %>
+              <%= auth_img_linkify(author) %>
             </div>
           </div>
           <div class="col-md-7">
             <div class="text">
-              <div class="author"><%= auth_txt_linkify(a)%></div>
-              <%= button_to "Unsubscribe", unsubscribe_path(author: a), method: :delete, type: "submit", class: "btn btn-info" %>
+              <div class="author"><%= auth_txt_linkify(author)%></div>
+              <%= button_to "Unsubscribe", unsubscribe_path(author: author), method: :delete, type: "submit", class: "btn btn-info" %>
             </div>
           </div>
         </div>

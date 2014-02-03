@@ -5,16 +5,16 @@
   </div>
   <div class="col-md-1">
     <!-- <div class="avatar"> -->
-    <%= link_to image_tag("http://api.tumblr.com/v2/blog/#{@tumblr_results["blog"]["name"]}.tumblr.com/avatar/512", :class=> "img-thumbnail", :size=> "80x80"), "http://#{@tumblr_results["blog"]["name"]}.tumblr.com", target: "_blank" %>
+    <%= link_to image_tag("http://api.tumblr.com/v2/blog/#{@results["blog"]["name"]}.tumblr.com/avatar/512", :class=> "img-thumbnail", :size=> "80x80"), "http://#{@results["blog"]["name"]}.tumblr.com", target: "_blank" %>
     <!-- </div> -->
   </div>
   <div class="col-md-6">
     <div class="text">
       <!-- these should probably be h3 and h4, but alignment gets off-same in twitter -->
-      <span class= 'author'><%= link_to @tumblr_results["blog"]["name"], "http://#{@tumblr_results["blog"]["name"]}.tumblr.com", target: "_blank" %></span><br>
-      <span class='tumblr_title'><%= @tumblr_results["blog"]["title"] %></span>
-      <p class= 'tumblr_description'><%= @tumblr_results["blog"]["description"].html_safe %></p>
-      <%= button_to "Subscribe!", authors_path(author: create_tum_author_hash(@tumblr_results)), class: 'btn btn-info' %>
+      <span class= 'author'><%= link_to @results["blog"]["name"], "http://#{@results["blog"]["name"]}.tumblr.com", target: "_blank" %></span><br>
+      <span class='tumblr_title'><%= @results["blog"]["title"] %></span>
+      <p class= 'tumblr_description'><%= @results["blog"]["description"].html_safe %></p>
+      <%= button_to "Subscribe!", authors_path(author: create_tum_author_hash(@results)), class: 'btn btn-info' %>
     </div>
   </div>
 </div>

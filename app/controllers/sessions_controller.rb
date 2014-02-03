@@ -12,15 +12,14 @@ class SessionsController < ApplicationController
         current_user.providers << provider
         redirect_to user_path(session[:user_id]), notice: "Account added!"
       end    
-    else # for not-logged in users
-      if @provider # existing user
+    else 
+      if @provider 
         session[:user_id] = @provider.user_id
         redirect_to user_path(session[:user_id]), notice: "You have been successfully signed in!"
-      else #new user
+      else
         user = User.create_from_omniauth(auth_hash)
         session[:user_id] = user.id
         provider = Provider.create_from_omniauth(auth_hash)
-        # needs to rescue provider being nil (not saving)...move if block up
         if provider
           user.providers << provider
           redirect_to user_path(session[:user_id]), notice: "Signed up!"
