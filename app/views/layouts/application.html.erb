@@ -93,6 +93,7 @@
                 <span><%= image_tag "rss.png", size: "20x20" %> RSS Feed </span>
               </a>
               <ul role="menu" class="dropdown-menu">
+                <!-- change route to go to users controller? -->
                 <%= form_tag rss_path, :class =>"navbar-form", method: 'post' do %>
                   <div class="form-group">
                     <%= text_field_tag "get_rss", nil, placeholder: "Add a feed", class: "input-large" %>
@@ -156,7 +157,7 @@
     <%= yield %>
 
 <!-- To be deleted when done -->
-    <div class='debug'><h3>Debug</h3>
+   <!--  <div class='debug'><h3>Debug</h3>
       <h4>Current User ID: <%=session[:user_id] %><br></h4>
         <%=current_user.username if current_user%><br>
       <hr>
@@ -182,7 +183,7 @@
           <li><%=post.inspect %></li>
         <% end %>
       </ul>
-    </div>
+    </div> -->
 <!-- end debug -->
 
   </body>
