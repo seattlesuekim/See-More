@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       else
         nil
       end
-    else 
+    else
       flash[:notice] = "You must be signed in to view this page!"
     end
   end

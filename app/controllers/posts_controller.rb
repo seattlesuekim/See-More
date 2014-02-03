@@ -2,43 +2,41 @@ class PostsController < ApplicationController
   before_action :set_twitter_client, only:[:tweet, :favorite, :retweet]
   before_action :set_tumblr_client, only:[:post_to_tumblr]
 
-# could refactor to just one search method and render one search page
-  def twitter_search
-    @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
-    flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
-    render :twitter_search_results
-  end
-
-  def github_search
-    @search = []
-
-    @res = GithubAuthor.client.search_users(params[:github_search])
-    @res.items.each do |item|
-
-      user = item.rels[:self].get.data
-      httparty_response = HTTParty.get("https://api.github.com/users/#{user.login}", :headers => {"User-Agent" => "rss-peep"})
-      user = {
-        avatar: httparty_response["avatar_url"],
-        id: user.id,
-        username: user.login,
-        link: httparty_response["html_url"]
-      }
-      @search << user
+  def search
+    if params[:service] == "instagram"
+      @results = InstagramAuthor.client.user_search(params[:instagram])
+      render :instagram_results #all the renders should be refactored to one search page
+    elsif params[:service] == "tumblr"
+      @tumblr_results = TumblrAuthor.client.posts(params[:search_tum])
+      if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
+        redirect_to user_path(current_user), notice: "No users match your search."
+      else
+        flash[:notice] = "Search results for \"#{params[:search_tum]}\""
+        render :search_tum # see above
+      end
+    elsif params[:service] == "twitter"
+      @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
+      flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
+      render :twitter_search #see above
+    elsif params[:service] == "github"
+      @search = []
+      @res = GithubAuthor.client.search_users(params[:github_search])
+      @res.items.each do |item|
+        user = item.rels[:self].get.data
+        httparty_response = HTTParty.get("https://api.github.com/users/#{user.login}", :headers => {"User-Agent" => "rss-peep"})
+        user = {
+          avatar: httparty_response["avatar_url"],
+          id: user.id,
+          username: user.login,
+          link: httparty_response["html_url"]
+        }
+        @search << user
+      end
+      @search
+      flash[:notice] = "Search results for \"#{params[:github_search]}\""
+      render :github_search_results
     end
-    @search
-    flash[:notice] = "Search results for \"#{params[:github_search]}\""
-    render :github_search_results
   end
-
-  def search_tum
-    @tumblr_results = get_tumblr_results
-    if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
-      redirect_to user_path(current_user), notice: "No users match your search."
-    else
-      flash[:notice] = "Search results for \"#{params[:search_tum]}\""
-    end
-  end
-  # end refactor
 
   def fetch_rss
     url = params[:get_rss]
@@ -46,28 +44,21 @@ class PostsController < ApplicationController
     feed = nil if feed.is_a?(Fixnum)
 
     if feed
-      @author = current_user.authors.create(username: url.split(/\w+:\/\//)[1], uid: url, type: "RssAuthor")
+      @author = current_user.authors.create(username: url.match(/http:\/\/www.\w+\.\w+/).to_s, uid: url, type: "RssAuthor", avatar: "")
       feed.entries.each do |entry|
-        post = Post.new do |p|
-          p.author_id = (Author.find_by username: @author.username).id
-          p.body = entry.content
-          p.title = entry.title
-          p.posted_at = entry.published
+        @author.posts.create(
+          author_id: (Author.find_by username: @author.username).id,
+          body: entry.content,
+          title: entry.title,
+          posted_at: entry.published)
           # p.created_at automatically gets set to the current date and time when the record is first created.
         end
-        post.save
-      end
       flash[:notice] = "Feed successfully added!"
       redirect_to user_path(current_user)
     else
       flash[:notice] = "There was a problem saving your feed!"
       redirect_to user_path(current_user)
     end
-  end
-
-  def instagram_search
-    @results = InstagramAuthor.client.user_search(params[:instagram])
-    render :instagram_results
   end
 
   def tweet
@@ -92,10 +83,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def get_tumblr_results
-    TumblrAuthor.client.posts(params[:search_tum])
-  end
 
   def set_twitter_client
     @user_client = TwitterAuthor.user_client(current_user)
