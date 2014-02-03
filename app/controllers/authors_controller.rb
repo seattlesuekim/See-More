@@ -16,7 +16,6 @@ class AuthorsController < ApplicationController
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to #{params[:author][:username]}!"
     end
-
   end
 
   def unsubscribe

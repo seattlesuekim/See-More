@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :home_feed
+  before_action :home_feed
   before_action :update_feeds
 
   def show
@@ -7,22 +7,7 @@ class UsersController < ApplicationController
     if current_user
       if current_user.id == @user.id
         @providers = current_user.providers #this is just for debug, can delete later
-        # combine all the different feed arrays
-        @posts = @updates #+ @home_feed
-        # else
-        #   @posts = []
-        # end
-        # current_user.posts.each do |post|
-        #   p = {}
-        #   p[:author_name] = post.author.username
-        #   p[:body] = post.body
-        #   p[:posted_at] = post.posted_at
-        #   p[:author_url] = post.author.avatar.gsub('normal', 'reasonably_small')
-        #   p[:author_type] = post.author.type
-        #   p[:pid] = post.pid
-        #   p[:caption] = post.title
-        #   @posts << p
-        # end
+        @posts = @updates + @home_feed
         @posts = @posts.uniq {|p| p[:body]}
         @posts.sort!{|a, b| b[:posted_at]<=> a[:posted_at]}
         @posts = @posts.paginate(:page => params[:page], :per_page => 25)
@@ -30,7 +15,7 @@ class UsersController < ApplicationController
         flash[:notice] = "You are not authorized to view this page!"
         redirect_to user_path(current_user)
       end
-    else #part of helper method
+    else 
       flash[:notice] = "You must be signed in to view this page!"
       redirect_to root_path
     end
@@ -82,7 +67,7 @@ class UsersController < ApplicationController
             post[:caption] = "<span class='instagram_caption'>#{caption}</span>"
             @updates << post
           end
-        elsif author.type == "TwitterAuthor" #(eventually will be elsif)
+        elsif author.type == "TwitterAuthor"
           TwitterAuthor.client.user_timeline(author.username).collect.each do |tweet|
             post = {author_name:author.username, author_url: author.avatar, author_type: author.type}
             post[:body] = tweet.text 
