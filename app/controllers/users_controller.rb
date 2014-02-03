@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       @updates = []
       authors.each do |author|
         if author.type == "InstagramAuthor"
-          Instagram.client.user_recent_media(author.uid).each do |photo|
+          InstagramAuthor.client.user_recent_media(author.uid).each do |photo|
             post = {author_name:author.username, author_url: author.avatar, author_type: author.type}
             if photo.caption 
               caption = photo.caption.text
