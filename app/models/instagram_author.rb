@@ -8,10 +8,10 @@ class InstagramAuthor < Author
     Instagram.client
   end
 
-  def self.get_posts(author_uid)
-    posts = Instagram.client.user_recent_media(author_uid)
-    @posts = posts.map do |post|
-    Post.create_instagram_post(post)
-    end
-  end
+  # def self.get_posts(author_uid)
+  #   posts = Instagram.client.user_recent_media(author_uid)
+  #   @posts = posts.map do |post|
+  #   Post.create_instagram_post(post)
+  #   end
+  # end
 end

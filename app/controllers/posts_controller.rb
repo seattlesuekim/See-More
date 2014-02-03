@@ -25,10 +25,10 @@ class PostsController < ApplicationController
         user = item.rels[:self].get.data
         httparty_response = HTTParty.get("https://api.github.com/users/#{user.login}", :headers => {"User-Agent" => "rss-peep"})
         user = {
-          avatar: httparty_response["avatar_url"],
-          id: user.id,
+          avatar:   httparty_response["avatar_url"],
+          id:       user.id,
           username: user.login,
-          link: httparty_response["html_url"]
+          link:     httparty_response["html_url"]
         }
         @search << user
       end
@@ -44,6 +44,7 @@ class PostsController < ApplicationController
     feed = nil if feed.is_a?(Fixnum)
 
     if feed
+      # get an icon from Feedzirra somehow?
       @author = current_user.authors.create(username: url.match(/http:\/\/www.\w+\.\w+/).to_s, uid: url, type: "RssAuthor", avatar: "")
       feed.entries.each do |entry|
         @author.posts.create(

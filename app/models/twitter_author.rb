@@ -18,11 +18,12 @@ class TwitterAuthor < Author
     end
   end
 
-  def self.find_posts(author)
-    @client.user_timeline(author[:username]).collect.each do |tweet|
-      @post = Post.find_or_create_by_body(author_id: author[:id], body: tweet.text, posted_at: tweet.created_at, pid: tweet.id)
-      @post.save
-    end
-  end
+  # def self.find_posts(author)
+  #   raise
+  #   @client.user_timeline(author[:username]).collect.each do |tweet|
+  #     @post = Post.find_or_create_by_body(author_id: author[:id], body: tweet.text, posted_at: tweet.created_at, pid: tweet.id)
+  #     @post.save
+  #   end
+  # end
 
 end
