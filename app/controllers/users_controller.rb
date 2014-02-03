@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       if current_user.id == @user.id
         @providers = current_user.providers #this is just for debug, can delete later
         # combine all the different feed arrays
-        @posts = @instagram_posts + @home_feed
+        @posts = @updates + @home_feed
         # else
         #   @posts = []
         # end
@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   def home_feed
     if current_user
       types = current_user.providers.map {|p| p.name}
-      
       if types.include? "twitter"
         user_client = TwitterAuthor.user_client(current_user)
         @home_feed = []
@@ -63,9 +62,8 @@ class UsersController < ApplicationController
 
   def update_feeds 
     authors = current_user.authors
-    
     if authors.empty?
-      @instagram_posts = []
+      @updates = []
     else
       authors.each do |author|
         if author.type == "InstagramAuthor"
@@ -91,6 +89,7 @@ class UsersController < ApplicationController
       end
       # elsif author.type == "TumblrAuthor"
       # elsif author.type == "RssAuthor"
+      @updates = @instagram_posts #add other update collections
     end
   end
 
