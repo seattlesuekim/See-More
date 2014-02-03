@@ -11,7 +11,6 @@ class AuthorsController < ApplicationController
       @author = nil
     end
 
-
     if @author
       # Adding posts here--maybe switch to before action on Users Controller to update
       if @author.is_a?(TumblrAuthor)
@@ -26,8 +25,7 @@ class AuthorsController < ApplicationController
     else
       redirect_to user_path(current_user), notice: "You are already subscribed to #{params[:author][:username]}!"
     end
-
-
+    
   end
 
   def unsubscribe

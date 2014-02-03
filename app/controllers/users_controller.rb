@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :home_feed
+  # before_action :home_feed
   before_action :update_feeds
 
   def show
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       if current_user.id == @user.id
         @providers = current_user.providers #this is just for debug, can delete later
         # combine all the different feed arrays
-        @posts = @updates + @home_feed
+        @posts = @updates #+ @home_feed
         # else
         #   @posts = []
         # end
