@@ -84,7 +84,7 @@ class UsersController < ApplicationController
           feed = Feedzirra::Feed.fetch_and_parse(author.uid)
           Feedzirra::Feed.update(feed).entries.each do |entry|
             post = {author_name: author.username, author_url: author.avatar, author_type: author.type}
-            post[:body] = entry.summary
+            post[:body] = "<a href='" + entry.url + "''>" + entry.title + "</a><br>" + entry.summary
             post[:caption] = entry.title
             post[:posted_at] = entry.published
             @updates << post
