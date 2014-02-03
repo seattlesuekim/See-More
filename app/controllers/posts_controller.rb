@@ -50,15 +50,6 @@ class PostsController < ApplicationController
         uid: url, 
         type: "RssAuthor", 
         avatar: "")
-      
-      # Change this all to before action in users controller
-      # feed.entries.each do |entry|
-      #   @author.posts.create(
-      #     author_id: (Author.find_by username: @author.username).id,
-      #     body: entry.content,
-      #     title: entry.title,
-      #     posted_at: entry.published)
-      #   end
       flash[:notice] = "Feed successfully added!"
       redirect_to user_path(current_user)
     else
