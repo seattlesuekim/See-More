@@ -16,8 +16,8 @@ class AuthorsController < ApplicationController
       # Adding posts here--maybe switch to before action on Users Controller to update
       if @author.is_a?(TumblrAuthor)
         TumblrAuthor.add_posts(@author.uid)
-      elsif @author.is_a?(TwitterAuthor)
-        TwitterAuthor.find_posts(@author)
+      # elsif @author.is_a?(TwitterAuthor)
+      #   TwitterAuthor.find_posts(@author)
       # elsif @author.is_a?(InstagramAuthor)
       #   InstagramAuthor.get_posts(@author.uid)
       end

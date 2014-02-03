@@ -36,6 +36,8 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+
   def home_feed
     if current_user
       types = current_user.providers.map {|p| p.name}
@@ -65,6 +67,7 @@ class UsersController < ApplicationController
     if authors.empty?
       @updates = []
     else
+      @updates = []
       authors.each do |author|
         if author.type == "InstagramAuthor"
           @instagram_posts = []
@@ -81,16 +84,27 @@ class UsersController < ApplicationController
             post[:author_url] = author.avatar
             post[:author_type] = author.type
             post[:caption] = "<span class='instagram_caption'>#{caption}</span>"
-            @instagram_posts << post
+            @updates << post
           end
-        else #(eventually will be elsif)
-          @instagram_posts = []
+        elsif author.type == "TwitterAuthor" #(eventually will be elsif)
+          @tweets = []
+          TwitterAuthor.client.user_timeline(author.username).collect.each do |tweet|
+            post = {}
+            post[:author_name] = author.username
+            post[:body] = tweet.text 
+            post[:posted_at] = tweet.created_at
+            post[:author_url] = author.avatar
+            post[:author_type] = author.type
+            post[:pid] = tweet.id
+            @updates << post
+          end
+        else 
+          @updates = []
         end
       end
+    end
       # elsif author.type == "TumblrAuthor"
       # elsif author.type == "RssAuthor"
-      @updates = @instagram_posts #add other update collections
-    end
   end
 
 end
