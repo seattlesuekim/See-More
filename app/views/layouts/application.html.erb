@@ -93,6 +93,7 @@
                 <span><%= image_tag "rss.png", size: "20x20" %> RSS Feed </span>
               </a>
               <ul role="menu" class="dropdown-menu">
+                <!-- change route to go to users controller? -->
                 <%= form_tag rss_path, :class =>"navbar-form", method: 'post' do %>
                   <div class="form-group">
                     <%= text_field_tag "get_rss", nil, placeholder: "Add a feed", class: "input-large" %>

@@ -45,15 +45,20 @@ class PostsController < ApplicationController
 
     if feed
       # get an icon from Feedzirra somehow?
-      @author = current_user.authors.create(username: url.match(/http:\/\/www.\w+\.\w+/).to_s, uid: url, type: "RssAuthor", avatar: "")
-      feed.entries.each do |entry|
-        @author.posts.create(
-          author_id: (Author.find_by username: @author.username).id,
-          body: entry.content,
-          title: entry.title,
-          posted_at: entry.published)
-          # p.created_at automatically gets set to the current date and time when the record is first created.
-        end
+      @author = current_user.authors.create(
+        username: feed.title, #url.match(/http:\/\/www.\w+\.\w+/).to_s, 
+        uid: url, 
+        type: "RssAuthor", 
+        avatar: "")
+      
+      # Change this all to before action in users controller
+      # feed.entries.each do |entry|
+      #   @author.posts.create(
+      #     author_id: (Author.find_by username: @author.username).id,
+      #     body: entry.content,
+      #     title: entry.title,
+      #     posted_at: entry.published)
+      #   end
       flash[:notice] = "Feed successfully added!"
       redirect_to user_path(current_user)
     else
