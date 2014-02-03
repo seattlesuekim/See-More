@@ -7,21 +7,21 @@ class PostsController < ApplicationController
       @results = InstagramAuthor.client.user_search(params[:instagram])
       render :instagram_results #all the renders should be refactored to one search page
     elsif params[:service] == "tumblr"
-      @tumblr_results = TumblrAuthor.client.posts(params[:search_tum])
-      if @tumblr_results == {"status"=>404, "msg"=>"Not Found"}
+      @results = TumblrAuthor.client.posts(params[:search_tum])
+      if @results == {"status"=>404, "msg"=>"Not Found"}
         redirect_to user_path(current_user), notice: "No users match your search."
       else
         flash[:notice] = "Search results for \"#{params[:search_tum]}\""
         render :search_tum # see above
       end
     elsif params[:service] == "twitter"
-      @search = TwitterAuthor.client.user_search(params[:twitter_search]).collect
+      @results = TwitterAuthor.client.user_search(params[:twitter_search]).collect
       flash[:notice] = "Search results for \"#{params[:twitter_search]}\""
       render :twitter_search #see above
     elsif params[:service] == "github"
-      @search = []
-      @res = GithubAuthor.client.search_users(params[:github_search])
-      @res.items.each do |item|
+      @results = []
+      results = GithubAuthor.client.search_users(params[:github_search])
+      results.items.each do |item|
         user = item.rels[:self].get.data
         httparty_response = HTTParty.get("https://api.github.com/users/#{user.login}", :headers => {"User-Agent" => "rss-peep"})
         user = {
@@ -30,9 +30,8 @@ class PostsController < ApplicationController
           username: user.login,
           link:     httparty_response["html_url"]
         }
-        @search << user
+        @results << user
       end
-      @search
       flash[:notice] = "Search results for \"#{params[:github_search]}\""
       render :github_search_results
     end

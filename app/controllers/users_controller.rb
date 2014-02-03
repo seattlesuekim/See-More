@@ -82,7 +82,7 @@ class UsersController < ApplicationController
           end
         elsif author.type == "RssAuthor"
           feed = Feedzirra::Feed.fetch_and_parse(author.uid)
-          feed.entries.each do |entry|
+          Feedzirra::Feed.update(feed).entries.each do |entry|
             post = {author_name: author.username, author_url: author.avatar, author_type: author.type}
             post[:body] = entry.summary
             post[:caption] = entry.title
