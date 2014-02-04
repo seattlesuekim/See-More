@@ -121,7 +121,8 @@ class UsersController < ApplicationController
     elsif t['type'] == 'link'
       post[:body] = '<a href="' + t['url'] + '">' + t['title'] + '</a>'
     elsif t['type'] == 'answer'
-      post[:body] = t['body']
+      post[:body] = t['question'] + t['answer']
+      
     end
     post
 
