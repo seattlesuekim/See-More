@@ -13,13 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-// require turbolinks
 //= require_tree .
 
 $(function() {
   // Setup drop down menu
   $('.dropdown-toggle').dropdown();
- 
+
   // Fix input element click problem
   $('.dropdown input, .dropdown label').click(function(e) {
     e.stopPropagation();
@@ -38,26 +37,26 @@ $(function(){
   $('#profiletabs ul li a').on('click', function(e){
     e.preventDefault();
     var newcontent = $(this).attr('href');
-     
+
     $('#profiletabs ul li a').removeClass('sel');
     $(this).addClass('sel');
-     
+
     $('#content section').each(function(){
       if(!$(this).hasClass('hidden')) { $(this).addClass('hidden'); }
     });
-     
+
     $(newcontent).removeClass('hidden');
   });
 });
 
-function CheckMaxlength(oInObj)
-{
-      var iMaxLen = parseInt(oInObj.getAttribute('maxlength'));
-      var iCurLen = oInObj.value.length;
+// function CheckMaxlength(oInObj)
+// {
+//   var iMaxLen = parseInt(oInObj.getAttribute('maxlength'));
+//   var iCurLen = oInObj.value.length;
 
-      if ( oInObj.getAttribute && iCurLen > iMaxLen )
-      {
-          oInObj.value = oInObj.value.substring(0, iMaxLen);
-      }
-}
+//   if ( oInObj.getAttribute && iCurLen > iMaxLen )
+//   {
+//       oInObj.value = oInObj.value.substring(0, iMaxLen);
+//   }
+// }
 
