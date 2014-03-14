@@ -1,4 +1,6 @@
-## README for PEEPS PROJECT (aka: SEE-MORE)
+#PEEPS PROJECT (aka: SEE-MORE)
+
+## ADA Week 11-12 Project
 
 ### Goals
 - Learn how to work with OAuth
