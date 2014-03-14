@@ -1,6 +1,6 @@
 #PEEPS PROJECT (aka: SEE-MORE)
 
-## ADA Week 11-12 Project
+## [ADA Week 11-12 Project](https://github.com/Ada-Developers-Academy/daily-curriculum/blob/master/week12/see-more.md)
 
 ### Goals
 - Learn how to work with OAuth
