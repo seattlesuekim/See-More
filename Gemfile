@@ -6,10 +6,9 @@ gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
-gem "omniauth-github", "~> 1.1.1"
 gem "omniauth-instagram", "~> 1.0.1"
-gem "instagram", "~> 0.10.0"
-gem 'feedzirra'
+gem "instagram", "~> 0.11"
+gem 'feedzirra', "=0.7"
 gem 'will_paginate', '~> 3.0'
 gem 'octokit', "~> 2.0"
 gem 'json'
@@ -21,6 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
+
+# Work around resolution issue with instagram and omniauth-instagram
+gem 'faraday', '= 0.8'
 
 # API wrappers
 gem 'twitter'
